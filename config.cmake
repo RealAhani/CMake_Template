@@ -25,5 +25,8 @@ set(PREXENAME "${PRNAME}_EXE")
 set(CPPVERSION 20)
 set(CPPEXTENTION OFF)
 set(CPPSTANDARDREQ ON)
+#chode between g++ or MSVC
+# set(CPPCOMPILER "g++")
+set(CPPCOMPILER "MSVC")
 ##############################################
 OSDISTRO(MYOS)

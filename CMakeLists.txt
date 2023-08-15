@@ -1,5 +1,5 @@
 include(config.cmake)
-
+set(CMAKE_CXX_COMPILER ${CPPCOMPILER})
 #if you want to enable wall set this flag in cammand line to TRUE
 option(WALL OFF)
 if(WALL)

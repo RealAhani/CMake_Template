@@ -1,4 +1,10 @@
 # A Template for start a Cmake/C++ project 
+
+# Windows
+* Run build.bat
+# Linux/Mac
+* Run build.sh
+
 ## 1.Edit config.cmake for naming convention and project setting
 ## 2.write your translation units in relevent src_files.cmake
 ## 3.just run build.bat to build your project(you can edit the .bat files for your needs)
