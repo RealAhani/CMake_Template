@@ -1,10 +1,13 @@
 rm -rf build
-mkdir build 
+mkdir build
 cd build
 
 # if you want safty please turn WALL=TRUE                                 e.x(-DWALL=TRUE)
-# if you want to build it with makefiles and gcc on windows uncomment the blew code
+# if you want to build it with makefiles and gcc uncomment the blew code
 cmake -S .. -B . -G"Unix Makefiles" -DWALL=FALSE
+
+# if you want to build it with Xcode uncomment the blew code
+# cmake -S .. -B . -G"Xcode" -DWALL=FALSE
 
 # if you want safty please turn WALL=TRUE                                 e.x(-DWALL=TRUE)
 # if you want to build it with visual studio and msvc++ on windows uncomment the blew code

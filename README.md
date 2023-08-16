@@ -3,7 +3,8 @@
 # Windows
 * Run build.bat
 # Linux/Mac
-* Run build.sh
+* Run build.sh 
+      (edit the build.sh for xcode or unix make file based on you os)
 
 ## 1.Edit config.cmake for naming convention and project setting
 ## 2.write your translation units in relevent src_files.cmake
