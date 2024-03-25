@@ -1,4 +1,4 @@
-# A Template for start a Cmake/C++ project 
+# A Template to start a Cmake/C++ project 
 
 # Windows
 * Run build.bat
