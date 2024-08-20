@@ -3,6 +3,7 @@
 # Windows
 * Run build.bat
 # Linux/Mac
+* for linux shell terminal ===> bash ./build.sh
 * Run build.sh 
       (edit the build.sh for xcode or unix make file based on you os)
 
