@@ -1,12 +1,13 @@
 macro(OSDISTRO OSName)
+
 if(LINUX)
 set(${OSName} "LINUX")
-message("====" ${${OSName}})
+
 elseif(WIN32)
 set(${OSName} "WIN")
-message("====" ${${OSName}} )
+
 elseif(UNIX)
 set(${OSName} "MAC")
-message("====" ${${OSName}} )
+
 endif()
 endmacro()

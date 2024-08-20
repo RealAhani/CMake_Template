@@ -4,7 +4,7 @@ cd build
 
 # if you want safty please turn WALL=TRUE                                 e.x(-DWALL=TRUE)
 # if you want to build it with makefiles and gcc uncomment the blew code
-cmake -S .. -B . -G"Unix Makefiles" -DWALL=FALSE
+cmake -S .. -B . -G"Unix Makefiles" -DWALL=TRUE
 
 # if you want to build it with Xcode uncomment the blew code
 # cmake -S .. -B . -G"Xcode" -DWALL=FALSE

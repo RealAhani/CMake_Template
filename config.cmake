@@ -23,11 +23,12 @@ set(PREXENAME "${SULOTIONNAME}_EXE")
 ##############################################
 #your cpp standard version you want to use in this project
 set(CPPVERSION 20)
-set(CPPEXTENTION OFF)
+set(CPPEXTENTION ON)
 set(CPPSTANDARDREQ ON)
 
 #chode between g++ or MSVC
-set(CPPCOMPILER "g++")
+# set(CPPCOMPILER "g++")
 # set(CPPCOMPILER "MSVC")
+set(CPPCOMPILER "clang++")
 ##############################################
 OSDISTRO(MYOS)

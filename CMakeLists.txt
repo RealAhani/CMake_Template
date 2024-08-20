@@ -5,7 +5,7 @@ option(WALL OFF)
 if(WALL)
 set(CMAKE_CXX_FLAGS_DEBUG_INIT "-Wall")
 set(CMAKE_CXX_FLAGS_RELEASE_INIT "-Wall")
-message("Warning all is enabled")
+message("============================================ Warning all is enabled ============================================")
 endif(WALL)
 #if you want to enable wall set this flag in cammand line to TRUE
 
@@ -17,24 +17,21 @@ set(CMAKE_CXX_STANDARD_REQUIRED                    ${CPPSTANDARDREQ})
 
 
 if(${MYOS} STREQUAL ${WINDOWS})
+message("============================================ PERATING SYS :WINDOWS ============================================")
 set(CURRENTOS 1)
-
 add_subdirectory("source/src")
 add_subdirectory("source/samples/src")
 
-message("================= OPERATING SYS :WINDOWS =================")
 elseif(${MYOS} STREQUAL ${LINUXOS})
+message("============================================ PERATING SYS :Linux ============================================")
 set(CURRENTOS 2)
-
 add_subdirectory("source/src")
 add_subdirectory("source/samples/src")
 
-message("================= OPERATING SYS :NOT-SUPPORT =================")
 elseif(${MYOS} STREQUAL ${MACOS})
+message("============================================ PERATING SYS :MacOSX ============================================")
 set(CURRENTOS 3)
-
 add_subdirectory("source/src")
 add_subdirectory("source/samples/src")
 
-message("================= OPERATING SYS :NOT-SUPPORT =================")
 endif()
