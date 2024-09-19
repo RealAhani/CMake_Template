@@ -1,2 +1,2 @@
 cd build
-cmake --build . --config=Debug
+cmake --build . -j
