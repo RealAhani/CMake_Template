@@ -1,4 +1,4 @@
 #pragma once
 namespace mloge {
-void print(std::string const &str);
+void print(std::string const& str);
 }
