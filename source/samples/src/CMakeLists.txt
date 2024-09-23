@@ -15,3 +15,4 @@ PRIVATE "../../include")
 
 target_precompile_headers(${PREXENAME} REUSE_FROM ${MYLIBNAME})
 target_link_libraries(${PREXENAME} ${MYLIBNAME})
+set_target_properties(${PREXENAME} PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
