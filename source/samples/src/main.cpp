@@ -1,7 +1,8 @@
 #include "Log.hpp"
 #include "osconfig.h"
 
-int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[]) {
+int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
+{
 #if (OS == 1)
     mloge::print("WIN");
 #elif (OS == 2)
