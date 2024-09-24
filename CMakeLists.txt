@@ -6,6 +6,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 #TODO:N1 ADD new build type for "RelWithDebInfo" and "MinSizeRel" maybe need change blew condition for appending these
 option(MYDEBUG_SETTING OFF)
+option(STATIC_ANALYZERS OFF)
 if(MYDEBUG_SETTING)
 message("============================================ Debuging is ON: Warning all is enabled ============================================")
 set(BUILD_TYPE "Debug")
@@ -42,15 +43,23 @@ set(CMAKE_CXX_STANDARD                                 ${CPPVERSION})
 set(CMAKE_CXX_STANDARD_REQUIRED                    ${CPPSTANDARDREQ})
 
 message("--------------------------------------------- General info: ---------------------------------------------")
+if(STATIC_ANALYZER)
 find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
 if(CMAKE_CXX_CPPCHECK)
 message("--------------------------------------------- CPP-Check:  ON ---------------------------------------------")
 list(APPEND CMAKE_CXX_CPPCHECK "--enable=all")
 endif()
-
 find_program(CLANG_TIDY_EXE NAMES "clang-tidy" REQUIRED)
 if(CLANG_TIDY_EXE)
 message("--------------------------------------------- CLANG-TIDY: ON ---------------------------------------------")
+endif()
+endif(STATIC_ANALYZER)
+
+find_program(CCACHE_FOUND ccache)
+if(CCACHE_FOUND)
+message("--------------------------------------------- CCACHE: ON ---------------------------------------------")
+# set(CMAKE_CXX_COMPILER_LAUNCHER CCACHE_FOUND)   
+# set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
 endif()
 
 message("---------------------------------------------------------------------------------------------------------------")
