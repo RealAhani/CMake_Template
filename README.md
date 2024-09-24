@@ -18,7 +18,7 @@
 
 ### 2.write your translation units in relevent src_files.cmake or add \*.cpp / \*.hpp (don`t use .h)
 
-### 3.just run build.bat to build your project(you can edit the .bat files for your needs)
+### 3.just run build.bat/sh to build your project(you can edit the .bat files to your needs)
 
       (the build type setting can be change through -DMY_DEBUG_SETTING=ON OR OFF in build.bat/sh )
       (in Debug build all warings is enabled for each compiler defiend)
