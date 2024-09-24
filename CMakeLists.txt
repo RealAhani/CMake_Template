@@ -3,7 +3,10 @@ set(CMAKE_CXX_COMPILER ${CPPCOMPILER})
 # set(CMAKE_CXX_FLAGS_DEBUG_INIT "-Wall")
 # set(CMAKE_CXX_FLAGS_RELEASE_INIT "-Wall")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
+message("----------------------------------------------------------------${CMAKE_CXX_COMPILER_ARCHITECTURE_ID}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/bin/bin") # .exe and .dll
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/bin/lib") # .so and .dylib
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/bin/lib") # .lib and .a
 #TODO:N1 ADD new build type for "RelWithDebInfo" and "MinSizeRel" maybe need change blew condition for appending these
 option(MYDEBUG_SETTING OFF)
 option(STATIC_ANALYZERS OFF)
@@ -63,8 +66,14 @@ message("--------------------------------------------- CCACHE: ON --------------
 endif()
 
 message("---------------------------------------------------------------------------------------------------------------")
+# set(CMAKE_GENERATOR_PLATFORM "x86" CACHE STRING "Platform")
 message("--------------------------------------------- OS: ${MYOS} ---------------------------------------------")
-message("--------------------------------------------- ${CPPCOMPILER} COMPILER ---------------------------------------------")
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+message("--------------------------------------------- Arch: 64-bit ---------------------------------------------")
+else()
+message( "--------------------------------------------- Arch: 32-bit ---------------------------------------------")
+endif()
+message("--------------------------------------------- COMPILER: ${CPPCOMPILER} ---------------------------------------------")
 message("--------------------------------------------- BUILD TYPE: ${BUILD_TYPE}  --------------------------------------------")
 message("--------------------------------------------- is_Debugging: ${MYDEBUG_SETTING} ---------------------------------------------")
 message("--------------------------------------------- Compiler Flags: ${CUSTOME_FLAGS} ---------------------------------------------")
