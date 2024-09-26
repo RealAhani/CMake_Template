@@ -1,5 +1,15 @@
 #pragma once
+// #include "osconfig.h"
+// #if (OS == 1)
+// #ifdef MYLIB_EXPORTS
+// #define MYLIB_API __declspec(dllexport)
+// #else
+// #define MYLIB_API __declspec(dllimport)
+// #endif
+// #else
+// #define MYLIB_API
+// #endif
 namespace mloge
 {
-void print(const std::string& str);
-}
+/*extern "C" MYLIB_API*/ void print(const std::string& str);
+} // namespace mloge

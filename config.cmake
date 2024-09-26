@@ -98,12 +98,17 @@ set(DEBUG_COMPILER_FLAGS_MSVC        "/WX;/W4;/w14242;/w14254;/w14263;/w14265;/w
 #             /wd4275 # disable warnings about exporting non DLL-interface classes
 set(RELEASE_COMPILER_FLAGS_MSVC      "/O2;/Oi;/DNDEBUG;/Ob2;/GF;/GT;/Gy;/GL;")
 ##############################################
-set(REP_URLS "https://github.com/google/googletest.git"
-             "https://github.com/SFML/SFML.git"
+set(REP_URLS 
              # add more repo here
              )
-set(REP_BRANCH "main" "2.6.x")
-set(LIB_LINKAGE_VAR "sfml-graphics;sfml-window;sfml-system;")
+set(REP_BRANCH )
+set(LIB_LINKAGE_VAR )
+##############################################
+#you should provide extern "C" __declspec(dllexport/dllimport) For SHARED build
+set(MYLIB_TYPE "STATIC" CACHE STRING "It can be STATIC or SHARED")
+#you should provide wnmain function for hiding the console
+set(SHOW_CONSOLE "ON" CACHE STRING "It can be ON or OFF if you want win only set it to false and provide winmain entry point")
+
 ##############################################
 OSDISTRO(MYOS)
 fetch_repositories()

@@ -1,6 +1,7 @@
 #include "Log.hpp"
 #include "osconfig.h"
 
+
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
 #if (OS == 1)
@@ -12,5 +13,12 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 #endif
     mloge::print("Hello_World");
     std::cin.get();
-    return 0;
 }
+
+// #include <windows.h>
+// int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+// {
+//     MessageBox(nullptr, "Hello, World!", "My First WinMain", MB_OK);
+
+//     return 0;
+// }
