@@ -1,5 +1,6 @@
 ##############################################
 include(${CMAKE_HOME_DIRECTORY}/os.cmake)
+include(${CMAKE_HOME_DIRECTORY}/LibsConfig.cmake)
 # DONT TOUCH THESE 4 BLOW OS NAMES VARIABLES
 set(MYOS     "NONE_VALID")
 set(WINDOWS  "WIN")
@@ -22,20 +23,17 @@ set(PRLANG "CXX")
 #your exe name
 set(PREXENAME "${SULOTIONNAME}_EXE")
 ##############################################
-
 #chose between g++/clang++ or MSVC
 # set(CPPCOMPILER "g++")
-set(CPPCOMPILER "MSVC")
-# set(CPPCOMPILER "clang++")
+# set(CPPCOMPILER "MSVC")
+set(CPPCOMPILER "clang++")
 ##############################################
-
 #your cpp standard version you want to use in this project
 set(CPPVERSION 23)
 set(CPPEXTENTION ON)
 set(CPPSTANDARDREQ ON)
 ##############################################
-
-set(STATIC_ANALYZER ON)
+set(STATIC_ANALYZER OFF)
 ##############################################
 
 # you can set your specific compiler flag on the choosen compiler you select on perivious variable
@@ -99,6 +97,13 @@ set(DEBUG_COMPILER_FLAGS_MSVC        "/WX;/W4;/w14242;/w14254;/w14263;/w14265;/w
 #             /wd4800 # disable warnings regarding implicit conversions to bool
 #             /wd4275 # disable warnings about exporting non DLL-interface classes
 set(RELEASE_COMPILER_FLAGS_MSVC      "/O2;/Oi;/DNDEBUG;/Ob2;/GF;/GT;/Gy;/GL;")
-
+##############################################
+set(REP_URLS "https://github.com/google/googletest.git"
+             "https://github.com/SFML/SFML.git"
+             # add more repo here
+             )
+set(REP_BRANCH "main" "2.6.x")
+set(LIB_LINKAGE_VAR "sfml-graphics;sfml-window;sfml-system;")
 ##############################################
 OSDISTRO(MYOS)
+fetch_repositories()
