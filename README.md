@@ -20,11 +20,11 @@
 
 ### 3.just run build.bat/sh to build your project(you can edit the .bat files to your needs)
 
-      (the build type setting can be change through -DMY_DEBUG_SETTING=ON OR OFF in build.bat/sh )
+      (the build type setting can be change through -DCMAKE_BUILD_TYPE=Debug OR Release in build.bat/sh  Dont use --config=Debug)
       (in Debug build all warings is enabled for each compiler defiend)
       (for Release build warning are turn off and optimization for compile and link time are enabled)
-      (Cpp_check and clang-tidy are enabled by defualt  )
-      (Static Analyzers do increase the build time ... you can turn them off by -DSTATIC_ANALYZERS=ON/OFF in buld.bat/sh)
+      (Cpp_check and clang-tidy can be enable by config.cmake stati_analyzer ON/OFF  )
+      (Static Analyzers do increase the build time (not on msvc) ... )
 
 #### sample folder is for your application.exe that means all srcs and includes in that is for \*.exe project
 

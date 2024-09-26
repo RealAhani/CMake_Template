@@ -4,6 +4,7 @@ set(CMAKE_CXX_EXTENSIONS                             ${CPPEXTENTION})
 set(CMAKE_CXX_STANDARD                                 ${CPPVERSION})
 set(CMAKE_CXX_STANDARD_REQUIRED                    ${CPPSTANDARDREQ})
 project(${MYLIBNAME}       VERSION ${PRVERSION}     LANGUAGES ${PRLANG})
+#if You want u can change it to SHARED
 add_library(${MYLIBNAME} STATIC ${src})
 target_include_directories(${MYLIBNAME} PUBLIC "../include")
 target_precompile_headers(${MYLIBNAME} PUBLIC "../include/pch/pch.hpp")

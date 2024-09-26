@@ -25,30 +25,17 @@ set(PREXENAME "${SULOTIONNAME}_EXE")
 
 #chose between g++/clang++ or MSVC
 # set(CPPCOMPILER "g++")
-# set(CPPCOMPILER "MSVC")
-set(CPPCOMPILER "clang++")
+set(CPPCOMPILER "MSVC")
+# set(CPPCOMPILER "clang++")
 ##############################################
 
 #your cpp standard version you want to use in this project
 set(CPPVERSION 23)
 set(CPPEXTENTION ON)
 set(CPPSTANDARDREQ ON)
-
 ##############################################
 
-#DONT CHANGE BUILD TYPE FROM THIS VAR INSTEAD USE -DMYDEBUG_SETTING FROM TERMINAL
-#it is very usefull with Ninja Or make -G but maybe can be used with msvc
-#DONT CHANGE BUILD TYPE FROM THIS VAR INSTEAD USE -DMYDEBUG_SETTING FROM TERMINAL
-set(BUILD_TYPE "")
-#DONT CHANGE BUILD TYPE FROM THIS VAR INSTEAD USE -DMYDEBUG_SETTING FROM TERMINAL
-# set(BUILD_TYPE "Debug")
-# set(BUILD_TYPE "Release")
-##TODO:N1 ADD THIS Bleo var setting in building type they are not working here ==>goto TODO:N1 for more info
-# set(BUILD_TYPE "RelWithDebInfo")
-# set(BUILD_TYPE "MinSizeRel")
-
-#DONT CHANGE BUILD TYPE FROM THIS VAR INSTEAD USE -DMYDEBUG_SETTING FROM TERMINAL
-
+set(STATIC_ANALYZER ON)
 ##############################################
 
 # you can set your specific compiler flag on the choosen compiler you select on perivious variable
@@ -111,7 +98,7 @@ set(DEBUG_COMPILER_FLAGS_MSVC        "/WX;/W4;/w14242;/w14254;/w14263;/w14265;/w
 #             /wd4505 # disable warnings about unused functions that might be platform-specific
 #             /wd4800 # disable warnings regarding implicit conversions to bool
 #             /wd4275 # disable warnings about exporting non DLL-interface classes
-set(RELEASE_COMPILER_FLAGS_MSVC      "")
+set(RELEASE_COMPILER_FLAGS_MSVC      "/O2;/Oi;/DNDEBUG;/Ob2;/GF;/GT;/Gy;/GL;")
 
 ##############################################
 OSDISTRO(MYOS)
