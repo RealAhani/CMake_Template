@@ -85,23 +85,18 @@ message("--------------------------------------------- Library name : ${MYLIBNAM
 message("--------------------------------------------- Exe name : ${PREXENAME} ")
 message("--------------------------------------------- Version: ${PRVERSION} ")
 
-
 if(${MYOS} STREQUAL ${WINDOWS})
 message("============================================ OPERATING SYS :WINDOWS ")
-set(CURRENTOS 1)
-add_subdirectory("source/src")
-add_subdirectory("source/samples/src")
-
+set(CURRENTOS 1 CACHE STRING "OS TYPE ")
 elseif(${MYOS} STREQUAL ${LINUXOS})
 message("============================================ OPERATING SYS :Linux ")
-set(CURRENTOS 2)
-add_subdirectory("source/src")
-add_subdirectory("source/samples/src")
-
+set(CURRENTOS 2 CACHE STRING "OS TYPE ")
 elseif(${MYOS} STREQUAL ${MACOS})
 message("============================================ OPERATING SYS :MacOSX ")
-set(CURRENTOS 3)
-add_subdirectory("source/src")
-add_subdirectory("source/samples/src")
-
+set(CURRENTOS 3 CACHE STRING "OS TYPE ")
 endif()
+
+if(INTERNAL_MYLIB_USAGE)
+add_subdirectory("source/src")
+endif()
+add_subdirectory("source/samples/src")

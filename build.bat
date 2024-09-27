@@ -11,8 +11,8 @@ cd build
 @REM -G can be "Visual Studio 17 2022" Or "Ninja" Or "Unix Makefiles" Or ...
 
 @REM for Ninja generator use CMAKE_BUILD_TYPE Debug/Release 
-cmake -S .. -B . -G"Ninja" -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-cmake --build . --parallel 8
+cmake -S .. -B . -G"Ninja" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON --fresh
+cmake --build . --parallel 12
 
 @REM -A is just for vs and xcode
 @REM -G"Visual Studio 17 2022" -A win32

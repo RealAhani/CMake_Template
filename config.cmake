@@ -16,8 +16,6 @@ set(PRVERSION_PATCH "1")
 set(PRVERSION "${PRVERSION_MAJOR}.${PRVERSION_MINOR}.${PRVERSION_PATCH}")
 #your project name
 set(PRNAME ${SULOTIONNAME}${PRVERSION})
-#your Library name
-set(MYLIBNAME "${SULOTIONNAME}_LIB")
 #your project language
 set(PRLANG "CXX")
 #your exe name
@@ -35,7 +33,8 @@ set(CPPSTANDARDREQ ON)
 ##############################################
 set(STATIC_ANALYZER OFF)
 ##############################################
-
+# this enable asan ,ubsan,
+set(ENABLE_SANITIZER ON)
 # you can set your specific compiler flag on the choosen compiler you select on perivious variable
 # add or remove wanted flags but not comment the line you dont want all 3 variable is needed
 
@@ -98,16 +97,24 @@ set(DEBUG_COMPILER_FLAGS_MSVC        "/WX;/W4;/w14242;/w14254;/w14263;/w14265;/w
 #             /wd4275 # disable warnings about exporting non DLL-interface classes
 set(RELEASE_COMPILER_FLAGS_MSVC      "/O2;/Oi;/DNDEBUG;/Ob2;/GF;/GT;/Gy;/GL;")
 ##############################################
-set(REP_URLS 
-             # add more repo here
-             )
+#the externall library that you want from github
+# add the repo here in seprate string "1" "2"
+set(REP_URLS )
+#the branch that you want for each repo "1" "2"
 set(REP_BRANCH )
-set(LIB_LINKAGE_VAR )
+#the lib linkage vars "sfml:window;sfml:main;..."
+set(LIB_LINKAGE_VAR ) 
 ##############################################
-#you should provide extern "C" __declspec(dllexport/dllimport) For SHARED build
+#the internal library usage setting (MYLIBNAME)
+unset(INTERNAL_MYLIB_USAGE)
+set(INTERNAL_MYLIB_USAGE ON CACHE BOOL "internal library activiating")
+#your Library name
+set(MYLIBNAME "${SULOTIONNAME}_LIB")
+#you should provide extern "C" __declspec(dllexport/dllimport) For SHARED build in source code of each functions in .hpp
 set(MYLIB_TYPE "STATIC" CACHE STRING "It can be STATIC or SHARED")
 #you should provide wnmain function for hiding the console
-set(SHOW_CONSOLE "ON" CACHE STRING "It can be ON or OFF if you want win only set it to false and provide winmain entry point")
+#if it is a console app just let it be to ON
+set(SHOW_CONSOLE ON CACHE BOOL "It can be ON or OFF if you want win only set it to false and provide winmain entry point")
 
 ##############################################
 OSDISTRO(MYOS)
