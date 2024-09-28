@@ -9,10 +9,7 @@ function(fetch_repositories)
       foreach(repo_url IN LISTS REP_URLS)
         string(REGEX REPLACE ".*/(.*)\\.git" "\\1" repo_name ${repo_url})
         list(GET REP_BRANCH ${INDEX} repo_branch)
-        FetchContent_Declare(
-          ${repo_name}
-          GIT_REPOSITORY ${repo_url}
-          GIT_TAG ${repo_branch})
+        FetchContent_Declare(${repo_name} GIT_REPOSITORY ${repo_url} GIT_TAG ${repo_branch})
         FetchContent_MakeAvailable(${repo_name})
         math(EXPR INDEX "${INDEX} + 1")
         include_directories(${${repo_name}_SOURCE_DIR}/include)

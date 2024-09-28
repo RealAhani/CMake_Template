@@ -2,10 +2,10 @@
 include(${CMAKE_HOME_DIRECTORY}/os.cmake)
 include(${CMAKE_HOME_DIRECTORY}/LibsConfig.cmake)
 # DONT TOUCH THESE 4 BLOW OS NAMES VARIABLES
-set(MYOS     "NONE_VALID")
-set(WINDOWS  "WIN")
-set(LINUXOS  "LINUX")
-set(MACOS    "MAC")
+set(MYOS "NONE_VALID")
+set(WINDOWS "WIN")
+set(LINUXOS "LINUX")
+set(MACOS "MAC")
 ##############################################
 #your Solution name
 set(SULOTIONNAME "NAME")
@@ -38,7 +38,9 @@ set(ENABLE_SANITIZER ON)
 # you can set your specific compiler flag on the choosen compiler you select on perivious variable
 # add or remove wanted flags but not comment the line you dont want all 3 variable is needed
 
-set(DEBUG_COMPILER_FLAGS_GCC_CLANG   "-Wall;-Wextra;-Wpedantic;-Wshadow;-Wconversion;-Wnon-virtual-dtor;-Wcast-align;-Wunused;-Woverloaded-virtual;-Wsign-conversion;-Wdouble-promotion;-Wformat=2;-Wimplicit-fallthrough;-Wsuggest-override;-Wnull-dereference;-Wold-style-cast;")
+set(DEBUG_COMPILER_FLAGS_GCC_CLANG
+    "-Wall;-Wextra;-Wpedantic;-Wshadow;-Wconversion;-Wnon-virtual-dtor;-Wcast-align;-Wunused;-Woverloaded-virtual;-Wsign-conversion;-Wdouble-promotion;-Wformat=2;-Wimplicit-fallthrough;-Wsuggest-override;-Wnull-dereference;-Wold-style-cast;"
+)
 #             -Werror
 #             -Wall
 #             -Wextra # reasonable and standard
@@ -56,7 +58,7 @@ set(DEBUG_COMPILER_FLAGS_GCC_CLANG   "-Wall;-Wextra;-Wpedantic;-Wshadow;-Wconver
 #             -Wnull-dereference # warn if a null dereference is detected
 #             -Wold-style-cast # warn for c-style casts
 #             -Wpedantic # warn if non-standard C++ is used
-#             ${OS_ANDROID}:-Wno-main> 
+#             ${OS_ANDROID}:-Wno-main>
 set(DEBUG_COMPILER_EXTRA_FLAGS_GCC "-Wmisleading-indentation;-Wduplicated-cond;-Wlogical-op;")
 #             -Wmisleading-indentation # warn if indentation implies blocks where blocks do not exist
 #             -Wduplicated-cond # warn if if / else chain has duplicated conditions
@@ -66,7 +68,9 @@ set(DEBUG_COMPILER_EXTRA_FLAGS_GCC "-Wmisleading-indentation;-Wduplicated-cond;-
 
 set(RELEASE_COMPILER_FLAGS_GCC_CLANG "-O3;-Ofast;-DNDEBUG;-flto;-march=native;-ftree-vectorize;")
 
-set(DEBUG_COMPILER_FLAGS_MSVC        "/WX;/W4;/w14242;/w14254;/w14263;/w14265;/w14287;/we4289;/w14296;/w14311;/w14545;/w14546;/w14547;/w14549;/w14555;/w14619;/w14640;/w14826;/w14905;/w14906;/w14928;/permissive-;/wd4068;/wd4505;/wd4800;/wd4275;")
+set(DEBUG_COMPILER_FLAGS_MSVC
+    "/WX;/W4;/w14242;/w14254;/w14263;/w14265;/w14287;/we4289;/w14296;/w14311;/w14545;/w14546;/w14547;/w14549;/w14555;/w14619;/w14640;/w14826;/w14905;/w14906;/w14928;/permissive-;/wd4068;/wd4505;/wd4800;/wd4275;"
+)
 #             /WX     # Werror
 #             /W4     # Baseline reasonable warnings
 #             /w14242 # 'identifier': conversion from 'type1' to 'type1', possible loss of data
@@ -95,15 +99,15 @@ set(DEBUG_COMPILER_FLAGS_MSVC        "/WX;/W4;/w14242;/w14254;/w14263;/w14265;/w
 #             /wd4505 # disable warnings about unused functions that might be platform-specific
 #             /wd4800 # disable warnings regarding implicit conversions to bool
 #             /wd4275 # disable warnings about exporting non DLL-interface classes
-set(RELEASE_COMPILER_FLAGS_MSVC      "/O2;/Oi;/DNDEBUG;/Ob2;/GF;/GT;/Gy;/GL;")
+set(RELEASE_COMPILER_FLAGS_MSVC "/O2;/Oi;/DNDEBUG;/Ob2;/GF;/GT;/Gy;/GL;")
 ##############################################
 #the externall library that you want from github
 # add the repo here in seprate string "1" "2"
-set(REP_URLS )
+set(REP_URLS)
 #the branch that you want for each repo "1" "2"
-set(REP_BRANCH )
+set(REP_BRANCH)
 #the lib linkage vars "sfml:window;sfml:main;..."
-set(LIB_LINKAGE_VAR ) 
+set(LIB_LINKAGE_VAR)
 ##############################################
 #the internal library usage setting (MYLIBNAME)
 unset(INTERNAL_MYLIB_USAGE)
@@ -114,8 +118,10 @@ set(MYLIBNAME "${SULOTIONNAME}_LIB")
 set(MYLIB_TYPE "STATIC" CACHE STRING "It can be STATIC or SHARED")
 #you should provide wnmain function for hiding the console
 #if it is a console app just let it be to ON
-set(SHOW_CONSOLE ON CACHE BOOL "It can be ON or OFF if you want win only set it to false and provide winmain entry point")
+set(SHOW_CONSOLE ON
+    CACHE BOOL "It can be ON or OFF if you want win only set it to false and provide winmain entry point"
+)
 
 ##############################################
-OSDISTRO(MYOS)
+osdistro(MYOS)
 fetch_repositories()

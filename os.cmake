@@ -1,13 +1,13 @@
 macro(OSDISTRO OSName)
 
-if(LINUX)
-set(${OSName} "LINUX")
+  if(LINUX)
+    set(${OSName} "LINUX")
 
-elseif(WIN32)
-set(${OSName} "WIN")
+  elseif(WIN32)
+    set(${OSName} "WIN")
 
-elseif(UNIX)
-set(${OSName} "MAC")
+  elseif(UNIX)
+    set(${OSName} "MAC")
 
-endif()
+  endif()
 endmacro()
