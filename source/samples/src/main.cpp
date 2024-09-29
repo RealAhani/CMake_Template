@@ -14,9 +14,8 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     mloge::print("MAC");
 #endif
     mloge::print("Hello_World");
-    std::cin.get();
-
-    //if u DONT use internal lib
+    // std::cin.get();
+    // if u DONT use internal lib
     // #if (OS == 1)
     //     std::cout << ("WIN");
     // #elif (OS == 2)
@@ -24,10 +23,13 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     // #elif (OS == 3)
     //     std::cout << ("MAC");
     // #endif
-    //     std::cout << '\n';
-    //     std::cout << ("Hello_World");
-    //     std::cout << '\n';
-    //     std::cin.get();
+    std::cout << '\n';
+    std::cout << ("Hello_World");
+    std::cout << '\n';
+    bool        b;
+    const char* arr[]{"dfsd", "sdfs"};
+    std::cout << arr[3];
+    std::cin.get();
     return 0;
 }
 

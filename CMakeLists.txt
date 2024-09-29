@@ -1,10 +1,5 @@
 message("--------------------------------------------- General info:")
-unset(STATIC_ANALYZERS CACHE)
-unset(STATIC_ANALYZER CACHE)
 include(config.cmake)
-set(STATIC_ANALYZERS "${STATIC_ANALYZER}"
-    CACHE STRING "Turn ON or OFF for activ/deactive static analyzers (cppcheck and clang-tidy)"
-)
 
 set(CMAKE_CXX_COMPILER ${CPPCOMPILER})
 
@@ -15,16 +10,18 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/bin/lib") # .lib an
 #TODO:N1 ADD new build type for "RelWithDebInfo" and "MinSizeRel" maybe need change blew condition for appending these
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-  message("============================================= Debuging is ON (all Warnings are enable) ")
-  # set(BUILD_TYPE "Debug")
-  if(NOT ${CPPCOMPILER} STREQUAL "MSVC")
-    set(CUSTOME_FLAGS ${DEBUG_COMPILER_FLAGS_GCC_CLANG})
-    if(${CPPCOMPILER} STREQUAL "g++")
-      set(CUSTOME_FLAGS ${DEBUG_COMPILER_FLAGS_GCC_CLANG}${DEBUG_COMPILER_EXTRA_FLAGS_GCC})
-    endif(${CPPCOMPILER} STREQUAL "g++")
-  else()
-    set(CUSTOME_FLAGS ${DEBUG_COMPILER_FLAGS_MSVC})
-  endif(NOT ${CPPCOMPILER} STREQUAL "MSVC")
+  if(ENABLE_WARNING)
+    message("============================================= Debuging is ON (all Warnings are enable) ")
+    # set(BUILD_TYPE "Debug")
+    if(NOT ${CPPCOMPILER} STREQUAL "MSVC")
+      set(CUSTOME_FLAGS ${DEBUG_COMPILER_FLAGS_GCC_CLANG})
+      if(${CPPCOMPILER} STREQUAL "g++")
+        set(CUSTOME_FLAGS ${DEBUG_COMPILER_FLAGS_GCC_CLANG}${DEBUG_COMPILER_EXTRA_FLAGS_GCC})
+      endif(${CPPCOMPILER} STREQUAL "g++")
+    else()
+      set(CUSTOME_FLAGS ${DEBUG_COMPILER_FLAGS_MSVC})
+    endif(NOT ${CPPCOMPILER} STREQUAL "MSVC")
+  endif()
 else()
   message(
     "============================================= Debuging is OFF (Release Mode with Full Optimization) "
@@ -44,7 +41,15 @@ if(CCACHE_FOUND)
   set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
 endif()
 add_compile_options(${CUSTOME_FLAGS})
-
+# if(${CPPCOMPILER} STREQUAL "clang++" OR ${CPPCOMPILER} STREQUAL "g++")
+#   message("sanitizer is on with: ${SANITIZERS}")
+#   if(ENABLE_SANITIZER)
+#     add_compile_options(-fsanitize=${SANITIZERS})
+#     add_link_options(-fsanitize=${SANITIZERS})
+#     # target_compile_options(${SULOTIONNAME} INTERFACE -fsanitize=${SANITIZERS})
+#     # target_link_options(${SULOTIONNAME} INTERFACE -fsanitize=${SANITIZERS})
+#   endif()
+# endif()
 cmake_minimum_required(VERSION 3.25)
 
 #this build config is RELEASE OR DEBUG should set before project
@@ -55,7 +60,7 @@ set(CMAKE_CXX_EXTENSIONS ${CPPEXTENTION})
 set(CMAKE_CXX_STANDARD ${CPPVERSION})
 set(CMAKE_CXX_STANDARD_REQUIRED ${CPPSTANDARDREQ})
 
-if(STATIC_ANALYZERS STREQUAL "ON")
+if(STATIC_ANALYZER)
   find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
   if(CMAKE_CXX_CPPCHECK)
     message("--------------------------------------------- CPP-Check:  ON ")
