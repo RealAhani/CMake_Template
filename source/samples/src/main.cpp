@@ -23,12 +23,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     // #elif (OS == 3)
     //     std::cout << ("MAC");
     // #endif
-    std::cout << '\n';
-    std::cout << ("Hello_World");
-    std::cout << '\n';
-    bool        b;
-    const char* arr[]{"dfsd", "sdfs"};
-    std::cout << arr[3];
     std::cin.get();
     return 0;
 }

@@ -1,3 +1,4 @@
+include_guard()
 ##############################################
 include(${CMAKE_HOME_DIRECTORY}/os.cmake)
 include(${CMAKE_HOME_DIRECTORY}/LibsConfig.cmake)
@@ -31,14 +32,6 @@ set(CPPVERSION 23 CACHE STRING "" FORCE)
 set(CPPEXTENTION ON CACHE BOOL "" FORCE)
 set(CPPSTANDARDREQ ON CACHE BOOL "" FORCE)
 ##############################################
-set(STATIC_ANALYZER OFF CACHE BOOL "" FORCE)
-##############################################
-# this enable asan ,ubsan,
-set(ENABLE_SANITIZER OFF CACHE BOOL "" FORCE)
-
-# set(SANITIZERS "-address,-undefined,-memory,-pointer-compare,-pointer-subtract;")
-set(SANITIZERS "address;" CACHE STRING "" FORCE)
-set(ENABLE_WARNING OFF CACHE BOOL "" FORCE)
 # you can set your specific compiler flag on the choosen compiler you select on perivious variable
 # add or remove wanted flags but not comment the line you dont want all 3 variable is needed
 
@@ -131,7 +124,15 @@ set(MYLIB_TYPE "STATIC" CACHE STRING "" FORCE)
 #if it is a console app just let it be to ON
 # It can be ON or OFF if you want win only set it to false and provide winmain entry point
 set(SHOW_CONSOLE ON CACHE BOOL "" FORCE)
-
+##############################################
+set(STATIC_ANALYZER ON CACHE BOOL "" FORCE)
+##############################################
+# this enable asan ,ubsan,
+set(ENABLE_SANITIZER OFF CACHE BOOL "" FORCE)
+# set(SANITIZERS "-address,-undefined,-memory,-pointer-compare,-pointer-subtract;")
+set(SANITIZERS "address" CACHE STRING "" FORCE)
+##############################################
+set(ENABLE_WARNING ON CACHE BOOL "" FORCE)
 ##############################################
 osdistro(MYOS)
 fetch_repositories()

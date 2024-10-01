@@ -1,3 +1,4 @@
+include_guard()
 include(FetchContent)
 set(FETCHCONTENT_BASE_DIR ${CMAKE_BINARY_DIR}/dependencies)
 

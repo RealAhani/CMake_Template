@@ -12,8 +12,8 @@ cd build
 
 @REM for Ninja generator use CMAKE_BUILD_TYPE Debug/Release 
 @REM Ninja Multi-Config
-cmake -S .. -B . -G"Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON --fresh
-cmake --build . --config=Release --parallel 12
+cmake -S .. -B . -G"Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON --fresh
+cmake --build . --config=Debug --parallel 12
 
 @REM -A is just for vs and xcode
 @REM -G"Visual Studio 17 2022" -A win32

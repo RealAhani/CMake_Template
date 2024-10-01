@@ -1,3 +1,5 @@
+include_guard()
+
 file(GLOB source_files "./*.cpp")
 set(src ${source_files})
 

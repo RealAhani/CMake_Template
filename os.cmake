@@ -1,3 +1,5 @@
+include_guard()
+
 macro(OSDISTRO OSName)
 
   if(LINUX)
