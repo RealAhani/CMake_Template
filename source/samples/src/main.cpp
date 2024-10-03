@@ -5,6 +5,11 @@
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
+    const char* str[]{"dfsf", "dsrrf"};
+
+    std::cout << str[25];
+    mloge::print(str[23]);
+
 //if u use internal lib
 #if (OS == 1)
     mloge::print("WIN");

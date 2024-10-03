@@ -17,16 +17,23 @@ if(STATIC_ANALYZER)
   set_target_properties(${MYLIBNAME} PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
 endif()
 
-if(${CPPCOMPILER} STREQUAL "clang++" OR ${CPPCOMPILER} STREQUAL "g++")
-  if(ENABLE_SANITIZER)
+if(ENABLE_SANITIZER)
+  link_directories(
+    ${CLANG_SANITIZER_PATH}/clang_rt.asan_dynamic-x86_64.lib
+    ${CLANG_SANITIZER_PATH}/clang_rt.asan_dynamic_runtime_thunk-x86_64.lib
+  )
+  if(${CPPCOMPILER} STREQUAL "clang++" OR ${CPPCOMPILER} STREQUAL "g++")
     message("--------------------------------------------- SANITIZER IS ON IN LIB WITH: ${SANITIZERS}")
-    target_compile_options(${MYLIBNAME} PRIVATE -fsanitize=${SANITIZERS})
-    target_link_options(${MYLIBNAME} PRIVATE -fsanitize=${SANITIZERS})
-  endif()
-else()
-  if(ENABLE_SANITIZER)
-    message("(--------------------------------------------- SANITIZER IS ON IN LIB WITH: ${SANITIZERS}")
-    target_compile_options(${MYLIBNAME} PRIVATE /fsanitize=${SANITIZERS} /INCREMENTAL:NO)
-    target_link_options(${MYLIBNAME} PRIVATE /INCREMENTAL:NO)
+    target_compile_options(${MYLIBNAME} PRIVATE -fsanitize=${SANITIZERS} -fno-omit-frame-pointer)
+    target_link_libraries(
+      ${MYLIBNAME} clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
+    )
+  else()
+    #this is for msvc
+    message("--------------------------------------------- SANITIZER IS ON IN LIB WITH: ${SANITIZERS}")
+    target_compile_options(${MYLIBNAME} PRIVATE /fsanitize=${SANITIZERS} /Zi /MD)
+    target_link_options(
+      ${MYLIBNAME} PRIVATE clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
+    )
   endif()
 endif()

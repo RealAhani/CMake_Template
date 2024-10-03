@@ -21,4 +21,4 @@ cmake --build . --config=Debug --parallel 12
 @REM --parallel <number>/ -j: When used with a number (e.g., -j4), it instructs the build system to use 4 threads for parallel building. Without a number, it will typically use as many threads as there are CPU cores on your machine.
 @REM --config Debug/Release just work with visual studio and xcode generator 
 @REM cmake -S .. -B . -G"Visual Studio 17 2022" -A x64 -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON --fresh
-@REM cmake --build .  --parallel 8
+@REM cmake --build .  --parallel 12

@@ -125,12 +125,13 @@ set(MYLIB_TYPE "STATIC" CACHE STRING "" FORCE)
 # It can be ON or OFF if you want win only set it to false and provide winmain entry point
 set(SHOW_CONSOLE ON CACHE BOOL "" FORCE)
 ##############################################
-set(STATIC_ANALYZER ON CACHE BOOL "" FORCE)
+set(STATIC_ANALYZER OFF CACHE BOOL "" FORCE)
 ##############################################
 # this enable asan ,ubsan,
-set(ENABLE_SANITIZER OFF CACHE BOOL "" FORCE)
+set(ENABLE_SANITIZER ON CACHE BOOL "" FORCE)
+set(CLANG_SANITIZER_PATH "C:/Program Files/LLVM/lib/clang/17/lib/windows" CACHE STRING "" FORCE)
 # set(SANITIZERS "-address,-undefined,-memory,-pointer-compare,-pointer-subtract;")
-set(SANITIZERS "address" CACHE STRING "" FORCE)
+set(SANITIZERS "address,undefined" CACHE STRING "" FORCE)
 ##############################################
 set(ENABLE_WARNING ON CACHE BOOL "" FORCE)
 ##############################################

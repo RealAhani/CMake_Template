@@ -40,7 +40,7 @@ if(CCACHE_FOUND)
   set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
 endif()
 
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.30)
 
 project(${SULOTIONNAME} VERSION ${PRVERSION} LANGUAGES ${PRLANG})
 set(CMAKE_CXX_EXTENSIONS ${CPPEXTENTION})
