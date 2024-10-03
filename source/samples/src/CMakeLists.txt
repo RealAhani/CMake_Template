@@ -13,7 +13,6 @@ else()
 endif()
 
 configure_file("../include/osconfig.h.in" "${CMAKE_CURRENT_BINARY_DIR}/generate/osconfig.h")
-message("${CMAKE_CURRENT_BINARY_DIR}")
 
 if(INTERNAL_MYLIB_USAGE)
   target_include_directories(
@@ -58,8 +57,8 @@ if(ENABLE_SANITIZER)
     # this is for msvc
     message("--------------------------------------------- SANITIZER IS ON IN EXE WITH: ${SANITIZERS}")
     target_compile_options(${PREXENAME} PRIVATE /fsanitize=${SANITIZERS} /Zi /MD)
-    target_link_options(
-      ${PREXENAME} PRIVATE clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
+    target_link_libraries(
+      ${PREXENAME} clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
     )
   endif()
 endif()

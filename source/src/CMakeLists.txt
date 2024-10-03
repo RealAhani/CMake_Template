@@ -32,8 +32,8 @@ if(ENABLE_SANITIZER)
     #this is for msvc
     message("--------------------------------------------- SANITIZER IS ON IN LIB WITH: ${SANITIZERS}")
     target_compile_options(${MYLIBNAME} PRIVATE /fsanitize=${SANITIZERS} /Zi /MD)
-    target_link_options(
-      ${MYLIBNAME} PRIVATE clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
+    target_link_libraries(
+      ${MYLIBNAME} clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
     )
   endif()
 endif()

@@ -22,11 +22,6 @@ set(PRLANG "CXX" CACHE STRING "" FORCE)
 #your exe name
 set(PREXENAME "${SULOTIONNAME}_EXE" CACHE STRING "" FORCE)
 ##############################################
-#chose between g++/clang++ or MSVC
-# set(CPPCOMPILER "g++" CACHE STRING "" FORCE)
-# set(CPPCOMPILER "MSVC" CACHE STRING "" FORCE)
-set(CPPCOMPILER "clang++" CACHE STRING "" FORCE)
-##############################################
 #your cpp standard version you want to use in this project
 set(CPPVERSION 23 CACHE STRING "" FORCE)
 set(CPPEXTENTION ON CACHE BOOL "" FORCE)
@@ -112,6 +107,11 @@ set(REP_BRANCH CACHE STRING "" FORCE)
 #the lib linkage vars "sfml:window;sfml:main;..."
 set(LIB_LINKAGE_VAR CACHE STRING "" FORCE)
 ##############################################
+#chose between g++/clang++ or MSVC
+# set(CPPCOMPILER "g++" CACHE STRING "" FORCE)
+# set(CPPCOMPILER "MSVC" CACHE STRING "" FORCE)
+set(CPPCOMPILER "" CACHE STRING "")
+##############################################
 #the internal library usage setting (MYLIBNAME)
 #internal library activiating
 set(INTERNAL_MYLIB_USAGE ON CACHE BOOL "" FORCE)
@@ -119,13 +119,13 @@ set(INTERNAL_MYLIB_USAGE ON CACHE BOOL "" FORCE)
 set(MYLIBNAME "${SULOTIONNAME}_LIB" CACHE STRING "" FORCE)
 #you should provide extern "C" __declspec(dllexport/dllimport) For SHARED build in source code of each functions in .hpp
 # It can be STATIC or SHARED
-set(MYLIB_TYPE "STATIC" CACHE STRING "" FORCE)
+set(MYLIB_TYPE "" CACHE STRING "")
 #you should provide wnmain function for hiding the console
 #if it is a console app just let it be to ON
 # It can be ON or OFF if you want win only set it to false and provide winmain entry point
 set(SHOW_CONSOLE ON CACHE BOOL "" FORCE)
 ##############################################
-set(STATIC_ANALYZER OFF CACHE BOOL "" FORCE)
+set(STATIC_ANALYZER ON CACHE BOOL "" FORCE)
 ##############################################
 # this enable asan ,ubsan,
 set(ENABLE_SANITIZER ON CACHE BOOL "" FORCE)
