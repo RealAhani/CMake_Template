@@ -51,12 +51,56 @@
             }
         },
         {
-            "name": "windows-SLibExe-msvc-debug-safe",
+            "name": "win-msvc-safe-Nolib",
+            "displayName": "msvc Debug (Safe Nolib)",
+            "description": "Target Windows with the msvc compiler, debug build type",
+            "inherits": "conf-windows-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "MSVC",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "INTERNAL_MYLIB_USAGE": "OFF",
+                "MYLIB_TYPE": "NONE",
+                "STATIC_ANALYZER": "ON",
+                "ENABLE_SANITIZER": "ON",
+                "ENABLE_WARNING": "ON"
+            }
+        },
+        {
+            "name": "wind-msvc-warn-Nolib",
+            "displayName": "msvc Debug (Warning Nolib)",
+            "description": "Target Windows with the msvc compiler, debug build type",
+            "inherits": "conf-windows-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "MSVC",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "INTERNAL_MYLIB_USAGE": "OFF",
+                "MYLIB_TYPE": "NONE",
+                "STATIC_ANALYZER": "OFF",
+                "ENABLE_SANITIZER": "OFF",
+                "ENABLE_WARNING": "ON"
+            }
+        },
+        {
+            "name": "win-msvc-release-Nolib",
+            "displayName": "msvc Release (Nolib)",
+            "description": "Target Windows with the msvc compiler, release build type",
+            "inherits": "conf-windows-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "MSVC",
+                "CMAKE_BUILD_TYPE": "Release",
+                "INTERNAL_MYLIB_USAGE": "OFF",
+                "MYLIB_TYPE": "NONE",
+                "STATIC_ANALYZER": "OFF",
+                "ENABLE_SANITIZER": "OFF",
+                "ENABLE_WARNING": "OFF"
+            }
+        },
+        {
+            "name": "win-msvc-safe-stlib",
             "displayName": "msvc Debug (Safe)",
             "description": "Target Windows with the msvc compiler, debug build type",
             "inherits": "conf-windows-common",
             "cacheVariables": {
-                "CMAKE_C_COMPILER": "cl",
                 "CPPCOMPILER": "MSVC",
                 "CMAKE_BUILD_TYPE": "Debug",
                 "INTERNAL_MYLIB_USAGE": "ON",
@@ -67,7 +111,7 @@
             }
         },
         {
-            "name": "windows-SLibExe-msvc-debug-just-warning",
+            "name": "win-msvc-warn-stlib",
             "displayName": "msvc Debug (Warning)",
             "description": "Target Windows with the msvc compiler, debug build type",
             "inherits": "conf-windows-common",
@@ -82,7 +126,7 @@
             }
         },
         {
-            "name": "windows-SLibExe-msvc-release",
+            "name": "win-msvc-release-stlib",
             "displayName": "msvc Release",
             "description": "Target Windows with the msvc compiler, release build type",
             "inherits": "conf-windows-common",
@@ -97,7 +141,97 @@
             }
         },
         {
-            "name": "windows-SLibExe-clang-debug-safe",
+            "name": "win-msvc-safe-shlib",
+            "displayName": "msvc Debug (Safe shared lib)",
+            "description": "Target Windows with the msvc compiler, debug build type",
+            "inherits": "conf-windows-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "MSVC",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "INTERNAL_MYLIB_USAGE": "ON",
+                "MYLIB_TYPE": "SHARED",
+                "STATIC_ANALYZER": "ON",
+                "ENABLE_SANITIZER": "ON",
+                "ENABLE_WARNING": "ON"
+            }
+        },
+        {
+            "name": "win-msvc-warn-shlib",
+            "displayName": "msvc Debug (Warning shared lib)",
+            "description": "Target Windows with the msvc compiler, debug build type",
+            "inherits": "conf-windows-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "MSVC",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "INTERNAL_MYLIB_USAGE": "ON",
+                "MYLIB_TYPE": "SHARED",
+                "STATIC_ANALYZER": "OFF",
+                "ENABLE_SANITIZER": "OFF",
+                "ENABLE_WARNING": "ON"
+            }
+        },
+        {
+            "name": "win-msvc-release-shlib",
+            "displayName": "msvc Release (shared lib)",
+            "description": "Target Windows with the msvc compiler, release build type",
+            "inherits": "conf-windows-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "MSVC",
+                "CMAKE_BUILD_TYPE": "Release",
+                "INTERNAL_MYLIB_USAGE": "ON",
+                "MYLIB_TYPE": "SHARED",
+                "STATIC_ANALYZER": "OFF",
+                "ENABLE_SANITIZER": "OFF",
+                "ENABLE_WARNING": "OFF"
+            }
+        },
+        {
+            "name": "win-clang-safe-Nolib",
+            "displayName": "clang Debug (Safe Nolib)",
+            "description": "Target Windows with the clang compiler, debug build type",
+            "inherits": "conf-clang-windows-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "INTERNAL_MYLIB_USAGE": "OFF",
+                "MYLIB_TYPE": "NONE",
+                "STATIC_ANALYZER": "ON",
+                "ENABLE_SANITIZER": "ON",
+                "ENABLE_WARNING": "ON"
+            }
+        },
+        {
+            "name": "wind-clang-warn-Nolib",
+            "displayName": "clang Debug (Warning Nolib)",
+            "description": "Target Windows with the clang compiler, debug build type",
+            "inherits": "conf-clang-windows-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "INTERNAL_MYLIB_USAGE": "OFF",
+                "MYLIB_TYPE": "NONE",
+                "STATIC_ANALYZER": "OFF",
+                "ENABLE_SANITIZER": "OFF",
+                "ENABLE_WARNING": "ON"
+            }
+        },
+        {
+            "name": "win-clang-release-Nolib",
+            "displayName": "clang Release (Nolib)",
+            "description": "Target Windows with the clang compiler, release build type",
+            "inherits": "conf-clang-windows-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Release",
+                "INTERNAL_MYLIB_USAGE": "OFF",
+                "MYLIB_TYPE": "NONE",
+                "STATIC_ANALYZER": "OFF",
+                "ENABLE_SANITIZER": "OFF",
+                "ENABLE_WARNING": "OFF"
+            }
+        },
+        {
+            "name": "win-clang-safe-stlib",
             "displayName": "clang Debug (Safe)",
             "description": "Target Windows with the clang compiler, debug build type",
             "inherits": "conf-clang-windows-common",
@@ -117,7 +251,7 @@
             }
         },
         {
-            "name": "windows-SLibExe-clang-debug-just-warning",
+            "name": "win-clang-warn-stlib",
             "displayName": "clang Debug (Warning)",
             "description": "Target Windows with the clang compiler, debug build type",
             "inherits": "conf-clang-windows-common",
@@ -137,7 +271,7 @@
             }
         },
         {
-            "name": "windows-SLibExe-clang-release",
+            "name": "win-clang-release-stlib",
             "displayName": "clang Release",
             "description": "Target Windows with the clang compiler, release build type",
             "inherits": "conf-clang-windows-common",
@@ -146,6 +280,66 @@
                 "CMAKE_BUILD_TYPE": "Release",
                 "INTERNAL_MYLIB_USAGE": "ON",
                 "MYLIB_TYPE": "STATIC",
+                "STATIC_ANALYZER": "OFF",
+                "ENABLE_SANITIZER": "OFF",
+                "ENABLE_WARNING": "OFF"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "intelliSenseMode": "windows-clang-x64"
+                }
+            }
+        },
+        {
+            "name": "win-clang-safe-shlib",
+            "displayName": "clang Debug (Safe shared lib)",
+            "description": "Target Windows with the clang compiler, debug build type",
+            "inherits": "conf-clang-windows-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "INTERNAL_MYLIB_USAGE": "ON",
+                "MYLIB_TYPE": "SHARED",
+                "STATIC_ANALYZER": "ON",
+                "ENABLE_SANITIZER": "ON",
+                "ENABLE_WARNING": "ON"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "intelliSenseMode": "windows-clang-x64"
+                }
+            }
+        },
+        {
+            "name": "win-clang-warn-shlib",
+            "displayName": "clang Debug (Warning shared lib)",
+            "description": "Target Windows with the clang compiler, debug build type",
+            "inherits": "conf-clang-windows-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "INTERNAL_MYLIB_USAGE": "ON",
+                "MYLIB_TYPE": "SHARED",
+                "STATIC_ANALYZER": "OFF",
+                "ENABLE_SANITIZER": "OFF",
+                "ENABLE_WARNING": "ON"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "intelliSenseMode": "windows-clang-x64"
+                }
+            }
+        },
+        {
+            "name": "win-clang-release-shlib",
+            "displayName": "clang Release (shared lib)",
+            "description": "Target Windows with the clang compiler, release build type",
+            "inherits": "conf-clang-windows-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Release",
+                "INTERNAL_MYLIB_USAGE": "ON",
+                "MYLIB_TYPE": "SHARED",
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "OFF"

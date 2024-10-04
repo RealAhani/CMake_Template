@@ -110,30 +110,30 @@ set(LIB_LINKAGE_VAR CACHE STRING "" FORCE)
 #chose between g++/clang++ or MSVC
 # set(CPPCOMPILER "g++" CACHE STRING "" FORCE)
 # set(CPPCOMPILER "MSVC" CACHE STRING "" FORCE)
-set(CPPCOMPILER "" CACHE STRING "")
+set(CPPCOMPILER "clang++" CACHE STRING "")
 ##############################################
 #the internal library usage setting (MYLIBNAME)
 #internal library activiating
-set(INTERNAL_MYLIB_USAGE ON CACHE BOOL "" FORCE)
+set(INTERNAL_MYLIB_USAGE ON CACHE BOOL "")
 #your Library name
 set(MYLIBNAME "${SULOTIONNAME}_LIB" CACHE STRING "" FORCE)
 #you should provide extern "C" __declspec(dllexport/dllimport) For SHARED build in source code of each functions in .hpp
 # It can be STATIC or SHARED
-set(MYLIB_TYPE "" CACHE STRING "")
+set(MYLIB_TYPE "STATIC" CACHE STRING "")
 #you should provide wnmain function for hiding the console
 #if it is a console app just let it be to ON
 # It can be ON or OFF if you want win only set it to false and provide winmain entry point
 set(SHOW_CONSOLE ON CACHE BOOL "" FORCE)
 ##############################################
-set(STATIC_ANALYZER ON CACHE BOOL "" FORCE)
+set(STATIC_ANALYZER ON CACHE BOOL "")
 ##############################################
 # this enable asan ,ubsan,
-set(ENABLE_SANITIZER ON CACHE BOOL "" FORCE)
+set(ENABLE_SANITIZER ON CACHE BOOL "")
 set(CLANG_SANITIZER_PATH "C:/Program Files/LLVM/lib/clang/17/lib/windows" CACHE STRING "" FORCE)
 # set(SANITIZERS "-address,-undefined,-memory,-pointer-compare,-pointer-subtract;")
-set(SANITIZERS "address,undefined" CACHE STRING "" FORCE)
+set(SANITIZERS "address,undefined" CACHE STRING "")
 ##############################################
-set(ENABLE_WARNING ON CACHE BOOL "" FORCE)
+set(ENABLE_WARNING ON CACHE BOOL "")
 ##############################################
 osdistro(MYOS)
 fetch_repositories()

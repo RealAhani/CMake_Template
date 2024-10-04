@@ -3,9 +3,9 @@ include(config.cmake)
 set(CMAKE_CXX_COMPILER ${CPPCOMPILER})
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/bin/bin") # .exe and .dll
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/bin/lib") # .so and .dylib
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/bin/lib") # .lib and .a
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/out/bin") # .exe and .dll
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/out/lib") # .so and .dylib
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/out/lib") # .lib and .a
 #TODO:N1 ADD new build type for "RelWithDebInfo" and "MinSizeRel" maybe need change blew condition for appending these
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")

@@ -1,6 +1,6 @@
-rm -r build
-mkdir build 
-cd build
+rm -r build2
+mkdir build2
+cd build2
 
 @REM if you want safty please turn WALL=TRUE                                 e.x(-DWALL=TRUE)
 @REM if you want to build it with makefiles and gcc on windows uncomment the blew code
@@ -22,3 +22,6 @@ cmake --build . --config=Debug --parallel 12
 @REM --config Debug/Release just work with visual studio and xcode generator 
 @REM cmake -S .. -B . -G"Visual Studio 17 2022" -A x64 -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON --fresh
 @REM cmake --build .  --parallel 12
+@REM #REM -G can be "Ninja" Or "Unix Makefiles" Or ...
+@REM cmake -S .. -B . -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON  --fresh
+@REM cmake --build . --parallel 8
