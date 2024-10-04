@@ -1,30 +1,30 @@
 # EXE
 include(${CMAKE_HOME_DIRECTORY}/config.cmake)
-include(src_files.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/src/src_files.cmake)
 # include(CTest)
 set(CMAKE_CXX_EXTENSIONS ${CPPEXTENTION})
 set(CMAKE_CXX_STANDARD ${CPPVERSION})
 set(CMAKE_CXX_STANDARD_REQUIRED ${CPPSTANDARDREQ})
 project(${PREXENAME} VERSION ${PRVERSION} LANGUAGES ${PRLANG})
 if(SHOW_CONSOLE)
-  add_executable(${PREXENAME} ${src})
+  add_executable(${PREXENAME} ${mysrc_exe})
 else()
-  add_executable(${PREXENAME} WIN32 ${src})
+  add_executable(${PREXENAME} WIN32 ${mysrc_exe})
 endif()
 
-configure_file("../include/osconfig.h.in" "${CMAKE_CURRENT_BINARY_DIR}/generate/osconfig.h")
+configure_file("./include/osconfig.h.in" "${CMAKE_CURRENT_BINARY_DIR}/generate/osconfig.h")
 
 if(INTERNAL_MYLIB_USAGE)
   target_include_directories(
     ${PREXENAME}
     PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/generate"
-    PUBLIC "../include"
-    PRIVATE "../../include"
+    PUBLIC "./include"
+    PRIVATE "../library/include"
   )
   target_precompile_headers(${PREXENAME} REUSE_FROM ${MYLIBNAME})
   target_link_libraries(${PREXENAME} ${MYLIBNAME} ${LIB_LINKAGE_VAR})
 else()
-  target_include_directories(${PREXENAME} PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/generate" PUBLIC "../include")
+  target_include_directories(${PREXENAME} PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/generate" PUBLIC "./include")
   target_link_libraries(${PREXENAME} ${LIB_LINKAGE_VAR})
 endif()
 target_compile_options(${PREXENAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${CUSTOME_FLAGS}>)

@@ -1,4 +1,4 @@
-#include "Log.hpp"
+#include "Log.hh"
 #include "osconfig.h"
 // if u dont use inner library use iostream
 // #include <iostream>

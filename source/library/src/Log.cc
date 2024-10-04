@@ -1,4 +1,4 @@
-#include "Log.hpp"
+#include "Log.hh"
 namespace mloge
 {
 void print(const std::string& str)

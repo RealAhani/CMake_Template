@@ -1,4 +1,4 @@
-build/
+[bB]uild/
 out/
 out/coverage/*
 cmake-build-*/

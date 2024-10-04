@@ -94,6 +94,6 @@ elseif(${MYOS} STREQUAL ${MACOS})
 endif()
 
 if(INTERNAL_MYLIB_USAGE)
-  add_subdirectory("source/src")
+  add_subdirectory("source/library")
 endif()
-add_subdirectory("source/samples/src")
+add_subdirectory("source/sample")
