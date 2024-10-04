@@ -135,5 +135,8 @@ set(SANITIZERS "address,undefined" CACHE STRING "")
 ##############################################
 set(ENABLE_WARNING ON CACHE BOOL "")
 ##############################################
+set(ENABLE_UNITYBUILD ON CACHE BOOL "")
+##############################################
+
 osdistro(MYOS)
 fetch_repositories()

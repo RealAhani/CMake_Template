@@ -12,6 +12,9 @@ configure_file("./include/osconfig.h.in" "${CMAKE_CURRENT_BINARY_DIR}/generate/o
 
 target_include_directories(${MYLIBNAME} PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/generate" PUBLIC "./include")
 target_precompile_headers(${MYLIBNAME} PUBLIC "./include/pch/pch.hh")
+if(ENABLE_UNITYBUILD)
+  set_target_properties(${MYLIBNAME} PROPERTIES UNITY_BUILD ON)
+endif()
 target_compile_options(${MYLIBNAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${CUSTOME_FLAGS}>)
 if(STATIC_ANALYZER)
   set_target_properties(${MYLIBNAME} PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
