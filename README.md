@@ -1,33 +1,30 @@
 # A Template to start a Cmake/C++ project
 
-# Windows
+# Windows and linux are now supported
 
-- Run build.bat
+## this template support clang++ , msvc and c++23 
+. clang is prefered and work with vs code
+. msvc generation project is work but for build the code should build within the Vs 22 IDE
 
-# Linux/Mac
+## the configuration can be customized throug config.cmake or cmakepresets.json 
+## if you want to use any open source library as dependencies you can add it to the config.cmake variables 
 
-- for linux shell terminal ===> bash ./build.sh
-- Run build.sh
-  (edit the build.sh for xcode or unix make file based on you os)
-
-## this template support g++, clang++ , msvc and c++23
-
-### 0.install (cmake ,Ninja ,ccache ,clang-tidy ,cppcheck ,and a compiler like clang++/g++)
+    (1. add git repo links to REP_URLS)
+    (2. add git branch that you want to REP_BRANCH)
+    (3. add the library linkage name to LIB_LINKAGE_VAR for linking to your exe)
+### 0.install (cmake ,Ninja ,ccache ,clang-tidy ,cppcheck , cmake-format ,and a compiler like clang++/msvc-cl)
 
 ### 1.Edit config.cmake for (Naming Convention , Project Setting , Versioning , Compiler Flag ,C++ Standard )
 
-### 2.write your translation units in relevent src_files.cmake or add \*.cpp / \*.hpp (don`t use .h)
+### 2.write your translation units in relevent src directory ( .cc or .cpp )
 
-### 3.just run build.bat/sh to build your project(you can edit the .bat files to your needs)
+### 3.if you dont want to use cmake presets you can use build.bat (cmake prests is preferred)
 
-      (the build type setting can be change through -DCMAKE_BUILD_TYPE=Debug OR Release in build.bat/sh  Dont use --config=Debug)
-      (in Debug build all warings is enabled for each compiler defiend)
-      (for Release build warning are turn off and optimization for compile and link time are enabled)
-      (Cpp_check and clang-tidy can be enable by config.cmake stati_analyzer ON/OFF  )
-      (Static Analyzers do increase the build time (not on msvc) ... )
+      (in Debug  Safe build all warings,sanitizer,static analyzes(cppcheck, clang-tidy) are enabled for each compiler defienitions)
+      (for Release build warning are turn off and optimizations for compile and link time are enabled)
+      (Static Analyzers and sanitizer are do increase the build time (not on msvc) ... and have some runtime overhead)
 
 #### sample folder is for your application.exe that means all srcs and includes in that is for \*.exe project
-
-#### source/src folder is for your library.lib that means all srcs and includes in that is for \*.lib project
-
-#### you can write all the headers you want to precompile in pch.h in source/include/pch
+#### library folder is for your library.lib that means all srcs and includes in that is for \*.lib project you can chose between static and shared lib
+#### or turn off the whole library folder within config.cmake or use preset Nolib
+#### you can write all the headers you want to precompile in pch.hh in library/include/pch

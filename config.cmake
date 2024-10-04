@@ -100,9 +100,9 @@ set(DEBUG_COMPILER_FLAGS_MSVC
 set(RELEASE_COMPILER_FLAGS_MSVC "/O2;/Oi;/DNDEBUG;/Ob2;/GF;/GT;/Gy;/GL;" CACHE STRING "" FORCE)
 ##############################################
 #the externall library that you want from github
-# add the repo here in seprate string "1" "2"
+# add the repo here in seprate string "[1]" "[2]"
 set(REP_URLS CACHE STRING "" FORCE)
-#the branch that you want for each repo "1" "2"
+#the branch that you want for each repo "[1]" "[2]"
 set(REP_BRANCH CACHE STRING "" FORCE)
 #the lib linkage vars "sfml:window;sfml:main;..."
 set(LIB_LINKAGE_VAR CACHE STRING "" FORCE)
