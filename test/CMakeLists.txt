@@ -9,10 +9,12 @@ FetchContent_Declare(Catch2 GIT_REPOSITORY https://github.com/catchorg/Catch2.gi
 FetchContent_MakeAvailable(Catch2)
 
 if(PROJECT_IS_TOP_LEVEL OR ENABLE_TESTING)
-  enable_testing()
   add_executable(${TESTNAME} ${mysrc_test})
   target_link_libraries(${TESTNAME} PRIVATE ${SULOTIONNAME}::${MYLIBNAME} Catch2::Catch2WithMain)
   target_include_directories(
     ${TESTNAME} PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/generate" PRIVATE "../source/library/include"
   )
+  include(CTest)
+  include(Catch)
+  catch_discover_tests(${TESTNAME})
 endif()

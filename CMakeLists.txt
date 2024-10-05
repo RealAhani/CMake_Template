@@ -112,7 +112,8 @@ endif()
 if(ENABLE_TESTING)
 
   message("============================================ TESTING IS ON")
-  include(CTest)
+  enable_testing()
+  list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
   add_subdirectory("test")
 
 endif()
