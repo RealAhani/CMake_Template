@@ -62,11 +62,12 @@
                 "MYLIB_TYPE": "NONE",
                 "STATIC_ANALYZER": "ON",
                 "ENABLE_SANITIZER": "ON",
-                "ENABLE_WARNING": "ON"
+                "ENABLE_WARNING": "ON",
+                "ENABLE_TESTING": "OFF"
             }
         },
         {
-            "name": "wind-msvc-warn-Nolib",
+            "name": "win-msvc-warn-Nolib",
             "displayName": "msvc Debug (Warning Nolib)",
             "description": "Target Windows with the msvc compiler, debug build type",
             "inherits": "conf-windows-common",
@@ -77,7 +78,8 @@
                 "MYLIB_TYPE": "NONE",
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
-                "ENABLE_WARNING": "ON"
+                "ENABLE_WARNING": "ON",
+                "ENABLE_TESTING": "OFF"
             }
         },
         {
@@ -92,7 +94,8 @@
                 "MYLIB_TYPE": "NONE",
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
-                "ENABLE_WARNING": "OFF"
+                "ENABLE_WARNING": "OFF",
+                "ENABLE_TESTING": "OFF"
             }
         },
         {
@@ -107,7 +110,8 @@
                 "MYLIB_TYPE": "STATIC",
                 "STATIC_ANALYZER": "ON",
                 "ENABLE_SANITIZER": "ON",
-                "ENABLE_WARNING": "ON"
+                "ENABLE_WARNING": "ON",
+                "ENABLE_TESTING": "OFF"
             }
         },
         {
@@ -122,7 +126,8 @@
                 "MYLIB_TYPE": "STATIC",
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
-                "ENABLE_WARNING": "ON"
+                "ENABLE_WARNING": "ON",
+                "ENABLE_TESTING": "ON"
             }
         },
         {
@@ -137,7 +142,8 @@
                 "MYLIB_TYPE": "STATIC",
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
-                "ENABLE_WARNING": "OFF"
+                "ENABLE_WARNING": "OFF",
+                "ENABLE_TESTING": "ON"
             }
         },
         {
@@ -152,7 +158,8 @@
                 "MYLIB_TYPE": "SHARED",
                 "STATIC_ANALYZER": "ON",
                 "ENABLE_SANITIZER": "ON",
-                "ENABLE_WARNING": "ON"
+                "ENABLE_WARNING": "ON",
+                "ENABLE_TESTING": "OFF"
             }
         },
         {
@@ -167,7 +174,8 @@
                 "MYLIB_TYPE": "SHARED",
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
-                "ENABLE_WARNING": "ON"
+                "ENABLE_WARNING": "ON",
+                "ENABLE_TESTING": "ON"
             }
         },
         {
@@ -182,7 +190,8 @@
                 "MYLIB_TYPE": "SHARED",
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
-                "ENABLE_WARNING": "OFF"
+                "ENABLE_WARNING": "OFF",
+                "ENABLE_TESTING": "ON"
             }
         },
         {
@@ -197,7 +206,8 @@
                 "MYLIB_TYPE": "NONE",
                 "STATIC_ANALYZER": "ON",
                 "ENABLE_SANITIZER": "ON",
-                "ENABLE_WARNING": "ON"
+                "ENABLE_WARNING": "ON",
+                "ENABLE_TESTING": "OFF"
             }
         },
         {
@@ -212,7 +222,8 @@
                 "MYLIB_TYPE": "NONE",
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
-                "ENABLE_WARNING": "ON"
+                "ENABLE_WARNING": "ON",
+                "ENABLE_TESTING": "OFF"
             }
         },
         {
@@ -227,7 +238,8 @@
                 "MYLIB_TYPE": "NONE",
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
-                "ENABLE_WARNING": "OFF"
+                "ENABLE_WARNING": "OFF",
+                "ENABLE_TESTING": "OFF"
             }
         },
         {
@@ -242,7 +254,8 @@
                 "MYLIB_TYPE": "STATIC",
                 "STATIC_ANALYZER": "ON",
                 "ENABLE_SANITIZER": "ON",
-                "ENABLE_WARNING": "ON"
+                "ENABLE_WARNING": "ON",
+                "ENABLE_TESTING": "OFF"
             },
             "vendor": {
                 "microsoft.com/VisualStudioSettings/CMake/1.0": {
@@ -262,7 +275,8 @@
                 "MYLIB_TYPE": "STATIC",
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
-                "ENABLE_WARNING": "ON"
+                "ENABLE_WARNING": "ON",
+                "ENABLE_TESTING": "ON"
             },
             "vendor": {
                 "microsoft.com/VisualStudioSettings/CMake/1.0": {
@@ -282,7 +296,8 @@
                 "MYLIB_TYPE": "STATIC",
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
-                "ENABLE_WARNING": "OFF"
+                "ENABLE_WARNING": "OFF",
+                "ENABLE_TESTING": "ON"
             },
             "vendor": {
                 "microsoft.com/VisualStudioSettings/CMake/1.0": {
@@ -302,7 +317,8 @@
                 "MYLIB_TYPE": "SHARED",
                 "STATIC_ANALYZER": "ON",
                 "ENABLE_SANITIZER": "ON",
-                "ENABLE_WARNING": "ON"
+                "ENABLE_WARNING": "ON",
+                "ENABLE_TESTING": "OFF"
             },
             "vendor": {
                 "microsoft.com/VisualStudioSettings/CMake/1.0": {
@@ -322,7 +338,8 @@
                 "MYLIB_TYPE": "SHARED",
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
-                "ENABLE_WARNING": "ON"
+                "ENABLE_WARNING": "ON",
+                "ENABLE_TESTING": "ON"
             },
             "vendor": {
                 "microsoft.com/VisualStudioSettings/CMake/1.0": {
@@ -342,13 +359,84 @@
                 "MYLIB_TYPE": "SHARED",
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
-                "ENABLE_WARNING": "OFF"
+                "ENABLE_WARNING": "OFF",
+                "ENABLE_TESTING": "ON"
             },
             "vendor": {
                 "microsoft.com/VisualStudioSettings/CMake/1.0": {
                     "intelliSenseMode": "windows-clang-x64"
                 }
             }
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "test-common",
+            "description": "Test CMake settings that apply to all configurations",
+            "hidden": true,
+            "output": {
+                "outputOnFailure": true
+            },
+            "execution": {
+                "noTestsAction": "error",
+                "stopOnFailure": true
+            }
+        },
+        {
+            "name": "test-win-clang-warn-shlib",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "win-clang-warn-shlib"
+        },
+        {
+            "name": "test-win-clang-release-shlib",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "win-clang-release-shlib"
+        },
+        {
+            "name": "test-win-clang-release-stlib",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "win-clang-release-stlib"
+        },
+        {
+            "name": "test-win-clang-warn-stlib",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "win-clang-warn-stlib"
+        },
+        {
+            "name": "test-win-msvc-warn-stlib",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "win-msvc-warn-stlib"
+        },
+        {
+            "name": "test-win-msvc-release-stlib",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "win-msvc-release-stlib"
+        },
+        {
+            "name": "test-win-msvc-warn-shlib",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "win-msvc-warn-shlib"
+        },
+        {
+            "name": "test-win-msvc-release-shlib",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "win-msvc-release-shlib"
         }
     ]
 }
