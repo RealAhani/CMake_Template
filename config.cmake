@@ -21,6 +21,9 @@ set(PRNAME ${SULOTIONNAME}${PRVERSION} CACHE STRING "" FORCE)
 set(PRLANG "CXX" CACHE STRING "" FORCE)
 #your exe name
 set(PREXENAME "${SULOTIONNAME}_EXE" CACHE STRING "" FORCE)
+#your test name
+set(TESTNAME "${SULOTIONNAME}_TEST" CACHE STRING "" FORCE)
+
 ##############################################
 #your cpp standard version you want to use in this project
 set(CPPVERSION 23 CACHE STRING "" FORCE)
@@ -137,6 +140,7 @@ set(ENABLE_WARNING ON CACHE BOOL "")
 ##############################################
 set(ENABLE_UNITYBUILD ON CACHE BOOL "")
 ##############################################
-
+set(ENABLE_TESTING ON CACHE BOOL "")
+##############################################
 osdistro(MYOS)
 fetch_repositories()

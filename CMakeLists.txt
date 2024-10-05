@@ -43,9 +43,9 @@ endif()
 cmake_minimum_required(VERSION 3.30)
 
 project(${SULOTIONNAME} VERSION ${PRVERSION} LANGUAGES ${PRLANG})
-set(CMAKE_CXX_EXTENSIONS ${CPPEXTENTION})
 set(CMAKE_CXX_STANDARD ${CPPVERSION})
 set(CMAKE_CXX_STANDARD_REQUIRED ${CPPSTANDARDREQ})
+set(CMAKE_CXX_EXTENSIONS ${CPPEXTENTION})
 
 if(STATIC_ANALYZER)
   find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
@@ -102,3 +102,17 @@ if(INTERNAL_MYLIB_USAGE)
   add_subdirectory("source/library")
 endif()
 add_subdirectory("source/sample")
+
+# Don't even look at tests if we're not top level
+if(NOT PROJECT_IS_TOP_LEVEL)
+  return()
+endif()
+
+# Adding the tests:
+if(ENABLE_TESTING)
+
+  message("============================================ TESTING IS ON")
+  include(CTest)
+  add_subdirectory("test")
+
+endif()

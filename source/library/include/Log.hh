@@ -12,4 +12,5 @@
 namespace mloge
 {
 /*extern "C" MYLIB_API*/ void print(const std::string& str);
+int                           myfirsttest(int id);
 } // namespace mloge
