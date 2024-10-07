@@ -1,7 +1,7 @@
 include_guard()
 ##############################################
-include(${CMAKE_HOME_DIRECTORY}/os.cmake)
-include(${CMAKE_HOME_DIRECTORY}/LibsConfig.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/os.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/LibsConfig.cmake)
 # DONT TOUCH THESE 4 BLOW OS NAMES VARIABLES
 set(MYOS "NONE_VALID" CACHE STRING "" FORCE)
 set(WINDOWS "WIN" CACHE STRING "" FORCE)

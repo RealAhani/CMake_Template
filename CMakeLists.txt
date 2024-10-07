@@ -1,5 +1,5 @@
 message("--------------------------------------------- General info:")
-include(config.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/config.cmake)
 set(CMAKE_CXX_COMPILER ${CPPCOMPILER})
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

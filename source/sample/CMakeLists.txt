@@ -1,5 +1,5 @@
 # EXE
-include(${CMAKE_HOME_DIRECTORY}/config.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/config.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/src/src_files.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/static_analyzer.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/sanitizer.cmake)
