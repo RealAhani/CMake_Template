@@ -1,7 +1,7 @@
 # EXE
 include(${CMAKE_HOME_DIRECTORY}/config.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/src/src_files.cmake)
-# include(CTest)
+include(${CMAKE_SOURCE_DIR}/cmake/static_analyzer.cmake)
 if(SHOW_CONSOLE)
   add_executable(${PREXENAME} ${mysrc_exe})
 else()
@@ -31,9 +31,9 @@ target_compile_options(${PREXENAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${CUSTOME_
 # set(MyLibrary_DIR "/path/to/my_project/build")
 # Find the library
 # find_library(MyLibrary_LIB MYLIBNAME PATHS ${MyLibrary_DIR})
-if(STATIC_ANALYZER)
-  set_target_properties(${PREXENAME} PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
-endif()
+
+#enable static analyzer
+setting_enable_staticanalyzer(${PREXENAME})
 
 if(ENABLE_SANITIZER)
   link_directories(

@@ -1,7 +1,7 @@
 # LIB
 include(${CMAKE_HOME_DIRECTORY}/config.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/src/src_files.cmake)
-# include(CTest)
+include(${CMAKE_SOURCE_DIR}/cmake/static_analyzer.cmake)
 #if You want u can change it to SHARED
 add_library(${MYLIBNAME} ${MYLIB_TYPE} ${mysrc_lib})
 add_library(${SULOTIONNAME}::${MYLIBNAME} ALIAS ${MYLIBNAME})
@@ -13,9 +13,8 @@ if(ENABLE_UNITYBUILD)
   set_target_properties(${MYLIBNAME} PROPERTIES UNITY_BUILD ON)
 endif()
 target_compile_options(${MYLIBNAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${CUSTOME_FLAGS}>)
-if(STATIC_ANALYZER)
-  set_target_properties(${MYLIBNAME} PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
-endif()
+#enable static analyzer
+setting_enable_staticanalyzer(${MYLIBNAME})
 
 if(ENABLE_SANITIZER)
   link_directories(
