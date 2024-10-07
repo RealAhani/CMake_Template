@@ -51,7 +51,30 @@ if(STATIC_ANALYZER)
   find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
   if(CMAKE_CXX_CPPCHECK)
     message("--------------------------------------------- CPP-Check:  ON ")
-    list(APPEND CMAKE_CXX_CPPCHECK "--enable=all")
+    if(CMAKE_GENERATOR MATCHES ".*Visual Studio.*")
+      set(CPPCHECK_TEMPLATE "vs")
+    else()
+      set(CPPCHECK_TEMPLATE "gcc")
+    endif()
+    message("--------------------------------------------- CPP-Check Template:  ${CPPCHECK_TEMPLATE} ")
+    list(
+      APPEND
+      CMAKE_CXX_CPPCHECK
+      "--template=${CPPCHECK_TEMPLATE}"
+      "--enable=style,performance,warning,portability"
+      "--inline-suppr"
+      # We cannot act on a bug/missing feature of cppcheck
+      "--suppress=cppcheckError"
+      "--suppress=internalAstError"
+      # if a file does not have an internalAstError, we get an unmatchedSuppression error
+      "--suppress=unmatchedSuppression"
+      # noisy and incorrect sometimes
+      "--suppress=passedByValue"
+      # ignores code that cppcheck thinks is invalid C++
+      "--suppress=syntaxError"
+      "--suppress=preprocessorErrorDirective"
+      "--inconclusive"
+    )
   endif()
   find_program(CLANG_TIDY_EXE NAMES "clang-tidy" REQUIRED)
   if(CLANG_TIDY_EXE)

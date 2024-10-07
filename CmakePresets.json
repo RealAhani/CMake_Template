@@ -244,7 +244,7 @@
         },
         {
             "name": "win-clang-safe-stlib",
-            "displayName": "clang Debug (Safe)",
+            "displayName": "clang Debug (Safe static lib)",
             "description": "Target Windows with the clang compiler, debug build type",
             "inherits": "conf-clang-windows-common",
             "cacheVariables": {
@@ -265,7 +265,7 @@
         },
         {
             "name": "win-clang-warn-stlib",
-            "displayName": "clang Debug (Warning)",
+            "displayName": "clang Debug (Warning static lib)",
             "description": "Target Windows with the clang compiler, debug build type",
             "inherits": "conf-clang-windows-common",
             "cacheVariables": {
@@ -286,7 +286,7 @@
         },
         {
             "name": "win-clang-release-stlib",
-            "displayName": "clang Release",
+            "displayName": "clang Release (static lib)",
             "description": "Target Windows with the clang compiler, release build type",
             "inherits": "conf-clang-windows-common",
             "cacheVariables": {

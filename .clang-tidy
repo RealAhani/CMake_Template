@@ -80,5 +80,4 @@ CheckOptions:
   - { key: readability-identifier-naming.ProtectedMemberPrefix, value: m_ }
   - { key: readability-identifier-naming.PrivateMemberPrefix, value: m_ }
 HeaderFilterRegex: ".*"
-WarningAsError: "-"
 UseColor: true
