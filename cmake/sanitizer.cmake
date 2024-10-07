@@ -4,7 +4,9 @@ macro(setting_enable_sanitizer target_link)
       ${CLANG_SANITIZER_PATH}/clang_rt.asan_dynamic-x86_64.lib
       ${CLANG_SANITIZER_PATH}/clang_rt.asan_dynamic_runtime_thunk-x86_64.lib
     )
-    if(${CPPCOMPILER} STREQUAL "clang++" OR ${CPPCOMPILER} STREQUAL "g++")
+    if(${CPPCOMPILER} STREQUAL "clang++" OR ${CPPCOMPILER} STREQUAL "g++" OR ${CPPCOMPILER} STREQUAL
+                                                                             "clang-cl"
+    )
       message(
         "--------------------------------------------- SANITIZER IS ON IN ${target_link} WITH: ${SANITIZERS}"
       )
