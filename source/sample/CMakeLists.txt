@@ -2,6 +2,7 @@
 include(${CMAKE_HOME_DIRECTORY}/config.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/src/src_files.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/static_analyzer.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/sanitizer.cmake)
 if(SHOW_CONSOLE)
   add_executable(${PREXENAME} ${mysrc_exe})
 else()
@@ -34,30 +35,4 @@ target_compile_options(${PREXENAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${CUSTOME_
 
 #enable static analyzer
 setting_enable_staticanalyzer(${PREXENAME})
-
-if(ENABLE_SANITIZER)
-  link_directories(
-    ${CLANG_SANITIZER_PATH}/clang_rt.asan_dynamic-x86_64.lib
-    ${CLANG_SANITIZER_PATH}/clang_rt.asan_dynamic_runtime_thunk-x86_64.lib
-  )
-  if(${CPPCOMPILER} STREQUAL "clang++" OR ${CPPCOMPILER} STREQUAL "g++")
-    message("--------------------------------------------- SANITIZER IS ON IN EXE WITH: ${SANITIZERS}")
-    target_compile_options(${PREXENAME} PRIVATE -fsanitize=${SANITIZERS} -fno-omit-frame-pointer)
-    target_link_libraries(
-      ${PREXENAME} clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
-    )
-    # Copy the .dll files to the output directory after the build
-    add_custom_command(
-      TARGET ${PREXENAME} POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy_if_different
-              "${CLANG_SANITIZER_PATH}/clang_rt.asan_dynamic-x86_64.dll" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-    )
-  else()
-    # this is for msvc
-    message("--------------------------------------------- SANITIZER IS ON IN EXE WITH: ${SANITIZERS}")
-    target_compile_options(${PREXENAME} PRIVATE /fsanitize=${SANITIZERS} /Zi /MD)
-    target_link_libraries(
-      ${PREXENAME} clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
-    )
-  endif()
-endif()
+setting_enable_sanitizer(${PREXENAME})

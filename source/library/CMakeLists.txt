@@ -2,6 +2,7 @@
 include(${CMAKE_HOME_DIRECTORY}/config.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/src/src_files.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/static_analyzer.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/sanitizer.cmake)
 #if You want u can change it to SHARED
 add_library(${MYLIBNAME} ${MYLIB_TYPE} ${mysrc_lib})
 add_library(${SULOTIONNAME}::${MYLIBNAME} ALIAS ${MYLIBNAME})
@@ -15,24 +16,4 @@ endif()
 target_compile_options(${MYLIBNAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${CUSTOME_FLAGS}>)
 #enable static analyzer
 setting_enable_staticanalyzer(${MYLIBNAME})
-
-if(ENABLE_SANITIZER)
-  link_directories(
-    ${CLANG_SANITIZER_PATH}/clang_rt.asan_dynamic-x86_64.lib
-    ${CLANG_SANITIZER_PATH}/clang_rt.asan_dynamic_runtime_thunk-x86_64.lib
-  )
-  if(${CPPCOMPILER} STREQUAL "clang++" OR ${CPPCOMPILER} STREQUAL "g++")
-    message("--------------------------------------------- SANITIZER IS ON IN LIB WITH: ${SANITIZERS}")
-    target_compile_options(${MYLIBNAME} PRIVATE -fsanitize=${SANITIZERS} -fno-omit-frame-pointer)
-    target_link_libraries(
-      ${MYLIBNAME} clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
-    )
-  else()
-    #this is for msvc
-    message("--------------------------------------------- SANITIZER IS ON IN LIB WITH: ${SANITIZERS}")
-    target_compile_options(${MYLIBNAME} PRIVATE /fsanitize=${SANITIZERS} /Zi /MD)
-    target_link_libraries(
-      ${MYLIBNAME} clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
-    )
-  endif()
-endif()
+setting_enable_sanitizer(${MYLIBNAME})
