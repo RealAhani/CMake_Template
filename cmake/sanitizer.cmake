@@ -10,9 +10,9 @@ macro(setting_enable_sanitizer target_link)
       message(
         "--------------------------------------------- SANITIZER IS ON IN (GNU) ${target_link} WITH: ${SANITIZERS}"
       )
-      target_compile_options(${target_link} PRIVATE -fsanitize=${SANITIZERS} -fno-omit-frame-pointer)
+      target_compile_options(${target_link} PUBLIC -fsanitize=${SANITIZERS} -fno-omit-frame-pointer)
       target_link_libraries(
-        ${target_link} PRIVATE clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
+        ${target_link} PUBLIC clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
       )
       # Copy the .dll files to the output directory after the build
       add_custom_command(
@@ -25,9 +25,9 @@ macro(setting_enable_sanitizer target_link)
       message(
         "--------------------------------------------- SANITIZER IS ON IN (MSVC) ${target_link} WITH: ${SANITIZERS}"
       )
-      target_compile_options(${target_link} PRIVATE /fsanitize=${SANITIZERS} /Zi /MD)
+      target_compile_options(${target_link} PUBLIC /fsanitize=${SANITIZERS} /Zi /MD)
       target_link_libraries(
-        ${target_link} clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
+        ${target_link} PUBLIC clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
       )
     endif()
   endif()
