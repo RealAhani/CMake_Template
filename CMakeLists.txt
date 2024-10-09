@@ -85,10 +85,12 @@ elseif(${MYOS} STREQUAL ${MACOS})
 endif()
 
 if(INTERNAL_MYLIB_USAGE)
-  add_subdirectory("source/library")
+  add_subdirectory("./source/library")
 endif()
-add_subdirectory("source/sample")
-
+add_subdirectory("./source/sample")
+if(ENABLE_BENCHMARK)
+  add_subdirectory("./source/Benchmark")
+endif()
 # Don't even look at tests if we're not top level
 if(NOT PROJECT_IS_TOP_LEVEL)
   return()

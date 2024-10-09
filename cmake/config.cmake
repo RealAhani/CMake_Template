@@ -144,5 +144,6 @@ set(ENABLE_TESTING ON CACHE BOOL "")
 ##############################################
 set(CMAKE_TOOLCHAIN_FILE "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
 ##############################################
+set(ENABLE_BENCHMARK ON CACHE BOOL "")
 osdistro(MYOS)
 fetch_repositories()
