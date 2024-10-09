@@ -142,5 +142,7 @@ set(ENABLE_UNITYBUILD ON CACHE BOOL "")
 ##############################################
 set(ENABLE_TESTING ON CACHE BOOL "")
 ##############################################
+set(CMAKE_TOOLCHAIN_FILE "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
+##############################################
 osdistro(MYOS)
 fetch_repositories()

@@ -3,6 +3,7 @@ out/
 out/coverage/*
 cmake-build-*/
 conan-cache/
+vcpkg_installed/
 
 *.log
 *.pdb
