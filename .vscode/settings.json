@@ -5,6 +5,7 @@
         "chrono": "cpp",
         "system_error": "cpp",
         "xlocale": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "iostream": "cpp"
     }
 }

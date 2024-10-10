@@ -12,7 +12,7 @@ target_include_directories(
   ${MYLIBNAME}
   PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/generate"
   PUBLIC "./include"
-  PUBLIC "../Benchmark/include"
+  PUBLIC "./include/pch"
 )
 target_precompile_headers(${MYLIBNAME} PUBLIC "./include/pch/pch.hh")
 target_link_libraries(${MYLIBNAME} PUBLIC ${SULOTIONNAME}::MYBENCHMARK PRIVATE ${LIB_LINKAGE_VAR})

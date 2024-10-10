@@ -12,20 +12,16 @@ endif()
 configure_file("./include/osconfig.h.in" "${CMAKE_CURRENT_BINARY_DIR}/generate/osconfig.h")
 
 if(INTERNAL_MYLIB_USAGE)
-  target_include_directories(
-    ${PREXENAME}
-    PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/generate"
-    PUBLIC "./include"
-    PRIVATE "../library/include"
-  )
   target_precompile_headers(${PREXENAME} REUSE_FROM ${SULOTIONNAME}::${MYLIBNAME})
   if(ENABLE_UNITYBUILD)
     set_target_properties(${PREXENAME} PROPERTIES UNITY_BUILD ON)
   endif()
-  target_link_libraries(${PREXENAME} PRIVATE ${SULOTIONNAME}::${MYLIBNAME} ${LIB_LINKAGE_VAR})
+  target_link_libraries(
+    ${PREXENAME} PRIVATE ${SULOTIONNAME}::${MYLIBNAME} ${SULOTIONNAME}::MYBENCHMARK ${LIB_LINKAGE_VAR}
+  )
 else()
   target_include_directories(${PREXENAME} PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/generate" PUBLIC "./include")
-  target_link_libraries(${PREXENAME} ${LIB_LINKAGE_VAR})
+  target_link_libraries(${PREXENAME} PRIVATE ${SULOTIONNAME}::MYBENCHMARK ${LIB_LINKAGE_VAR})
 endif()
 target_compile_options(${PREXENAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${CUSTOME_FLAGS}>)
 # Specify the path to your library (change to your actual path)
