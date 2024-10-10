@@ -3,10 +3,6 @@ namespace mloge
 {
 void print(const std::string& str)
 {
-    PROFILE_ALL();
-    {
-        PROFILE_SCOPE("TEST");
-    }
     std::cout << str << '\n';
 }
 

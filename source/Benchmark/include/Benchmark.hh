@@ -1,19 +1,22 @@
 #pragma once
 
-#ifdef NDEBUG //this is release mode
-#define PROFILE_ALL()       ;
+//this is debug mode
+#ifndef NDEBUG
+#define PROFILE()           BENCHMARK(__FUNCTION__)
+#define PROFILE_SCOPE(NAME) BENCHMARK(NAME)
+#else //this is release mode
+#define PROFILE()           ;
 #define PROFILE_SCOPE(NAME) ;
-#else //this is debug mode
-#define PROFILE_ALL()        BENCHMARK_FUNC(__FUNCTION__)
-#define PROFILE_SCOPE(NAME)  BENCHMARK_FUNC(NAME)
-#define BENCHMARK_FUNC(NAME) Profiler::BenchMark profile##__LINE__(NAME);
-#endif
+#endif // !NDEBUG
 
 namespace Profiler
 {
-
 class Timer
 {
+#ifndef NDEBUG
+#define BENCHMARK(NAME) Profiler::BenchMark profile##__LINE__(NAME);
+#endif // !NDEBUG
+
     using micro       = std::chrono::microseconds;
     using steadyclock = std::chrono::steady_clock;
 
@@ -27,20 +30,20 @@ public:
     Timer()         = default;
     ~Timer()        = default;
 
-    [[nodiscard]] long long int Get_DeltaTime_MicroSec() noexcept
+    [[nodiscard]] long long Get_DeltaTime_MicroSec() noexcept
     {
         using namespace std::chrono;
         return duration_cast<micro>(m_endTime - m_startTime).count();
     }
 
-    [[nodiscard]] long long int Start_Timer() noexcept
+    [[nodiscard]] long long Start_Timer() noexcept
     {
         Reset_Timer();
         m_startTime = steadyclock::now();
         return m_startTime.time_since_epoch().count();
     }
 
-    [[nodiscard]] long long int End_Timer() noexcept
+    [[nodiscard]] long long End_Timer() noexcept
     {
         m_endTime = steadyclock::now();
         return m_endTime.time_since_epoch().count();
@@ -59,10 +62,10 @@ private:
 
 struct Benchmark_Data
 {
-    std::string   m_name      = {};
-    long long int m_duration  = {};
-    long long int m_startTime = {};
-    std::size_t   threadID    = {};
+    std::string m_name      = {};
+    long long   m_duration  = {};
+    long long   m_startTime = {};
+    std::size_t threadID    = {};
 };
 
 class FileHandle
@@ -119,7 +122,7 @@ private:
     }
 
 private:
-    std::string   m_outFileName = {"RunTimeBenchMark.json"};
+    std::string   m_outFileName = {"BenchMark.json"};
     std::ofstream m_fileStream  = {};
     std::mutex    m_lock        = {};
     size_t        m_counter     = {};

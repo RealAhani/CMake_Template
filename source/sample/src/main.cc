@@ -5,7 +5,7 @@
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
-    PROFILE_ALL();
+    PROFILE();
 //if u use internal lib
 #if (OS == 1)
     mloge::print("WIN");
