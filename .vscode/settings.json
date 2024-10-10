@@ -6,6 +6,7 @@
         "system_error": "cpp",
         "xlocale": "cpp",
         "thread": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "fstream": "cpp"
     }
 }

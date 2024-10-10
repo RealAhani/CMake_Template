@@ -27,21 +27,20 @@ public:
     Timer()         = default;
     ~Timer()        = default;
 
-    long long int Get_DeltaTime_MicroSec()
+    [[nodiscard]] long long int Get_DeltaTime_MicroSec() noexcept
     {
         using namespace std::chrono;
-        m_deltaTime = duration_cast<micro>(m_endTime - m_startTime);
-        return m_deltaTime.count();
+        return duration_cast<micro>(m_endTime - m_startTime).count();
     }
 
-    long long int Start_Timer()
+    [[nodiscard]] long long int Start_Timer() noexcept
     {
         Reset_Timer();
         m_startTime = steadyclock::now();
         return m_startTime.time_since_epoch().count();
     }
 
-    long long int End_Timer()
+    [[nodiscard]] long long int End_Timer() noexcept
     {
         m_endTime = steadyclock::now();
         return m_endTime.time_since_epoch().count();
@@ -50,9 +49,8 @@ public:
 private:
     timepoint m_startTime = {};
     timepoint m_endTime   = {};
-    micro     m_deltaTime = {};
 
-    void Reset_Timer()
+    void Reset_Timer() noexcept
     {
         m_startTime = {};
         m_endTime   = {};
@@ -61,16 +59,16 @@ private:
 
 struct Benchmark_Data
 {
-    std::string m_name      = {"Default"};
-    int64_t     m_time      = {};
-    int64_t     m_startTime = {};
-    std::size_t threadID    = {};
+    std::string   m_name      = {};
+    long long int m_duration  = {};
+    long long int m_startTime = {};
+    std::size_t   threadID    = {};
 };
 
 class FileHandle
 {
 public:
-    static void Write_BenchMark(const Benchmark_Data& data)
+    static void Write_BenchMark(const Benchmark_Data& data) noexcept
     {
         FileHandle::Make_Instance().Write_Info(data);
     }
@@ -80,42 +78,41 @@ private:
     FileHandle(const FileHandle&)            = delete;
     FileHandle& operator=(FileHandle&&)      = delete;
     FileHandle& operator=(const FileHandle&) = delete;
-    FileHandle() : m_fileStream{std::ofstream(m_outFileName)}
+    FileHandle() noexcept
     {
+        m_fileStream = std::ofstream(m_outFileName);
         Write_Header();
     }
-    ~FileHandle()
+    ~FileHandle() noexcept
     {
         Write_Footer();
     }
-    void Write_Header()
+    void Write_Header() noexcept
     {
         m_fileStream << "{\"otherData\": {},\"traceEvents\":[";
     }
-    void Write_Footer()
+    void Write_Footer() noexcept
     {
         m_fileStream << "]}";
     }
-    void Write_Info(const Benchmark_Data& data)
+    void Write_Info(const Benchmark_Data& data) noexcept
     {
         std::lock_guard<std::mutex> lock(m_lock);
-        if (m_counter++ > 0)
+        if (m_counter++ > 0) [[likely]]
         {
             m_fileStream << ",";
         }
-        std::string name{data.m_name};
-        std::replace(name.begin(), name.end(), '"', '\'');
         m_fileStream << "\n{";
         m_fileStream << "\"cat\":\"function\",";
-        m_fileStream << "\"dur\":" << data.m_time << ',';
-        m_fileStream << "\"name\":\"" << name << "\",";
+        m_fileStream << "\"dur\":" << data.m_duration << ',';
+        m_fileStream << "\"name\":\"" << data.m_name << "\",";
         m_fileStream << "\"ph\":\"X\",";
         m_fileStream << "\"pid\":0,";
         m_fileStream << "\"tid\":" << data.threadID << ',';
         m_fileStream << "\"ts\":" << data.m_startTime;
         m_fileStream << "}";
     }
-    static FileHandle& Make_Instance()
+    static FileHandle& Make_Instance() noexcept
     {
         static FileHandle instance{};
         return instance;
@@ -132,17 +129,17 @@ private:
 class BenchMark
 {
 public:
-    explicit BenchMark(const std::string& name)
+    explicit BenchMark(const std::string& name) noexcept
     {
         m_data.m_name      = name;
-        m_data.m_time      = 0;
+        m_data.m_duration  = 0;
         m_data.m_startTime = m_timer.Start_Timer();
         m_data.threadID    = std::hash<std::thread::id>{}(std::this_thread::get_id());
     }
-    ~BenchMark()
+    ~BenchMark() noexcept
     {
         m_timer.End_Timer();
-        m_data.m_time = m_timer.Get_DeltaTime_MicroSec();
+        m_data.m_duration = m_timer.Get_DeltaTime_MicroSec();
         FileHandle::Write_BenchMark(m_data);
     }
 
