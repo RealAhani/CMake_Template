@@ -5,8 +5,6 @@
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
-    const char* str[]{"sdfs", "sdd"};
-    std::cout << str[23];
 //if u use internal lib
 #if (OS == 1)
     mloge::print("WIN");

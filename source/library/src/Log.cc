@@ -1,4 +1,5 @@
 #include "Log.hh"
+#include "Benchmark.hh"
 namespace mloge
 {
 void print(const std::string& str)

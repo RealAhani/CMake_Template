@@ -94,7 +94,7 @@ MaxEmptyLinesToKeep: 2
 
 # Sorting
 IncludeBlocks: Regroup
-SortIncludes: true
+SortIncludes: false
 SortUsingDeclarations: true
 
 # Penalties
