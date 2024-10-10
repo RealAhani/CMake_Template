@@ -1,3 +1,10 @@
 {
-    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/win-clang-warn-stlib/compile_commands.json"
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/win-clang-warn-stlib/compile_commands.json",
+    "files.associations": {
+        ".clang-tidy": "code-text-binary",
+        "chrono": "cpp",
+        "system_error": "cpp",
+        "xlocale": "cpp",
+        "thread": "cpp"
+    }
 }
