@@ -1,37 +1,108 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <mutex>
+#include <algorithm>
+#include <map>
 #include "TimeManager.hh"
 namespace AP
 {
-class ProfileLoger
+struct Time_Data
+{
+    std::string m_name      = {"Default"};
+    int64_t     m_sec       = {};
+    int64_t     m_startTime = {};
+    std::size_t threadID    = {};
+};
+
+class FileHandle
 {
 public:
-    ProfileLoger()                               = default;
-    ProfileLoger(ProfileLoger&&)                 = delete;
-    ProfileLoger(const ProfileLoger&)            = delete;
-    ProfileLoger& operator=(ProfileLoger&&)      = delete;
-    ProfileLoger& operator=(const ProfileLoger&) = delete;
-    explicit ProfileLoger(const std::string& name) : m_name{name}
+    void Log_Info(const Time_Data& data)
     {
-        m_time.Start_Time();
+        std::lock_guard<std::mutex> lock(m_lock);
+        if (m_counter++ > 0)
+        {
+            m_fileStream << ",";
+        }
+        std::string name{data.m_name};
+        std::replace(name.begin(), name.end(), '"', '\'');
+        m_fileStream << "\n{";
+        m_fileStream << "\"cat\":\"function\",";
+        m_fileStream << "\"dur\":" << data.m_sec << ',';
+        m_fileStream << "\"name\":\"" << name << "\",";
+        m_fileStream << "\"ph\":\"X\",";
+        m_fileStream << "\"pid\":0,";
+        m_fileStream << "\"tid\":" << data.threadID << ',';
+        m_fileStream << "\"ts\":" << data.m_startTime;
+        m_fileStream << "}";
     }
-    ~ProfileLoger()
+    static FileHandle& MakeSingle()
     {
-        m_time.End_Time();
-        m_sec = (m_time.GetTimeSec() + 0.001f);
+        static FileHandle instance{};
+        return instance;
+    }
+
+private:
+    FileHandle(FileHandle&&)                 = delete;
+    FileHandle(const FileHandle&)            = delete;
+    FileHandle& operator=(FileHandle&&)      = delete;
+    FileHandle& operator=(const FileHandle&) = delete;
+    FileHandle() : m_fileStream{std::ofstream(m_outFileName)}
+    {
+        Write_Header();
+    }
+    ~FileHandle()
+    {
+        Write_Footer();
+    }
+    void Write_Header()
+    {
+        m_fileStream << "{\"otherData\": {},\"traceEvents\":[";
+    }
+    void Write_Footer()
+    {
+        m_fileStream << "]}";
+    }
+
+private:
+    std::string   m_outFileName = {"RunTimeBenchMark.json"};
+    std::ofstream m_fileStream  = {};
+    std::mutex    m_lock        = {};
+    size_t        m_counter     = {};
+};
+
+
+class Timer
+{
+public:
+    explicit Timer(const std::string& name)
+    {
+        m_data.m_name      = name;
+        m_data.m_sec       = 0;
+        m_data.m_startTime = m_manager.Start_Time();
+        m_data.threadID    = std::hash<std::thread::id>{}(std::this_thread::get_id());
+    }
+    ~Timer()
+    {
+        m_manager.End_Time();
+        m_data.m_sec = m_manager.GetTimeSec();
         Write_File();
     }
 
 private:
-    AP::TimerManager m_time = {};
-    std::string      m_name = {};
-    float            m_sec  = {};
+    Timer()                        = delete;
+    Timer(Timer&&)                 = delete;
+    Timer(const Timer&)            = delete;
+    Timer& operator=(Timer&&)      = delete;
+    Timer& operator=(const Timer&) = delete;
+
+    AP::TimerManager m_manager = {};
+    Time_Data        m_data    = {};
     void             Write_File()
     {
-        //write data as .json file
-        std::cout << "function name : " << m_name << '\n';
-        std::cout << "time elapsed : " << m_sec << '\n';
+        FileHandle::MakeSingle().Log_Info(m_data);
     }
 };
 } // namespace AP

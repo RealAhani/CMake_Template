@@ -8,5 +8,5 @@
 #else //this is debug mode
 #define PROFILE_ALL()        BENCHMARK_FUNC(__FUNCTION__)
 #define PROFILE_SCOPE(NAME)  BENCHMARK_FUNC(NAME)
-#define BENCHMARK_FUNC(NAME) AP::ProfileLoger timer##__LINE__(NAME);
+#define BENCHMARK_FUNC(NAME) AP::Timer timer##__LINE__(NAME);
 #endif
