@@ -103,7 +103,7 @@ private:
     Timer& operator=(const Timer&) = delete;
 
     AP::TimerManager m_timeManager = {};
-    Time_Data        m_data    = {};
+    Time_Data        m_data        = {};
     void             Write_File()
     {
         FileHandle::WriteBenchMark(m_data);
