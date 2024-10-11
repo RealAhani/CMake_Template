@@ -1,4 +1,4 @@
-# BENCHMARK
+# BENCHMARK is a header only library that uses lib pch for his includes
 include(${CMAKE_HOME_DIRECTORY}/cmake/config.cmake)
 #if You want u can change it to SHARED
 add_library(MYBENCHMARK INTERFACE)

@@ -83,7 +83,7 @@ private:
     FileHandle& operator=(const FileHandle&) = delete;
     FileHandle() noexcept
     {
-        m_fileStream = std::ofstream(m_outFileName);
+        m_fileStream = std::ofstream(s_outFileName);
         Write_Header();
     }
     ~FileHandle() noexcept
@@ -122,10 +122,10 @@ private:
     }
 
 private:
-    std::string   m_outFileName = {"BenchMark.json"};
-    std::ofstream m_fileStream  = {};
-    std::mutex    m_lock        = {};
-    size_t        m_counter     = {};
+    static inline const std::string s_outFileName = {std::string_literals::operator""s("BenchMark.json", 14)};
+    std::ofstream                   m_fileStream  = {};
+    std::mutex                      m_lock        = {};
+    size_t                          m_counter     = {};
 };
 
 
