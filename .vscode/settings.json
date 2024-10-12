@@ -1,5 +1,7 @@
 {
     "C_Cpp.default.compileCommands": "${workspaceFolder}/build/win-clang-warn-stlib/compile_commands.json",
+    "cmake.useCMakePresets": "always",
+    "cmake.options.statusBarVisibility": "visible",
     "files.associations": {
         ".clang-tidy": "code-text-binary",
         "chrono": "cpp",
