@@ -36,14 +36,14 @@ public:
         return duration_cast<micro>(m_endTime - m_startTime).count();
     }
 
-    [[nodiscard]] long long Start_Timer() noexcept
+    [[maybe_unused]] long long Start_Timer() noexcept
     {
         Reset_Timer();
         m_startTime = steadyclock::now();
         return m_startTime.time_since_epoch().count();
     }
 
-    [[nodiscard]] long long End_Timer() noexcept
+    [[maybe_unused]] long long End_Timer() noexcept
     {
         m_endTime = steadyclock::now();
         return m_endTime.time_since_epoch().count();

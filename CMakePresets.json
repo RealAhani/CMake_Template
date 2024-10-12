@@ -23,6 +23,17 @@
             "installDir": "${sourceDir}/build/install/${presetName}"
         },
         {
+            "name": "conf-unixlike-common",
+            "description": "Unix-like OS settings for gcc and clang toolchains",
+            "hidden": true,
+            "inherits": "conf-clang-common",
+            "vendor": {
+                "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
+                    "sourceDir": "$env{HOME}/.vs/$ms{projectDirName}"
+                }
+            }
+        },
+        {
             "name": "conf-windows-common",
             "description": "Windows settings for MSBuild toolchain that apply to msvc and clang",
             "hidden": true,
@@ -367,6 +378,54 @@
                     "intelliSenseMode": "windows-clang-x64"
                 }
             }
+        },
+        {
+            "name": "unixlike-clang-debug-safe",
+            "displayName": "linux clang Debug (Safe-stlib)",
+            "description": "Target Unix-like OS with the clang compiler, debug build type",
+            "inherits": "conf-unixlike-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "INTERNAL_MYLIB_USAGE": "ON",
+                "MYLIB_TYPE": "STATIC",
+                "STATIC_ANALYZER": "ON",
+                "ENABLE_SANITIZER": "ON",
+                "ENABLE_WARNING": "ON",
+                "ENABLE_TESTING": "OFF"
+            }
+        },
+        {
+            "name": "unixlike-clang-debug-warn",
+            "displayName": "linux clang Debug (warning-stlib)",
+            "description": "Target Unix-like OS with the clang compiler, debug build type",
+            "inherits": "conf-unixlike-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "INTERNAL_MYLIB_USAGE": "ON",
+                "MYLIB_TYPE": "STATIC",
+                "STATIC_ANALYZER": "OFF",
+                "ENABLE_SANITIZER": "OFF",
+                "ENABLE_WARNING": "ON",
+                "ENABLE_TESTING": "ON"
+            }
+        },
+        {
+            "name": "unixlike-clang-release",
+            "displayName": "linux clang Release (stlib)",
+            "description": "Target Unix-like OS with the clang compiler, debug build type",
+            "inherits": "conf-unixlike-common",
+            "cacheVariables": {
+                "CPPCOMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Release",
+                "INTERNAL_MYLIB_USAGE": "ON",
+                "MYLIB_TYPE": "STATIC",
+                "STATIC_ANALYZER": "OFF",
+                "ENABLE_SANITIZER": "OFF",
+                "ENABLE_WARNING": "OFF",
+                "ENABLE_TESTING": "ON"
+            }
         }
     ],
     "testPresets": [
@@ -437,6 +496,27 @@
             "description": "Enable output and stop on failure",
             "inherits": "test-common",
             "configurePreset": "win-msvc-release-shlib"
+        },
+        {
+            "name": "test-unix-clang-debug-safe-stlib",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-clang-debug-safe"
+        },
+        {
+            "name": "test-unix-clang-debug-warn-stlib",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-clang-debug-warn"
+        },
+        {
+            "name": "test-unix-clang-release-stlib",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-clang-release"
         }
     ]
 }

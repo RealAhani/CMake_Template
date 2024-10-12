@@ -6,4 +6,5 @@
 #include <mutex>
 #include <algorithm>
 #include <map>
+#include <thread>
 #include "Benchmark.hh"

@@ -1,5 +1,6 @@
 {
-    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/win-clang-warn-stlib/compile_commands.json",
+    // "C_Cpp.default.compileCommands": "${workspaceFolder}/build/win-clang-warn-stlib/compile_commands.json",
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/unixlike-clang-warn-stlib/compile_commands.json",
     "cmake.useCMakePresets": "always",
     "cmake.options.statusBarVisibility": "visible",
     "files.associations": {

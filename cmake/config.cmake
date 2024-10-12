@@ -26,7 +26,7 @@ set(TESTNAME "${SULOTIONNAME}_TEST" CACHE STRING "" FORCE)
 
 ##############################################
 #your cpp standard version you want to use in this project
-set(CPPVERSION 23 CACHE STRING "" FORCE)
+set(CPPVERSION 20 CACHE STRING "" FORCE)
 set(CPPEXTENTION ON CACHE BOOL "" FORCE)
 set(CPPSTANDARDREQ ON CACHE BOOL "" FORCE)
 ##############################################
@@ -64,8 +64,9 @@ set(DEBUG_COMPILER_EXTRA_FLAGS_GCC "-Wmisleading-indentation;-Wduplicated-cond;-
 #             # -Wuseless-cast # warn if you perform a cast to the same type (disabled because it is not portable as some type aliases might vary between platforms)
 #             $<$<VERSION_GREATER_EQUAL:${CMAKE_CXX_COMPILER_VERSION},8.1>:-Wduplicated-branches> # warn if if / else branches have duplicated code
 
-set(RELEASE_COMPILER_FLAGS_GCC_CLANG "-O3;-Ofast;-DNDEBUG;-flto;-march=native;-ftree-vectorize;"
-    CACHE STRING "" FORCE
+#flto is not working currently with linux
+set(RELEASE_COMPILER_FLAGS_GCC_CLANG "-O3;-Ofast;-DNDEBUG;
+-march=native;-ftree-vectorize;" CACHE STRING "" FORCE
 )
 
 set(DEBUG_COMPILER_FLAGS_MSVC
@@ -142,7 +143,10 @@ set(ENABLE_UNITYBUILD ON CACHE BOOL "")
 ##############################################
 set(ENABLE_TESTING ON CACHE BOOL "")
 ##############################################
-set(CMAKE_TOOLCHAIN_FILE "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
+# set(CMAKE_TOOLCHAIN_FILE "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
+set(CMAKE_TOOLCHAIN_FILE "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsystems/vcpkg.cmake"
+    CACHE STRING "" FORCE
+)
 ##############################################
 set(ENABLE_BENCHMARK ON CACHE BOOL "")
 osdistro(MYOS)

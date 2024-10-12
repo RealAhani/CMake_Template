@@ -6,6 +6,8 @@
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
     PROFILE();
+    const char* str[2]{"sdf", "sdfsdfs"};
+    std::cout << str[32];
 //if u use internal lib
 #if (OS == 1)
     mloge::print("WIN");
