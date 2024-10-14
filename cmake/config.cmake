@@ -65,7 +65,7 @@ set(DEBUG_COMPILER_EXTRA_FLAGS_GCC "-Wmisleading-indentation;-Wduplicated-cond;-
 #             $<$<VERSION_GREATER_EQUAL:${CMAKE_CXX_COMPILER_VERSION},8.1>:-Wduplicated-branches> # warn if if / else branches have duplicated code
 
 #flto is not working currently with linux
-set(RELEASE_COMPILER_FLAGS_GCC_CLANG "-O3;-Ofast;-DNDEBUG;
+set(RELEASE_COMPILER_FLAGS_GCC_CLANG "-O3;-Ofast;-DNDEBUG;-flto;
 -march=native;-ftree-vectorize;" CACHE STRING "" FORCE
 )
 
@@ -143,14 +143,13 @@ set(ENABLE_UNITYBUILD ON CACHE BOOL "")
 ##############################################
 set(ENABLE_TESTING ON CACHE BOOL "")
 ##############################################
-# set(CMAKE_TOOLCHAIN_FILE "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
-set(CMAKE_TOOLCHAIN_FILE "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsystems/vcpkg.cmake"
-    CACHE STRING "" FORCE
-)
+set(CMAKE_TOOLCHAIN_FILE "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
+# set(CMAKE_TOOLCHAIN_FILE "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE )
 ##############################################
 set(ENABLE_PACKAGING ON CACHE BOOL "")
 set(DISCRIPTION "MyProject - A brief description" CACHE STRING "")
 set(VENDOR "YOUR COMPANY" CACHE STRING "")
+set(SUPPORTMAIL "support@mycompany.com" CACHE STRING "")
 ##############################################
 set(ENABLE_BENCHMARK ON CACHE BOOL "")
 ##############################################

@@ -4,8 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/home/alireza/Apps/vcpkg-2024.09.30/installed/x64-linux/include"
-                // "${vcpkgRoot}/x64-windows/include"
+                // "/home/alireza/Apps/vcpkg-2024.09.30/installed/x64-linux/include"
+                "${vcpkgRoot}/x64-windows/include"
             ],
             "forcedInclude": [
                 "${workspaceFolder}/source/library/include/pch/pch.hh"
@@ -18,8 +18,8 @@
             "windowsSdkVersion": "10.0.26100.0",
             "cStandard": "c17",
             "intelliSenseMode": "windows-clang-x64",
-            "compilerPath": "/usr/bin/clang++",
-            // "compilerPath": "C:/Program Files/LLVM/bin/clang++.exe",
+            // "compilerPath": "/usr/bin/clang++",
+            "compilerPath": "C:/Program Files/LLVM/bin/clang++.exe",
             "cppStandard": "c++23"
         }
     ],
