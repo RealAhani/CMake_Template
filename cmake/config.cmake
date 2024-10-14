@@ -148,6 +148,11 @@ set(CMAKE_TOOLCHAIN_FILE "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsyste
     CACHE STRING "" FORCE
 )
 ##############################################
+set(ENABLE_PACKAGING ON CACHE BOOL "")
+set(DISCRIPTION "MyProject - A brief description" CACHE STRING "")
+set(VENDOR "YOUR COMPANY" CACHE STRING "")
+##############################################
 set(ENABLE_BENCHMARK ON CACHE BOOL "")
+##############################################
 osdistro(MYOS)
 fetch_repositories()

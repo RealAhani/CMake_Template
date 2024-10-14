@@ -105,3 +105,34 @@ if(ENABLE_TESTING)
   add_subdirectory("test")
 
 endif()
+
+if(ENABLE_PACKAGING)
+  include(CPack)
+  # CPack configuration
+  message("============================================ PACKAGING")
+  set(CPACK_PACKAGE_NAME ${PROJECT_NAME})
+  set(CPACK_PACKAGE_VERSION ${PRVERSION})
+  set(CPACK_PACKAGE_DESCRIPTION_SUMMARY ${DISCRIPTION})
+  set(CPACK_PACKAGE_VENDOR ${VENDOR})
+  set(CPACK_PACKAGE_INSTALL_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/install")
+
+  # Set package types (e.g., ZIP, TBZ2, TGZ, TXZ ,TZ , DEB, RPM, NSIS, etc.)
+  # set(CPACK_GENERATOR "ZIP;")
+
+  # Specify additional files to include in the package
+  # install(FILES README.md DESTINATION .)
+
+  # Install targets
+  install(
+    TARGETS ${PREXENAME}
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib/static
+  )
+
+  # Include directories
+  install(DIRECTORY include/ DESTINATION include)
+
+  # CPack settings (usually at the end of CMakeLists.txt)
+  include(CPack)
+endif()
