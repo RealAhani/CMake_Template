@@ -2,7 +2,6 @@
 include(${CMAKE_HOME_DIRECTORY}/cmake/config.cmake)
 #if You want u can change it to SHARED
 add_library(MYBENCHMARK INTERFACE)
-add_library(${SULOTIONNAME}::MYBENCHMARK ALIAS MYBENCHMARK)
 
 target_include_directories(MYBENCHMARK INTERFACE "${CMAKE_CURRENT_LIST_DIR}/include")
 if(ENABLE_UNITYBUILD)

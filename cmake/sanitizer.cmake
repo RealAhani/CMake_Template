@@ -1,7 +1,6 @@
 include(${CMAKE_SOURCE_DIR}/cmake/os.cmake)
 macro(setting_enable_sanitizer target_link)
   if(ENABLE_SANITIZER)
-
     if(LINUX) # this is linux
       if(${CPPCOMPILER} STREQUAL "clang++" OR ${CPPCOMPILER} STREQUAL "g++")
         message(
@@ -13,10 +12,6 @@ macro(setting_enable_sanitizer target_link)
         set(CMAKE_LINKER_FLAGS_DEBUG
             "${CMAKE_LINKER_FLAGS_DEBUG} -fno-omit-frame-pointer -fsanitize=address,undefined,leak"
         )
-        # target_compile_options(${target_link} PRIVATE -fsanitize=${SANITIZERS})
-        # target_link_libraries(
-        #   ${target_link} PUBLIC clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
-        # )
       endif()
     else() # this is windows
       link_directories(
@@ -46,10 +41,7 @@ macro(setting_enable_sanitizer target_link)
         message(
           "--------------------------------------------- SANITIZER IS ON IN (MSVC) ${target_link} WITH: ${SANITIZERS}"
         )
-        target_compile_options(${target_link} PUBLIC /fsanitize=${SANITIZERS} /Zi /MD)
-        target_link_libraries(
-          ${target_link} PUBLIC clang_rt.asan_dynamic-x86_64 clang_rt.asan_dynamic_runtime_thunk-x86_64
-        )
+        target_compile_options(${target_link} PUBLIC "/fsanitize=address" /Zi /MD)
       endif()
     endif()
 
