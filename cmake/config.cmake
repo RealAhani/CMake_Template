@@ -65,8 +65,8 @@ set(DEBUG_COMPILER_EXTRA_FLAGS_GCC "-Wmisleading-indentation;-Wduplicated-cond;-
 #             $<$<VERSION_GREATER_EQUAL:${CMAKE_CXX_COMPILER_VERSION},8.1>:-Wduplicated-branches> # warn if if / else branches have duplicated code
 
 #flto is not working currently with linux
-set(RELEASE_COMPILER_FLAGS_GCC_CLANG "-O3;-Ofast;-DNDEBUG;-flto;
--march=native;-ftree-vectorize;" CACHE STRING "" FORCE
+set(RELEASE_COMPILER_FLAGS_GCC_CLANG "-O3;-Ofast;-DNDEBUG;-march=native;-ftree-vectorize;" CACHE STRING ""
+                                                                                                 FORCE
 )
 
 set(DEBUG_COMPILER_FLAGS_MSVC

@@ -151,5 +151,4 @@ if(ENABLE_PACKAGING)
   # install(DIRECTORY include/ DESTINATION include)
 
   # CPack settings (usually at the end of CMakeLists.txt)
-  include(CPack)
 endif()
