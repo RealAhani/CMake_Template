@@ -143,8 +143,10 @@ set(ENABLE_UNITYBUILD ON CACHE BOOL "")
 ##############################################
 set(ENABLE_TESTING ON CACHE BOOL "")
 ##############################################
-set(CMAKE_TOOLCHAIN_FILE "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
-# set(CMAKE_TOOLCHAIN_FILE "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE )
+# set(CMAKE_TOOLCHAIN_FILE "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
+set(CMAKE_TOOLCHAIN_FILE "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsystems/vcpkg.cmake"
+    CACHE STRING "" FORCE
+)
 ##############################################
 set(ENABLE_PACKAGING ON CACHE BOOL "")
 set(DISCRIPTION "MyProject - A brief description" CACHE STRING "")

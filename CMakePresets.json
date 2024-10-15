@@ -1,5 +1,5 @@
 {
-    "version": 3,
+    "version": 4,
     "cmakeMinimumRequired": {
         "major": 3,
         "minor": 25,
@@ -63,6 +63,7 @@
         },
         {
             "name": "msvc-safe",
+            "displayName": "MSVC Safe",
             "description": "Target Windows with the msvc compiler, debug build type",
             "inherits": "conf-windows-common",
             "cacheVariables": {
@@ -78,6 +79,7 @@
         },
         {
             "name": "msvc-test",
+            "displayName": "MSVC Test",
             "description": "Target Windows with the msvc compiler, debug build type",
             "inherits": "conf-windows-common",
             "cacheVariables": {
@@ -93,6 +95,7 @@
         },
         {
             "name": "msvc-release",
+            "displayName": "MSVC Release",
             "description": "Target Windows with the msvc compiler, release build type",
             "inherits": "conf-windows-common",
             "cacheVariables": {
@@ -108,6 +111,7 @@
         },
         {
             "name": "win-clang-safe",
+            "displayName": "Windows Clang Safe",
             "description": "Target Windows with the clang compiler, debug build type",
             "inherits": "conf-clang-windows-common",
             "cacheVariables": {
@@ -128,6 +132,7 @@
         },
         {
             "name": "win-clang-test",
+            "displayName": "Windows Clang Test",
             "description": "Target Windows with the clang compiler, debug build type",
             "inherits": "conf-clang-windows-common",
             "cacheVariables": {
@@ -148,6 +153,7 @@
         },
         {
             "name": "win-clang-release",
+            "displayName": "Windows Clang Release",
             "description": "Target Windows with the clang compiler, release build type",
             "inherits": "conf-clang-windows-common",
             "cacheVariables": {
@@ -168,6 +174,7 @@
         },
         {
             "name": "linux-clang-safe",
+            "displayName": "Linux Clang Safe",
             "description": "Target Unix-like OS with the clang compiler, debug build type",
             "inherits": "conf-unixlike-common",
             "cacheVariables": {
@@ -183,6 +190,7 @@
         },
         {
             "name": "linux-clang-test",
+            "displayName": "Linux Clang Test",
             "description": "Target Unix-like OS with the clang compiler, debug build type",
             "inherits": "conf-unixlike-common",
             "cacheVariables": {
@@ -198,6 +206,7 @@
         },
         {
             "name": "linux-clang-release",
+            "displayName": "Linux Clang Release",
             "description": "Target Unix-like OS with the clang compiler, debug build type",
             "inherits": "conf-unixlike-common",
             "cacheVariables": {
