@@ -1,4 +1,3 @@
-include(${CMAKE_SOURCE_DIR}/cmake/os.cmake)
 macro(setting_enable_sanitizer target_link)
   if(ENABLE_SANITIZER)
     if(LINUX) # this is linux
@@ -37,7 +36,7 @@ macro(setting_enable_sanitizer target_link)
             ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
         )
       else()
-        # this is for msvc
+        # this is for msvc windows
         message(
           "--------------------------------------------- SANITIZER IS ON IN (MSVC) ${target_link} WITH: ${SANITIZERS}"
         )

@@ -1,12 +1,6 @@
 include_guard()
 ##############################################
-include(${CMAKE_SOURCE_DIR}/cmake/os.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/LibsConfig.cmake)
-# DONT TOUCH THESE 4 BLOW OS NAMES VARIABLES
-set(MYOS "NONE_VALID" CACHE STRING "" FORCE)
-set(WINDOWS "WIN" CACHE STRING "" FORCE)
-set(LINUXOS "LINUX" CACHE STRING "" FORCE)
-set(MACOS "MAC" CACHE STRING "" FORCE)
 ##############################################
 #your Solution name
 set(SULOTIONNAME "NAME" CACHE STRING "" FORCE)
@@ -155,5 +149,4 @@ set(SUPPORTMAIL "support@mycompany.com" CACHE STRING "")
 ##############################################
 set(ENABLE_BENCHMARK ON CACHE BOOL "")
 ##############################################
-osdistro(MYOS)
 fetch_repositories()
