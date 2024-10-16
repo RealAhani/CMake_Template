@@ -22,3 +22,15 @@ target_compile_options(${MYLIBNAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${CUSTOME_
 #enable static analyzer
 setting_enable_staticanalyzer(${MYLIBNAME})
 setting_enable_sanitizer(${MYLIBNAME})
+
+if(ENABLE_PACKAGING)
+  # Set package types (e.g., ZIP,External ,WIX (msiinstaller),IFW(qtinstaller),INNOSETUP,NSIS,NSIS64 ,Nuget TBZ2, TGZ, TXZ ,TZ , DEB, RPM, NSIS, etc.)
+  if(WIN32)
+    set(CPACK_GENERATOR "WIX;ZIP;")
+  else()
+    set(CPACK_GENERATOR "ZIP;DEB;")
+  endif()
+  install(TARGETS ${MYLIBNAME} LIBRARY DESTINATION lib ARCHIVE DESTINATION lib/static)
+
+  install(DIRECTORY include/ DESTINATION include/lib)
+endif()

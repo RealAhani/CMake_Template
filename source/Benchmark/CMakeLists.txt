@@ -8,3 +8,7 @@ if(ENABLE_UNITYBUILD)
   set_target_properties(MYBENCHMARK PROPERTIES UNITY_BUILD ON)
 endif()
 target_compile_options(MYBENCHMARK INTERFACE $<$<COMPILE_LANGUAGE:CXX>:${CUSTOME_FLAGS}>)
+
+if(ENABLE_PACKAGING)
+  install(DIRECTORY include/ DESTINATION include/Benchmark)
+endif()

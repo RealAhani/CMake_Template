@@ -108,6 +108,7 @@ endif()
 
 if(ENABLE_PACKAGING)
   include(CPack)
+  set(CPACK_GENERATOR "ZIP")
   # CPack configuration
   message("============================================ PACKAGING")
   set(CPACK_PACKAGE_NAME ${PROJECT_NAME})
@@ -117,38 +118,14 @@ if(ENABLE_PACKAGING)
   set(CPACK_PACKAGE_CONTACT ${SUPPORTMAIL})
   set(CPACK_PACKAGE_INSTALL_DIRECTORY ${PRNAME})
 
-  # Set package types (e.g., ZIP,External ,WIX (msiinstaller),IFW(qtinstaller),INNOSETUP,NSIS,NSIS64 ,Nuget TBZ2, TGZ, TXZ ,TZ , DEB, RPM, NSIS, etc.)
-  if(WIN32)
-    set(CPACK_GENERATOR "WIX;ZIP;")
-  else()
-    set(CPACK_GENERATOR "ZIP;DEB;")
-  endif()
-
   # Specify additional files to include in the package
-  # install(FILES README.md DESTINATION .)
-
-  # Install targets
-  # install(
-  #   TARGETS ${PREXENAME}
-  #   RUNTIME DESTINATION bin
-  #   LIBRARY DESTINATION lib
-  #   ARCHIVE DESTINATION lib/static
-  # )
-  # Additional settings (Optional)
-  # set(CPACK_WIX_PRODUCT_GUID "12345678-1234-1234-1234-1234567890AB")
-  # Optional: Unique GUID for the installer
-  # set(CPACK_WIX_UPGRADE_GUID "12345678-1234-1234-1234-1234567890AC")
-  # Optional: Upgrade GUID for future versions
-  # set(CPACK_WIX_LICENSE_RTF "${CMAKE_SOURCE_DIR}/LICENSE.rtf")
-  install(
-    TARGETS ${PREXENAME}
-    RUNTIME DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-    LIBRARY DESTINATION ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}
-    ARCHIVE DESTINATION ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}
-  )
-
-  # Include directories
-  # install(DIRECTORY include/ DESTINATION include)
-
-  # CPack settings (usually at the end of CMakeLists.txt)
+  install(FILES README.md DESTINATION .)
+  if(WIN32)
+    # Additional settings (Optional)
+    set(CPACK_WIX_PRODUCT_GUID "12345678-1234-1234-1234-1234567890AB")
+    # Optional: Unique GUID for the installer
+    set(CPACK_WIX_UPGRADE_GUID "12345678-1234-1234-1234-1234567890AC")
+    # Optional: Upgrade GUID for future versions
+    set(CPACK_WIX_LICENSE_RTF "${CMAKE_SOURCE_DIR}/LICENSE.rtf")
+  endif()
 endif()
