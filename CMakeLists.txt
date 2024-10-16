@@ -105,16 +105,20 @@ if(ENABLE_TESTING)
   add_subdirectory("test")
 
 endif()
-
 if(ENABLE_PACKAGING)
+  # Set package types (e.g., ZIP,External ,WIX (msiinstaller),IFW(qtinstaller),INNOSETUP,NSIS,NSIS64 ,Nuget TBZ2, TGZ, TXZ ,TZ , DEB, RPM, NSIS, etc.)
+if(WIN32)
+  set(CPACK_GENERATOR "WIX;ZIP;" CACHE STRING "" FORCE)
+else()
+  set(CPACK_GENERATOR "ZIP;DEB;" CACHE STRING "" FORCE)
+endif()
   include(CPack)
-  set(CPACK_GENERATOR "ZIP")
-  # CPack configuration
   message("============================================ PACKAGING")
   set(CPACK_PACKAGE_NAME ${PROJECT_NAME})
   set(CPACK_PACKAGE_VERSION ${PRVERSION})
   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY ${DISCRIPTION})
   set(CPACK_PACKAGE_VENDOR ${VENDOR})
+  set(CPACK_DEBIAN_PACKAGE_MAINTAINER ${SUPPORTMAIL})
   set(CPACK_PACKAGE_CONTACT ${SUPPORTMAIL})
   set(CPACK_PACKAGE_INSTALL_DIRECTORY ${PRNAME})
 
