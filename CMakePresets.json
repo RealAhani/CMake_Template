@@ -221,6 +221,62 @@
             }
         }
     ],
+    "buildPresets": [
+        {
+            "name": "msvc-safe",
+            "displayName": "MSVC Safe",
+            "configurePreset": "msvc-safe",
+            "configuration": "Debug"
+        },
+        {
+            "name": "msvc-test",
+            "displayName": "MSVC Test",
+            "configurePreset": "msvc-test",
+            "configuration": "Debug"
+        },
+        {
+            "name": "msvc-release",
+            "displayName": "MSVC Release",
+            "configurePreset": "msvc-release",
+            "configuration": "Release"
+        },
+        {
+            "name": "win-clang-safe",
+            "displayName": "Windows Clang Safe",
+            "configurePreset": "win-clang-safe",
+            "configuration": "Debug"
+        },
+        {
+            "name": "win-clang-test",
+            "displayName": "Windows Clang Test",
+            "configurePreset": "win-clang-test",
+            "configuration": "Debug"
+        },
+        {
+            "name": "win-clang-release",
+            "displayName": "Windows Clang Release",
+            "configurePreset": "win-clang-release",
+            "configuration": "Release"
+        },
+        {
+            "name": "linux-clang-safe",
+            "displayName": "Linux Clang Safe",
+            "configurePreset": "linux-clang-safe",
+            "configuration": "Debug"
+        },
+        {
+            "name": "linux-clang-test",
+            "displayName": "Linux Clang Test",
+            "configurePreset": "linux-clang-test",
+            "configuration": "Debug"
+        },
+        {
+            "name": "linux-clang-release",
+            "displayName": "Linux Clang Release",
+            "configurePreset": "linux-clang-release",
+            "configuration": "Release"
+        }
+    ],
     "testPresets": [
         {
             "name": "test-common",
