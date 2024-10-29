@@ -4,6 +4,7 @@
 #ifndef NDEBUG
 #define PROFILE()           BENCHMARK(__FUNCTION__)
 #define PROFILE_SCOPE(NAME) BENCHMARK(NAME)
+#define BENCHMARK(NAME)     Profiler::BenchMark profile##__LINE__(NAME);
 #else //this is release mode
 #define PROFILE()           ;
 #define PROFILE_SCOPE(NAME) ;
@@ -13,10 +14,6 @@ namespace Profiler
 {
 class Timer
 {
-#ifndef NDEBUG
-#define BENCHMARK(NAME) Profiler::BenchMark profile##__LINE__(NAME);
-#endif // !NDEBUG
-
     using micro       = std::chrono::microseconds;
     using steadyclock = std::chrono::steady_clock;
 

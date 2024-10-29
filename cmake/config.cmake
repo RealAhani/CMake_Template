@@ -148,5 +148,13 @@ set(VENDOR "YOUR COMPANY" CACHE STRING "")
 set(SUPPORTMAIL "support@mycompany.com" CACHE STRING "")
 ##############################################
 set(ENABLE_BENCHMARK ON CACHE BOOL "")
+# Make sure CMake prefers static libraries
+# A triplet specifies the following:
+#     Architecture: e.g., x64 or x86
+#     Platform: e.g., windows, linux, osx
+#     Linkage: either static or nothing(dynamic) (for static or shared libraries)
+# The triplet format is typically <architecture>-<platform>-<linkage>
+set(VCPKG_TARGET_TRIPLET "x64-windows-static" CACHE STRING "")
+# set(VCPKG_TARGET_TRIPLET "x64-windows")
 ##############################################
 fetch_repositories()
