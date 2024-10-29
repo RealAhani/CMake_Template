@@ -103,7 +103,7 @@ set(REP_URLS CACHE STRING "" FORCE)
 #the branch that you want for each repo "[1]" "[2]"
 set(REP_BRANCH CACHE STRING "" FORCE)
 #the lib linkage vars "sfml:window;sfml:main;..."
-set(LIB_LINKAGE_VAR CACHE STRING "" FORCE)
+set(LIB_LINKAGE_VAR "" CACHE STRING "" FORCE)
 ##############################################
 #chose between g++/clang++ or MSVC
 # set(CPPCOMPILER "g++" CACHE STRING "" FORCE)
@@ -137,10 +137,10 @@ set(ENABLE_UNITYBUILD ON CACHE BOOL "")
 ##############################################
 set(ENABLE_TESTING ON CACHE BOOL "")
 ##############################################
-# set(CMAKE_TOOLCHAIN_FILE "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
-set(CMAKE_TOOLCHAIN_FILE "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsystems/vcpkg.cmake"
-    CACHE STRING "" FORCE
-)
+set(CMAKE_TOOLCHAIN_FILE "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
+# set(CMAKE_TOOLCHAIN_FILE "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsystems/vcpkg.cmake"
+#     CACHE STRING "" FORCE
+# )
 ##############################################
 set(ENABLE_PACKAGING ON CACHE BOOL "")
 set(DISCRIPTION "MyProject - A brief description" CACHE STRING "")

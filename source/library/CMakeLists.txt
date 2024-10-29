@@ -6,13 +6,17 @@ include(${CMAKE_SOURCE_DIR}/cmake/sanitizer.cmake)
 #if You want u can change it to SHARED
 add_library(${MYLIBNAME} ${MYLIB_TYPE} ${mysrc_lib})
 configure_file("./include/osconfig.h.in" "${CMAKE_CURRENT_BINARY_DIR}/generate/osconfig.h")
-
 target_include_directories(
   ${MYLIBNAME}
   PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/generate"
   PUBLIC "./include"
   PUBLIC "./include/pch"
 )
+#if any external lib added with vcpkg and Lib_linkage_var is not empty link and find that lib
+if(LIB_LINKAGE_VAR)
+  find_package(${LIB_LINKAGE_VAR} CONFIG REQUIRED)
+endif(LIB_LINKAGE_VAR)
+
 target_precompile_headers(${MYLIBNAME} PUBLIC "./include/pch/pch.hh")
 target_link_libraries(${MYLIBNAME} PUBLIC MYBENCHMARK PRIVATE ${LIB_LINKAGE_VAR})
 if(ENABLE_UNITYBUILD)
