@@ -20,10 +20,6 @@ else()
   target_link_libraries(${PREXENAME} PRIVATE MYBENCHMARK ${LIB_LINKAGE_VAR})
 endif()
 target_compile_options(${PREXENAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${CUSTOME_FLAGS}>)
-# Specify the path to your library (change to your actual path)
-# set(MyLibrary_DIR "/path/to/my_project/build")
-# Find the library
-# find_library(MyLibrary_LIB MYLIBNAME PATHS ${MyLibrary_DIR})
 
 #enable static analyzer
 setting_enable_staticanalyzer(${PREXENAME})
