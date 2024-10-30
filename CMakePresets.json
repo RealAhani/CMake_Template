@@ -74,7 +74,8 @@
                 "STATIC_ANALYZER": "ON",
                 "ENABLE_SANITIZER": "ON",
                 "ENABLE_WARNING": "ON",
-                "ENABLE_TESTING": "OFF"
+                "ENABLE_TESTING": "OFF",
+                "ENABLE_BENCHMARK": "1"
             }
         },
         {
@@ -90,7 +91,8 @@
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "ON",
-                "ENABLE_TESTING": "ON"
+                "ENABLE_TESTING": "ON",
+                "ENABLE_BENCHMARK": "1"
             }
         },
         {
@@ -106,7 +108,8 @@
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "OFF",
-                "ENABLE_TESTING": "ON"
+                "ENABLE_TESTING": "ON",
+                "ENABLE_BENCHMARK": "1"
             }
         },
         {
@@ -122,7 +125,8 @@
                 "STATIC_ANALYZER": "ON",
                 "ENABLE_SANITIZER": "ON",
                 "ENABLE_WARNING": "ON",
-                "ENABLE_TESTING": "OFF"
+                "ENABLE_TESTING": "OFF",
+                "ENABLE_BENCHMARK": "1"
             },
             "vendor": {
                 "microsoft.com/VisualStudioSettings/CMake/1.0": {
@@ -143,7 +147,8 @@
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "ON",
-                "ENABLE_TESTING": "ON"
+                "ENABLE_TESTING": "ON",
+                "ENABLE_BENCHMARK": "1"
             },
             "vendor": {
                 "microsoft.com/VisualStudioSettings/CMake/1.0": {
@@ -164,7 +169,8 @@
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "OFF",
-                "ENABLE_TESTING": "ON"
+                "ENABLE_TESTING": "ON",
+                "ENABLE_BENCHMARK": "1"
             },
             "vendor": {
                 "microsoft.com/VisualStudioSettings/CMake/1.0": {
@@ -185,7 +191,8 @@
                 "STATIC_ANALYZER": "ON",
                 "ENABLE_SANITIZER": "ON",
                 "ENABLE_WARNING": "ON",
-                "ENABLE_TESTING": "OFF"
+                "ENABLE_TESTING": "OFF",
+                "ENABLE_BENCHMARK": "1"
             }
         },
         {
@@ -201,7 +208,8 @@
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "ON",
-                "ENABLE_TESTING": "ON"
+                "ENABLE_TESTING": "ON",
+                "ENABLE_BENCHMARK": "1"
             }
         },
         {
@@ -217,7 +225,8 @@
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "OFF",
-                "ENABLE_TESTING": "ON"
+                "ENABLE_TESTING": "ON",
+                "ENABLE_BENCHMARK": "1"
             }
         }
     ],

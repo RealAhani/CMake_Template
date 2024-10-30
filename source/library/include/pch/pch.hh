@@ -8,3 +8,4 @@
 #include <map>
 #include <thread>
 #include "Benchmark.hh"
+#include "config.hh"

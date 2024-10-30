@@ -1,0 +1,4 @@
+#pragma once
+#define OS @CURRENTOS@ //OS should be defined like this @CURRENTOS@ without any space
+#define PROFILER @ENABLE_BENCHMARK@ //PROFILER should set through ENABLE_BENCHMARK in cmake_preset btw 0 and 1
+#include "Profiler.hh"

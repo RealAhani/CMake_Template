@@ -1,15 +1,5 @@
 #pragma once
 
-//this is debug mode
-#ifndef NDEBUG
-#define PROFILE()           BENCHMARK(__FUNCTION__)
-#define PROFILE_SCOPE(NAME) BENCHMARK(NAME)
-#define BENCHMARK(NAME)     Profiler::BenchMark profile##__LINE__(NAME);
-#else //this is release mode
-#define PROFILE()           ;
-#define PROFILE_SCOPE(NAME) ;
-#endif // !NDEBUG
-
 namespace Profiler
 {
 class Timer

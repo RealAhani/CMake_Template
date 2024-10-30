@@ -5,7 +5,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/static_analyzer.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/sanitizer.cmake)
 #if You want u can change it to SHARED
 add_library(${MYLIBNAME} ${MYLIB_TYPE} ${mysrc_lib})
-configure_file("./include/osconfig.h.in" "${CMAKE_CURRENT_BINARY_DIR}/generate/osconfig.h")
+configure_file("./include/config.hh.in" "${CMAKE_CURRENT_BINARY_DIR}/generate/config.hh")
 target_include_directories(
   ${MYLIBNAME}
   PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/generate"

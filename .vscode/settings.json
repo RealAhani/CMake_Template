@@ -5,6 +5,7 @@
     "cmake.options.statusBarVisibility": "visible",
     "files.associations": {
         ".clang-tidy": "code-text-binary",
+        "*.in": "code-text-binary",
         "chrono": "cpp",
         "system_error": "cpp",
         "xlocale": "cpp",
@@ -79,6 +80,7 @@
         "xstddef": "cpp",
         "xtr1common": "cpp",
         "xtree": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "cstdarg": "cpp"
     }
 }

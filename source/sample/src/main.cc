@@ -1,8 +1,6 @@
 #include "Log.hh"
-#include "osconfig.h"
 // if u dont use inner library use iostream
 // #include <iostream>
-
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
     PROFILE();

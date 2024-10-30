@@ -1,2 +1,0 @@
-#pragma once
-#define OS @CURRENTOS@ //OS should be defined like this @CURRENTOS@ without any space
