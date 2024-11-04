@@ -9,6 +9,17 @@ else()
   add_executable(${PREXENAME} WIN32 ${mysrc_exe})
 endif()
 
+if(PAKAGE_NAME_LIST)
+  foreach(lib IN LISTS PAKAGE_NAME_LIST)
+    message(STATUS "the ${lib} is ready is ready for exe")
+    find_package(${lib} CONFIG REQUIRED)
+  endforeach()
+  foreach(lib IN LISTS PAKAGE_LINK_VAR_LIST)
+    message(STATUS "the ${lib} is linking to exe")
+    target_link_libraries(${PREXENAME} PRIVATE ${lib})
+  endforeach()
+endif(PAKAGE_NAME_LIST)
+
 if(INTERNAL_MYLIB_USAGE)
   target_precompile_headers(${PREXENAME} REUSE_FROM ${MYLIBNAME})
   if(ENABLE_UNITYBUILD)
@@ -19,6 +30,7 @@ else()
   target_include_directories(${PREXENAME} PUBLIC "./include")
   target_link_libraries(${PREXENAME} PRIVATE MYBENCHMARK ${LIB_LINKAGE_VAR})
 endif()
+
 target_compile_options(${PREXENAME} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${CUSTOME_FLAGS}>)
 
 #enable static analyzer

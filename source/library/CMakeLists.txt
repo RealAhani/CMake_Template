@@ -12,13 +12,21 @@ target_include_directories(
   PUBLIC "./include"
   PUBLIC "./include/pch"
 )
-#if any external lib added with vcpkg and Lib_linkage_var is not empty link and find that lib
-if(LIB_LINKAGE_VAR)
-  find_package(${LIB_LINKAGE_VAR} CONFIG REQUIRED)
-endif(LIB_LINKAGE_VAR)
+
+if(PAKAGE_NAME_LIST)
+  foreach(lib IN LISTS PAKAGE_NAME_LIST)
+    message(STATUS "the ${lib} is ready is ready for exe")
+    find_package(${lib} CONFIG REQUIRED)
+  endforeach()
+  foreach(lib IN LISTS PAKAGE_LINK_VAR_LIST)
+    message(STATUS "the ${lib} is linking to exe")
+    target_link_libraries(${MYLIBNAME} PRIVATE ${lib})
+  endforeach()
+endif(PAKAGE_NAME_LIST)
 
 target_precompile_headers(${MYLIBNAME} PUBLIC "./include/pch/pch.hh")
 target_link_libraries(${MYLIBNAME} PUBLIC MYBENCHMARK PRIVATE ${LIB_LINKAGE_VAR})
+
 if(ENABLE_UNITYBUILD)
   set_target_properties(${MYLIBNAME} PROPERTIES UNITY_BUILD ON)
 endif()

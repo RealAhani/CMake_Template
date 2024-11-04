@@ -28,7 +28,7 @@ set(CPPSTANDARDREQ ON CACHE BOOL "" FORCE)
 # add or remove wanted flags but not comment the line you dont want all 3 variable is needed
 
 set(DEBUG_COMPILER_FLAGS_GCC_CLANG
-    "-g;-Wall;-Wextra;-Wpedantic;-Wshadow;-Wconversion;-Wnon-virtual-dtor;-Wcast-align;-Wunused;-Woverloaded-virtual;-Wsign-conversion;-Wdouble-promotion;-Wformat=2;-Wimplicit-fallthrough;-Wsuggest-override;-Wnull-dereference;-Wold-style-cast;"
+    "-g;-Wall;-Wextra;-Wpedantic;-Wshadow;-Wconversion;-Wnon-virtual-dtor;-Wcast-align;-Wunused;-Woverloaded-virtual;-Wsign-conversion;-Wdouble-promotion;-Wformat=2;-Wimplicit-fallthrough;-Wsuggest-override;-Wnull-dereference;-Wold-style-cast"
     CACHE STRING "" FORCE
 )
 #             -Werror
@@ -49,8 +49,8 @@ set(DEBUG_COMPILER_FLAGS_GCC_CLANG
 #             -Wold-style-cast # warn for c-style casts
 #             -Wpedantic # warn if non-standard C++ is used
 #             ${OS_ANDROID}:-Wno-main>
-set(DEBUG_COMPILER_EXTRA_FLAGS_GCC "-Wmisleading-indentation;-Wduplicated-cond;-Wlogical-op;" CACHE STRING ""
-                                                                                                    FORCE
+set(DEBUG_COMPILER_EXTRA_FLAGS_GCC "-Wmisleading-indentation;-Wduplicated-cond;-Wlogical-op" CACHE STRING ""
+                                                                                                   FORCE
 )
 #             -Wmisleading-indentation # warn if indentation implies blocks where blocks do not exist
 #             -Wduplicated-cond # warn if if / else chain has duplicated conditions
@@ -59,12 +59,12 @@ set(DEBUG_COMPILER_EXTRA_FLAGS_GCC "-Wmisleading-indentation;-Wduplicated-cond;-
 #             $<$<VERSION_GREATER_EQUAL:${CMAKE_CXX_COMPILER_VERSION},8.1>:-Wduplicated-branches> # warn if if / else branches have duplicated code
 
 #flto is not working currently with linux
-set(RELEASE_COMPILER_FLAGS_GCC_CLANG "-O3;-Ofast;-DNDEBUG;-march=native;-ftree-vectorize;" CACHE STRING ""
-                                                                                                 FORCE
+set(RELEASE_COMPILER_FLAGS_GCC_CLANG "-O3;-Ofast;-DNDEBUG;-march=native;-ftree-vectorize" CACHE STRING ""
+                                                                                                FORCE
 )
 
 set(DEBUG_COMPILER_FLAGS_MSVC
-    "/W4;/w14242;/w14254;/w14263;/w14265;/w14287;/we4289;/w14296;/w14311;/w14545;/w14546;/w14547;/w14549;/w14555;/w14619;/w14640;/w14826;/w14905;/w14906;/w14928;/permissive-;/wd4068;/wd4505;/wd4800;/wd4275;"
+    "/W4;/w14242;/w14254;/w14263;/w14265;/w14287;/we4289;/w14296;/w14311;/w14545;/w14546;/w14547;/w14549;/w14555;/w14619;/w14640;/w14826;/w14905;/w14906;/w14928;/permissive-;/wd4068;/wd4505;/wd4800;/wd4275"
     CACHE STRING "" FORCE
 )
 #             /WX     # Werror
@@ -95,15 +95,23 @@ set(DEBUG_COMPILER_FLAGS_MSVC
 #             /wd4505 # disable warnings about unused functions that might be platform-specific
 #             /wd4800 # disable warnings regarding implicit conversions to bool
 #             /wd4275 # disable warnings about exporting non DLL-interface classes
-set(RELEASE_COMPILER_FLAGS_MSVC "/O2;/Oi;/DNDEBUG;/Ob2;/GF;/GT;/Gy;/GL;" CACHE STRING "" FORCE)
+set(RELEASE_COMPILER_FLAGS_MSVC "/O2;/Oi;/DNDEBUG;/Ob2;/GF;/GT;/Gy;/GL" CACHE STRING "" FORCE)
 ##############################################
-#the externall library that you want from github
+#the externall library that you want from github whitout using package manager (vcpkg)
 # add the repo here in seprate string "[1]" "[2]"
 set(REP_URLS CACHE STRING "" FORCE)
 #the branch that you want for each repo "[1]" "[2]"
 set(REP_BRANCH CACHE STRING "" FORCE)
 #the lib linkage vars "sfml:window;sfml:main;..."
 set(LIB_LINKAGE_VAR "" CACHE STRING "" FORCE)
+##############################################
+#the externall library that you want from vcpkg
+# add the pakage_list here in seprate string "[1]" "[2]"
+set(PAKAGE_NAME_LIST #"box2d;raylib"
+)
+#the pakage_link_var that you want for each pakage_list "[1]" "[2]"
+set(PAKAGE_LINK_VAR_LIST # "box2d::box2d;raylib"
+)
 ##############################################
 #chose between g++/clang++ or MSVC
 # set(CPPCOMPILER "g++" CACHE STRING "" FORCE)
