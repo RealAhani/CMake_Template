@@ -99,18 +99,16 @@ set(RELEASE_COMPILER_FLAGS_MSVC "/O2;/Oi;/DNDEBUG;/Ob2;/GF;/GT;/Gy;/GL" CACHE ST
 ##############################################
 #the externall library that you want from github whitout using package manager (vcpkg)
 # add the repo here in seprate string "[1]" "[2]"
-set(REP_URLS CACHE STRING "" FORCE)
+set(REP_URLS "https://github.com/erincatto/box2d.git" CACHE STRING "" FORCE)
 #the branch that you want for each repo "[1]" "[2]"
-set(REP_BRANCH CACHE STRING "" FORCE)
+set(REP_BRANCH "main" CACHE STRING "" FORCE)
 #the lib linkage vars "sfml:window;sfml:main;..."
-set(LIB_LINKAGE_VAR "" CACHE STRING "" FORCE)
+set(LIB_LINKAGE_VAR "box2d" CACHE STRING "" FORCE)
 ##############################################
 #the externall library that you want from vcpkg
-# add the pakage_list here in seprate string "[1]" "[2]"
-set(PAKAGE_NAME_LIST #"box2d;raylib"
-)
-#the pakage_link_var that you want for each pakage_list "[1]" "[2]"
+#the pakage_link_var that you want for each pakage_list
 set(PAKAGE_LINK_VAR_LIST # "box2d::box2d;raylib"
+    "raylib" CACHE STRING "" FORCE
 )
 ##############################################
 #chose between g++/clang++ or MSVC
@@ -163,6 +161,5 @@ set(ENABLE_BENCHMARK "1" CACHE STRING "")
 #     Linkage: either static or nothing(dynamic) (for static or shared libraries)
 # The triplet format is typically <architecture>-<platform>-<linkage>
 # set(VCPKG_TARGET_TRIPLET "x64-windows-static" CACHE STRING "")
-set(VCPKG_TARGET_TRIPLET "x64-windows")
+# set(VCPKG_TARGET_TRIPLET "x64-windows")
 ##############################################
-fetch_repositories()

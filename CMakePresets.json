@@ -169,7 +169,7 @@
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "OFF",
-                "ENABLE_TESTING": "ON",
+                "ENABLE_TESTING": "OFF",
                 "ENABLE_BENCHMARK": "1"
             },
             "vendor": {

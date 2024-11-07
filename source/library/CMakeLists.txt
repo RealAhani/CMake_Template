@@ -3,6 +3,7 @@ include(${CMAKE_HOME_DIRECTORY}/cmake/config.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/src/src_files.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/static_analyzer.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/sanitizer.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/LibsConfig.cmake)
 #if You want u can change it to SHARED
 add_library(${MYLIBNAME} ${MYLIB_TYPE} ${mysrc_lib})
 configure_file("./include/config.hh.in" "${CMAKE_CURRENT_BINARY_DIR}/generate/config.hh")
@@ -13,19 +14,12 @@ target_include_directories(
   PUBLIC "./include/pch"
 )
 
-if(PAKAGE_NAME_LIST)
-  foreach(lib IN LISTS PAKAGE_NAME_LIST)
-    message(STATUS "the ${lib} is ready is ready for exe")
-    find_package(${lib} CONFIG REQUIRED)
-  endforeach()
-  foreach(lib IN LISTS PAKAGE_LINK_VAR_LIST)
-    message(STATUS "the ${lib} is linking to exe")
-    target_link_libraries(${MYLIBNAME} PRIVATE ${lib})
-  endforeach()
-endif(PAKAGE_NAME_LIST)
+# find_package(SFML COMPONENTS system window graphics CONFIG REQUIRED)
+find_package(raylib CONFIG REQUIRED)
+fetch_repositories()
 
 target_precompile_headers(${MYLIBNAME} PUBLIC "./include/pch/pch.hh")
-target_link_libraries(${MYLIBNAME} PUBLIC MYBENCHMARK PRIVATE ${LIB_LINKAGE_VAR})
+target_link_libraries(${MYLIBNAME} PUBLIC MYBENCHMARK PRIVATE ${LIB_LINKAGE_VAR} ${PAKAGE_LINK_VAR_LIST})
 
 if(ENABLE_UNITYBUILD)
   set_target_properties(${MYLIBNAME} PROPERTIES UNITY_BUILD ON)
