@@ -18,6 +18,11 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
     //raylib window init
     InitWindow(0, 0, "Test");
+#if (OS == 1)
+    ToggleBorderlessWindowed();
+    ToggleFullscreen();
+#endif
+
     [[maybe_unused]]
     int const width  = {GetScreenWidth()};
     int const height = {GetScreenHeight()};
@@ -84,14 +89,14 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
     //simulating setting
     SetTargetFPS(GetMonitorRefreshRate(0));
-    float const  timeStep {1.f / 15.f}; //60HZ
-    int8_t const subStepCount {3};
+    float const  timeStep     = {1.f / 15.f}; //60HZ
+    int8_t const subStepCount = {3};
 
     // game loop
     while (!WindowShouldClose() and !isQuit)
     {
         //input managment
-        if (IsKeyPressed(KEY_ESCAPE))
+        if (IsKeyPressed(KEY_ESCAPE)) [[unlikely]]
         {
             isQuit = true;
         }

@@ -26,6 +26,7 @@ AlignConsecutiveMacros: Consecutive
 AlignEscapedNewlines: Left
 AlignOperands: Align
 AlignTrailingComments: true
+ReferenceAlignment: Middle
 
 # Allow
 AllowAllArgumentsOnNextLine: false
@@ -49,6 +50,7 @@ BreakConstructorInitializers: AfterColon
 BreakBeforeBinaryOperators: None
 BreakInheritanceList: AfterColon
 BreakStringLiterals: true
+BreakAfterAttributes: Always
 
 # Initializers & arguments
 BinPackArguments: false
@@ -58,6 +60,7 @@ ConstructorInitializerIndentWidth: 0
 Cpp11BracedListStyle: true
 
 # Braces
+RemoveBracesLLVM: false
 BreakBeforeBraces: Custom
 BraceWrapping:
   AfterCaseLabel: true
@@ -89,6 +92,7 @@ DerivePointerAlignment: false
 
 # Empty lines
 EmptyLineBeforeAccessModifier: Always
+EmptyLineAfterAccessModifier: Always
 KeepEmptyLinesAtTheStartOfBlocks: true
 MaxEmptyLinesToKeep: 2
 

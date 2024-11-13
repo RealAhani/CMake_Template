@@ -160,6 +160,7 @@ set(ENABLE_BENCHMARK "1" CACHE STRING "")
 #     Platform: e.g., windows, linux, osx
 #     Linkage: either static or nothing(dynamic) (for static or shared libraries)
 # The triplet format is typically <architecture>-<platform>-<linkage>
-# set(VCPKG_TARGET_TRIPLET "x64-windows-static" CACHE STRING "")
+# eg. "x64-linux-dynamic" or "x64-linux-release" or "x64-linux" 
+set(VCPKG_TARGET_TRIPLET "x64-linux" CACHE STRING "")
 # set(VCPKG_TARGET_TRIPLET "x64-windows")
 ##############################################
