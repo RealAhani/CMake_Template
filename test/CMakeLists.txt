@@ -8,6 +8,7 @@ if(PROJECT_IS_TOP_LEVEL OR ENABLE_TESTING)
     ${TESTNAME} PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/generate" PRIVATE "../source/library/include"
   )
   target_link_libraries(${TESTNAME} PRIVATE Catch2::Catch2WithMain ${MYLIBNAME})
+  fetch_repositories(${TESTNAME})
   include(CTest)
   include(Catch)
   catch_discover_tests(${TESTNAME})
