@@ -1,6 +1,6 @@
 {
-    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/win-clang-release/compile_commands.json",
-    // "C_Cpp.default.compileCommands": "${workspaceFolder}/build/linux-clang-release/compile_commands.json",
+    // "C_Cpp.default.compileCommands": "${workspaceFolder}/build/win-clang-release/compile_commands.json",
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
     "cmake.useCMakePresets": "always",
     "cmake.options.statusBarVisibility": "visible",
     "files.associations": {
@@ -81,6 +81,12 @@
         "xtr1common": "cpp",
         "xtree": "cpp",
         "xutility": "cpp",
-        "cstdarg": "cpp"
-    }
+        "cstdarg": "cpp",
+        "world.h": "c",
+        "box2d.h": "c",
+        "types.h": "c",
+        "base.h": "c",
+        "id.h": "c",
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }

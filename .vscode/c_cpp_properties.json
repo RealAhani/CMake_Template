@@ -1,11 +1,13 @@
 {
     "configurations": [
         {
-            "name": "Win32",
+            "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                // "/home/alireza/Apps/vcpkg-2024.09.30/installed/x64-linux/include"
-                "${vcpkgRoot}/x64-windows/include"
+                "/home/alireza/Apps/vcpkg-2024.09.30/installed/x64-linux/include",
+                "${workspaceFolder}/build/dependencies/box2d-src/include/box2d",
+                "${workspaceFolder}/build/vcpkg_installed/x64-linux/include",
+                "${workspaceFolder}/build/source/library/generate"
             ],
             "forcedInclude": [
                 "${workspaceFolder}/source/library/include/pch/pch.hh"
@@ -15,12 +17,21 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "windowsSdkVersion": "10.0.26100.0",
-            "cStandard": "c17",
-            "intelliSenseMode": "windows-clang-x64",
-            // "compilerPath": "/usr/bin/clang++",
-            "compilerPath": "C:/Program Files/LLVM/bin/clang++.exe",
-            "cppStandard": "c++23"
+            "cStandard": "c23",
+            "intelliSenseMode": "linux-clang-x64",
+            "compilerPath": "/usr/local/bin/clang++",
+            "cppStandard": "c++23",
+            "configurationProvider": "ms-vscode.cmake-tools",
+            "compileCommands": "build/compile_commands.json",
+            "mergeConfigurations": true,
+            "browse": {
+                "path": [
+                    "build/dependencies/box2d-src/include/box2d",
+                    "build/vcpkg_installed/x64-linux/include",
+                    "build/source/library/generate"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
         }
     ],
     "version": 4

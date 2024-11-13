@@ -16,7 +16,7 @@ target_include_directories(
 
 # find_package(SFML COMPONENTS system window graphics CONFIG REQUIRED)
 find_package(raylib CONFIG REQUIRED)
-fetch_repositories()
+fetch_repositories(${MYLIBNAME})
 
 target_precompile_headers(${MYLIBNAME} PUBLIC "./include/pch/pch.hh")
 target_link_libraries(${MYLIBNAME} PUBLIC MYBENCHMARK PRIVATE ${LIB_LINKAGE_VAR} ${PAKAGE_LINK_VAR_LIST})

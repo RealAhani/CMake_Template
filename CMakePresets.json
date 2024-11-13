@@ -11,16 +11,16 @@
             "description": "General settings that apply to all configurations",
             "hidden": true,
             "generator": "Visual Studio 17 2022",
-            "binaryDir": "${sourceDir}/build/${presetName}",
-            "installDir": "${sourceDir}/build/install/${presetName}"
+            "binaryDir": "${sourceDir}/build/",
+            "installDir": "${sourceDir}/build/install/"
         },
         {
             "name": "conf-clang-common",
             "description": "General settings that apply to all configurations",
             "hidden": true,
             "generator": "Ninja Multi-Config",
-            "binaryDir": "${sourceDir}/build/${presetName}",
-            "installDir": "${sourceDir}/build/install/${presetName}"
+            "binaryDir": "${sourceDir}/build/",
+            "installDir": "${sourceDir}/build/install/"
         },
         {
             "name": "conf-unixlike-common",
@@ -67,6 +67,7 @@
             "description": "Target Windows with the msvc compiler, debug build type",
             "inherits": "conf-windows-common",
             "cacheVariables": {
+                "PRESET_NAME": "Safe",
                 "CPPCOMPILER": "MSVC",
                 "CMAKE_BUILD_TYPE": "Debug",
                 "INTERNAL_MYLIB_USAGE": "ON",
@@ -84,6 +85,7 @@
             "description": "Target Windows with the msvc compiler, debug build type",
             "inherits": "conf-windows-common",
             "cacheVariables": {
+                "PRESET_NAME": "Test",
                 "CPPCOMPILER": "MSVC",
                 "CMAKE_BUILD_TYPE": "Debug",
                 "INTERNAL_MYLIB_USAGE": "ON",
@@ -101,6 +103,7 @@
             "description": "Target Windows with the msvc compiler, release build type",
             "inherits": "conf-windows-common",
             "cacheVariables": {
+                "PRESET_NAME": "",
                 "CPPCOMPILER": "MSVC",
                 "CMAKE_BUILD_TYPE": "Release",
                 "INTERNAL_MYLIB_USAGE": "ON",
@@ -108,7 +111,7 @@
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "OFF",
-                "ENABLE_TESTING": "ON",
+                "ENABLE_TESTING": "OFF",
                 "ENABLE_BENCHMARK": "1"
             }
         },
@@ -118,6 +121,7 @@
             "description": "Target Windows with the clang compiler, debug build type",
             "inherits": "conf-clang-windows-common",
             "cacheVariables": {
+                "PRESET_NAME": "Safe",
                 "CPPCOMPILER": "clang++",
                 "CMAKE_BUILD_TYPE": "Debug",
                 "INTERNAL_MYLIB_USAGE": "ON",
@@ -140,6 +144,7 @@
             "description": "Target Windows with the clang compiler, debug build type",
             "inherits": "conf-clang-windows-common",
             "cacheVariables": {
+                "PRESET_NAME": "Test",
                 "CPPCOMPILER": "clang++",
                 "CMAKE_BUILD_TYPE": "Debug",
                 "INTERNAL_MYLIB_USAGE": "ON",
@@ -162,6 +167,7 @@
             "description": "Target Windows with the clang compiler, release build type",
             "inherits": "conf-clang-windows-common",
             "cacheVariables": {
+                "PRESET_NAME": "",
                 "CPPCOMPILER": "clang++",
                 "CMAKE_BUILD_TYPE": "Release",
                 "INTERNAL_MYLIB_USAGE": "ON",
@@ -184,6 +190,7 @@
             "description": "Target Unix-like OS with the clang compiler, debug build type",
             "inherits": "conf-unixlike-common",
             "cacheVariables": {
+                "PRESET_NAME": "Safe",
                 "CPPCOMPILER": "clang++",
                 "CMAKE_BUILD_TYPE": "Debug",
                 "INTERNAL_MYLIB_USAGE": "ON",
@@ -201,6 +208,7 @@
             "description": "Target Unix-like OS with the clang compiler, debug build type",
             "inherits": "conf-unixlike-common",
             "cacheVariables": {
+                "PRESET_NAME": "Test",
                 "CPPCOMPILER": "clang++",
                 "CMAKE_BUILD_TYPE": "Debug",
                 "INTERNAL_MYLIB_USAGE": "ON",
@@ -218,6 +226,7 @@
             "description": "Target Unix-like OS with the clang compiler, debug build type",
             "inherits": "conf-unixlike-common",
             "cacheVariables": {
+                "PRESET_NAME": "",
                 "CPPCOMPILER": "clang++",
                 "CMAKE_BUILD_TYPE": "Release",
                 "INTERNAL_MYLIB_USAGE": "ON",
@@ -225,7 +234,7 @@
                 "STATIC_ANALYZER": "OFF",
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "OFF",
-                "ENABLE_TESTING": "ON",
+                "ENABLE_TESTING": "OFF",
                 "ENABLE_BENCHMARK": "1"
             }
         }

@@ -20,7 +20,7 @@ set(TESTNAME "${SULOTIONNAME}_TEST" CACHE STRING "" FORCE)
 
 ##############################################
 #your cpp standard version you want to use in this project
-set(CPPVERSION 20 CACHE STRING "" FORCE)
+set(CPPVERSION 23 CACHE STRING "" FORCE)
 set(CPPEXTENTION ON CACHE BOOL "" FORCE)
 set(CPPSTANDARDREQ ON CACHE BOOL "" FORCE)
 ##############################################
@@ -133,9 +133,9 @@ set(STATIC_ANALYZER ON CACHE BOOL "")
 ##############################################
 # this enable asan ,ubsan,
 set(ENABLE_SANITIZER ON CACHE BOOL "")
-set(CLANG_SANITIZER_PATH "C:/Program Files/LLVM/lib/clang/17/lib/windows" CACHE STRING "" FORCE)
-# set(SANITIZERS "-address,-undefined,-memory,-pointer-compare,-pointer-subtract;")
-set(SANITIZERS "address,undefined" CACHE STRING "")
+# set(CLANG_SANITIZER_PATH "C:/Program Files/LLVM/lib/clang/17/lib/windows" CACHE STRING "" FORCE)
+set(SANITIZERS "-address,-undefined,-memory,-pointer-compare,-pointer-subtract;")
+# set(SANITIZERS "address,undefined" CACHE STRING "")
 ##############################################
 set(ENABLE_WARNING ON CACHE BOOL "")
 ##############################################
@@ -143,10 +143,10 @@ set(ENABLE_UNITYBUILD ON CACHE BOOL "")
 ##############################################
 set(ENABLE_TESTING ON CACHE BOOL "")
 ##############################################
-set(CMAKE_TOOLCHAIN_FILE "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
-# set(CMAKE_TOOLCHAIN_FILE "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsystems/vcpkg.cmake"
-#     CACHE STRING "" FORCE
-# )
+# set(CMAKE_TOOLCHAIN_FILE "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
+set(CMAKE_TOOLCHAIN_FILE "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsystems/vcpkg.cmake"
+    CACHE STRING "" FORCE
+)
 ##############################################
 set(ENABLE_PACKAGING ON CACHE BOOL "")
 set(DISCRIPTION "MyProject - A brief description" CACHE STRING "")

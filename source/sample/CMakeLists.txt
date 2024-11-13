@@ -23,7 +23,7 @@ if(INTERNAL_MYLIB_USAGE)
     ${PREXENAME} PRIVATE ${MYLIBNAME} MYBENCHMARK ${LIB_LINKAGE_VAR} ${PAKAGE_LINK_VAR_LIST}
   )
 else()
-  fetch_repositories()
+  fetch_repositories(${PREXENAME})
   target_include_directories(${PREXENAME} PUBLIC "./include")
   target_link_libraries(${PREXENAME} PRIVATE MYBENCHMARK ${LIB_LINKAGE_VAR} ${PAKAGE_LINK_VAR_LIST})
 endif()

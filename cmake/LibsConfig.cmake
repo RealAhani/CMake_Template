@@ -2,7 +2,7 @@ include_guard()
 include(FetchContent)
 set(FETCHCONTENT_BASE_DIR ${CMAKE_BINARY_DIR}/dependencies)
 
-function(fetch_repositories)
+function(fetch_repositories target)
   set_property(GLOBAL PROPERTY USE_FOLDERS ON)
   set(INDEX 0)
   if(REP_URLS)
@@ -24,6 +24,7 @@ function(fetch_repositories)
         message(
           "******************************************************* ${repo_name} GIT_REPOSITORY ${repo_url} GIT_TAG ${repo_branch} "
         )
+        target_include_directories(${target} PRIVATE (${${repo_name}_SOURCE_DIR}/include))
       endforeach()
     endif()
   endif()

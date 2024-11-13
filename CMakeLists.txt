@@ -1,12 +1,14 @@
 message("--------------------------------------------- General info:")
 include(${CMAKE_SOURCE_DIR}/cmake/config.cmake)
 set(CMAKE_CXX_COMPILER ${CPPCOMPILER})
+if(${CPPCOMPILER} STREQUAL "g++")
+set(CMAKE_C_COMPILER gcc)
+else() 
+set(CMAKE_C_COMPILER clang)
+endif()
+
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/out/bin") # .exe and .dll
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/out/lib") # .so and .dylib
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/out/lib") # .lib and .a
-#TODO:N1 ADD new build type for "RelWithDebInfo" and "MinSizeRel" maybe need change blew condition for appending these
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
   if(ENABLE_WARNING)
@@ -35,6 +37,7 @@ endif()
 find_program(CCACHE_FOUND ccache)
 if(CCACHE_FOUND)
   set(CMAKE_CXX_COMPILER_LAUNCHER ccache CACHE STRING "C++ compiler launcher")
+  set(CMAKE_C_COMPILER_LAUNCHER ccache CACHE STRING "C compiler launcher")
   message("--------------------------------------------- CCACHE: ON ")
   set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
 endif()
@@ -49,14 +52,21 @@ set(CMAKE_CXX_EXTENSIONS ${CPPEXTENTION})
 set(BUILD_ARCH "" CACHE STRING "os architecture type")
 message("--------------------------------------------- OS: ${MYOS} ")
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-  set(BUILD_ARCH "64-bit")
+  set(BUILD_ARCH "x64")
   message("--------------------------------------------- Arch: ${BUILD_ARCH} ")
 else()
-  set(BUILD_ARCH "32-bit")
+  set(BUILD_ARCH "x86")
   message("--------------------------------------------- Arch: ${BUILD_ARCH} ")
 endif()
-message("--------------------------------------------- COMPILER ID: ${CMAKE_CXX_COMPILER_ID} ")
-message("--------------------------------------------- COMPILER: ${CPPCOMPILER} ")
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/out/${CMAKE_BUILD_TYPE}_${BUILD_ARCH}${PRESET_NAME}/bin") # .exe and .dll
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/out/${CMAKE_BUILD_TYPE}_${BUILD_ARCH}${PRESET_NAME}/lib") # .so and .dylib
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/out/${CMAKE_BUILD_TYPE}_${BUILD_ARCH}${PRESET_NAME}/lib") # .lib and .a
+#TODO:N1 ADD new build type for "RelWithDebInfo" and "MinSizeRel" maybe need change blew condition for appending these
+
+message("--------------------------------------------- C++ COMPILER ID: ${CMAKE_CXX_COMPILER_ID} ")
+message("--------------------------------------------- C++ COMPILER: ${CPPCOMPILER} ")
+message("--------------------------------------------- C COMPILER: ${CMAKE_C_COMPILER} ")
 message("--------------------------------------------- BUILD TYPE: ${CMAKE_BUILD_TYPE}  ")
 message("--------------------------------------------- UNITY BUILD: ${ENABLE_UNITYBUILD} ")
 message("--------------------------------------------- Compiler Flags: ${CUSTOME_FLAGS} ")

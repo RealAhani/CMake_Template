@@ -1,7 +1,7 @@
 ---
 # Project
 Standard: c++17
-ColumnLimit: 120
+ColumnLimit: 90
 
 # Indentation
 AccessModifierOffset: -4
@@ -121,7 +121,7 @@ SpaceAfterTemplateKeyword: true
 SpaceAroundPointerQualifiers: Default
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeCaseColon: false
-SpaceBeforeCpp11BracedList: false
+SpaceBeforeCpp11BracedList: true
 SpaceBeforeCtorInitializerColon: true
 SpaceBeforeInheritanceColon: true
 SpaceBeforeParens: ControlStatements
@@ -133,7 +133,7 @@ SpacesBeforeTrailingComments: 1
 SpacesInAngles: false
 SpacesInCStyleCastParentheses: false
 SpacesInConditionalStatement: false
-SpacesInContainerLiterals: false
+SpacesInContainerLiterals: true
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
 
@@ -142,4 +142,4 @@ UseCRLF: false
 
 # Qualifiers (const, volatile, static, etc)
 QualifierAlignment: Custom
-QualifierOrder: ["static", "inline", "constexpr", "const", "volatile", "type"]
+QualifierOrder: ["inline", "static" , "constexpr", "volatile", "type" , "const"]
