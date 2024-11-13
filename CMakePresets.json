@@ -27,6 +27,9 @@
             "description": "Unix-like OS settings for gcc and clang toolchains",
             "hidden": true,
             "inherits": "conf-clang-common",
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsystems/vcpkg.cmake"
+            },
             "vendor": {
                 "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
                     "sourceDir": "$env{HOME}/.vs/$ms{projectDirName}"
@@ -38,6 +41,10 @@
             "description": "Windows settings for MSBuild toolchain that apply to msvc and clang",
             "hidden": true,
             "inherits": "conf-common",
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "CLANG_SANITIZER_PATH": "C:/Program Files/LLVM/lib/clang/17/lib/windows"
+            },
             "architecture": {
                 "value": "x64",
                 "strategy": "external"
@@ -52,6 +59,10 @@
             "description": "Windows settings for MSBuild toolchain that apply to msvc and clang",
             "hidden": true,
             "inherits": "conf-clang-common",
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "CLANG_SANITIZER_PATH": "C:/Program Files/LLVM/lib/clang/17/lib/windows"
+            },
             "architecture": {
                 "value": "x64",
                 "strategy": "external"

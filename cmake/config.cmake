@@ -98,9 +98,9 @@ set(DEBUG_COMPILER_FLAGS_MSVC
 set(RELEASE_COMPILER_FLAGS_MSVC "/O2;/Oi;/DNDEBUG;/Ob2;/GF;/GT;/Gy;/GL" CACHE STRING "" FORCE)
 ##############################################
 #the externall library that you want from github whitout using package manager (vcpkg)
-# add the repo here in seprate string "[1]" "[2]"
+# add the repo here in seprate string "[1]" "[2]" , ...
 set(REP_URLS "https://github.com/erincatto/box2d.git" CACHE STRING "" FORCE)
-#the branch that you want for each repo "[1]" "[2]"
+#the branch that you want for each repo "[1]" "[2]", ...
 set(REP_BRANCH "main" CACHE STRING "" FORCE)
 #the lib linkage vars "sfml:window;sfml:main;..."
 set(LIB_LINKAGE_VAR "box2d" CACHE STRING "" FORCE)
@@ -112,8 +112,6 @@ set(PAKAGE_LINK_VAR_LIST # "box2d::box2d;raylib"
 )
 ##############################################
 #chose between g++/clang++ or MSVC
-# set(CPPCOMPILER "g++" CACHE STRING "" FORCE)
-# set(CPPCOMPILER "MSVC" CACHE STRING "" FORCE)
 set(CPPCOMPILER "clang++" CACHE STRING "")
 ##############################################
 #the internal library usage setting (MYLIBNAME)
@@ -133,7 +131,6 @@ set(STATIC_ANALYZER ON CACHE BOOL "")
 ##############################################
 # this enable asan ,ubsan,
 set(ENABLE_SANITIZER ON CACHE BOOL "")
-# set(CLANG_SANITIZER_PATH "C:/Program Files/LLVM/lib/clang/17/lib/windows" CACHE STRING "" FORCE)
 set(SANITIZERS "-address,-undefined,-memory,-pointer-compare,-pointer-subtract;")
 # set(SANITIZERS "address,undefined" CACHE STRING "")
 ##############################################
@@ -142,11 +139,6 @@ set(ENABLE_WARNING ON CACHE BOOL "")
 set(ENABLE_UNITYBUILD ON CACHE BOOL "")
 ##############################################
 set(ENABLE_TESTING ON CACHE BOOL "")
-##############################################
-# set(CMAKE_TOOLCHAIN_FILE "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
-set(CMAKE_TOOLCHAIN_FILE "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsystems/vcpkg.cmake"
-    CACHE STRING "" FORCE
-)
 ##############################################
 set(ENABLE_PACKAGING ON CACHE BOOL "")
 set(DISCRIPTION "MyProject - A brief description" CACHE STRING "")
@@ -160,7 +152,7 @@ set(ENABLE_BENCHMARK "1" CACHE STRING "")
 #     Platform: e.g., windows, linux, osx
 #     Linkage: either static or nothing(dynamic) (for static or shared libraries)
 # The triplet format is typically <architecture>-<platform>-<linkage>
-# eg. "x64-linux-dynamic" or "x64-linux-release" or "x64-linux" 
+# eg. "x64-linux-dynamic" or "x64-linux-release" or "x64-linux"
 set(VCPKG_TARGET_TRIPLET "x64-linux" CACHE STRING "")
 # set(VCPKG_TARGET_TRIPLET "x64-windows")
 ##############################################
