@@ -1,3 +1,4 @@
+#ROOT
 message("--------------------------------------------- General info:")
 include(${CMAKE_SOURCE_DIR}/cmake/config.cmake)
 set(CMAKE_CXX_COMPILER ${CPPCOMPILER})
@@ -42,7 +43,7 @@ if(CCACHE_FOUND)
   set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
 endif()
 
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.20...3.31)
 
 project(${SULOTIONNAME} VERSION ${PRVERSION} LANGUAGES ${PRLANG})
 set(CMAKE_CXX_STANDARD ${CPPVERSION})

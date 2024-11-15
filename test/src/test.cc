@@ -1,3 +1,5 @@
+// "Copyright 2024 RealAhani"
+
 #include "Log.hh"
 #include <catch2/catch_test_macros.hpp>
 

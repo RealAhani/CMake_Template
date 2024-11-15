@@ -1,3 +1,5 @@
+// "Copyright 2024 RealAhani"
+
 #pragma once
 
 namespace Profiler
@@ -135,7 +137,8 @@ public:
         m_data.m_name      = name;
         m_data.m_duration  = 0;
         m_data.m_startTime = m_timer.Start_Timer();
-        m_data.threadID    = std::hash<std::thread::id> {}(std::this_thread::get_id());
+        m_data.threadID    = std::hash<std::thread::id> {}(
+            std::this_thread::get_id());
     }
     ~BenchMark() noexcept
     {
@@ -155,4 +158,4 @@ private:
     Timer          m_timer = {};
     Benchmark_Data m_data  = {};
 };
-} // namespace Profiler
+}  // namespace Profiler

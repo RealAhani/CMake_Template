@@ -28,7 +28,7 @@ set(CPPSTANDARDREQ ON CACHE BOOL "" FORCE)
 # add or remove wanted flags but not comment the line you dont want all 3 variable is needed
 
 set(DEBUG_COMPILER_FLAGS_GCC_CLANG
-    "-g;-Wall;-Wextra;-Wpedantic;-Wshadow;-Wconversion;-Wnon-virtual-dtor;-Wcast-align;-Wunused;-Woverloaded-virtual;-Wsign-conversion;-Wdouble-promotion;-Wformat=2;-Wimplicit-fallthrough;-Wsuggest-override;-Wnull-dereference;-Wold-style-cast"
+    "-g;-fno-limit-debug-info;-Wall;-Wextra;-Wpedantic;-Wshadow;-Wconversion;-Wnon-virtual-dtor;-Wcast-align;-Wunused;-Woverloaded-virtual;-Wsign-conversion;-Wdouble-promotion;-Wformat=2;-Wimplicit-fallthrough;-Wsuggest-override;-Wnull-dereference;-Wold-style-cast"
     CACHE STRING "" FORCE
 )
 #             -Werror

@@ -1,7 +1,7 @@
 ---
 # Project
 Standard: c++17
-ColumnLimit: 90
+ColumnLimit: 70 
 
 # Indentation
 AccessModifierOffset: -4
@@ -25,7 +25,7 @@ AlignConsecutiveDeclarations: Consecutive
 AlignConsecutiveMacros: Consecutive
 AlignEscapedNewlines: Left
 AlignOperands: Align
-AlignTrailingComments: true
+# AlignTrailingComments: true
 ReferenceAlignment: Middle
 
 # Allow
@@ -116,8 +116,10 @@ PenaltyReturnTypeOnItsOwnLine: 500
 PointerAlignment: Left
 
 # Comments
-ReflowComments: false
-
+ReflowComments: true
+AlignTrailingComments:
+  Kind: Always
+  OverEmptyLines: 2
 # Spaces
 SpaceAfterCStyleCast: false
 SpaceAfterLogicalNot: false
@@ -133,7 +135,7 @@ SpaceBeforeRangeBasedForLoopColon: true
 SpaceBeforeSquareBrackets: false
 SpaceInEmptyBlock: false
 SpaceInEmptyParentheses: false
-SpacesBeforeTrailingComments: 1
+SpacesBeforeTrailingComments: 2
 SpacesInAngles: false
 SpacesInCStyleCastParentheses: false
 SpacesInConditionalStatement: false

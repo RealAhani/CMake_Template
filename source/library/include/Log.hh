@@ -1,3 +1,5 @@
+// "Copyright 2024 RealAhani"
+
 #pragma once
 // #include "osconfig.h"
 // #if (OS == 1)
@@ -14,4 +16,4 @@ namespace mloge
 
 /*extern "C" MYLIB_API*/ void print(std::string const & str);
 int                           myfirsttest(int id);
-} // namespace mloge
+}  // namespace mloge
