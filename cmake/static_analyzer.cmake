@@ -9,7 +9,7 @@ macro(setting_enable_staticanalyzer target_link)
         set(CPPCHECK_TEMPLATE "vs")
       else()
         set(CPPCHECK_TEMPLATE "gcc")
-      endif()
+      endif(CMAKE_GENERATOR MATCHES ".*Visual Studio.*")
       message(
         "--------------------------------------------- CPP-Check Template ${target_link}:  ${CPPCHECK_TEMPLATE} "
       )
@@ -32,29 +32,23 @@ macro(setting_enable_staticanalyzer target_link)
         "--inconclusive"
       )
       set_target_properties(${target_link} PROPERTIES CXX_CPPCHECK "${CMAKE_CXX_CPPCHECK}")
-    else()
-        message("--------------------------------------------- CPP-CHECK is not found on this ${target_link} ")
-    endif()
+    endif(CMAKE_CXX_CPPCHECK)
 
     # CLANG_TIDY Setup
     find_program(CMAKE_CXX_CLANG_TIDY NAMES clang-tidy REQUIRED)
     if(CMAKE_CXX_CLANG_TIDY)
       message("--------------------------------------------- CLANG-TIDY ${target_link}: ON ")
       set_target_properties(${target_link} PROPERTIES CXX_CLANG_TIDY "${CMAKE_CXX_CLANG_TIDY}")
-    else()
-        message("--------------------------------------------- CLANG-TIDY is not found on this ${target_link} ")
-    endif()
+    endif(CMAKE_CXX_CLANG_TIDY)
 
     # CPPLINT Setup
     find_program(CMAKE_CXX_CPPLINT NAMES cpplint REQUIRED)
     if(CMAKE_CXX_CPPLINT)
-        message("--------------------------------------------- CPP-lint ${target_link}:  ON ")
-        set_target_properties(${target_link} PROPERTIES CXX_CPPLINT "${CMAKE_CXX_CPPLINT}")
-    else()
-        message("--------------------------------------------- CPP-lint is not found on this ${target_link} ")
-    endif()
+      message("--------------------------------------------- CPP-lint ${target_link}:  ON ")
+      set_target_properties(${target_link} PROPERTIES CXX_CPPLINT "${CMAKE_CXX_CPPLINT}")
+    endif(CMAKE_CXX_CPPLINT)
 
-# INCLUDE_WHAT_YOU_USE Setup
+    # INCLUDE_WHAT_YOU_USE Setup
     # find_program(CMAKE_CXX_INCLUDE_WHAT_YOU_USE NAMES include-what-you-use REQUIRED)
     # if(CMAKE_CXX_INCLUDE_WHAT_YOU_USE)
     #     message("--------------------------------------------- IWYU ${target_link}:  ON ")
@@ -63,11 +57,11 @@ macro(setting_enable_staticanalyzer target_link)
     #     message("--------------------------------------------- IWYU is not found on this ${target_link} ")
     # endif()
 
-# static_analyzer is OFF
+    # static_analyzer is OFF
   else()
     message("--------------------------------------------- CPP-Check ${target_link}:  OFF ")
     message("--------------------------------------------- CLANG-TIDY ${target_link}: OFF ")
     message("--------------------------------------------- CPP_LINT ${target_link}: OFF ")
     message("--------------------------------------------- INCLUDE_WHAT_YOU_USE ${target_link}: OFF ")
-  endif()
+  endif(STATIC_ANALYZER)
 endmacro()

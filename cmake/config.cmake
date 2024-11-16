@@ -127,7 +127,6 @@ set(MYLIB_TYPE "STATIC" CACHE STRING "")
 # It can be ON or OFF if you want win only set it to false and provide winmain entry point
 set(SHOW_CONSOLE ON CACHE BOOL "" FORCE)
 ##############################################
-set(STATIC_ANALYZER ON CACHE BOOL "")
 ##############################################
 # this enable asan ,ubsan,
 set(ENABLE_SANITIZER ON CACHE BOOL "")
@@ -146,13 +145,4 @@ set(VENDOR "YOUR COMPANY" CACHE STRING "")
 set(SUPPORTMAIL "support@mycompany.com" CACHE STRING "")
 ##############################################
 set(ENABLE_BENCHMARK "1" CACHE STRING "")
-# Make sure CMake prefers static libraries
-# A triplet specifies the following:
-#     Architecture: e.g., x64 or x86
-#     Platform: e.g., windows, linux, osx
-#     Linkage: either static or nothing(dynamic) (for static or shared libraries)
-# The triplet format is typically <architecture>-<platform>-<linkage>
-# eg. "x64-linux-dynamic" or "x64-linux-release" or "x64-linux"
-set(VCPKG_TARGET_TRIPLET "x64-linux" CACHE STRING "")
-# set(VCPKG_TARGET_TRIPLET "x64-windows")
 ##############################################

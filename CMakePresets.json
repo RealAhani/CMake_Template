@@ -12,7 +12,11 @@
             "hidden": true,
             "generator": "Visual Studio 17 2022",
             "binaryDir": "${sourceDir}/build/",
-            "installDir": "${sourceDir}/build/install/"
+            "installDir": "${sourceDir}/build/install/",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "CMAKE_COLOR_DIAGNOSTICS": "ON"
+            }
         },
         {
             "name": "conf-clang-common",
@@ -20,7 +24,11 @@
             "hidden": true,
             "generator": "Ninja Multi-Config",
             "binaryDir": "${sourceDir}/build/",
-            "installDir": "${sourceDir}/build/install/"
+            "installDir": "${sourceDir}/build/install/",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "CMAKE_COLOR_DIAGNOSTICS": "ON"
+            }
         },
         {
             "name": "conf-unixlike-common",
@@ -28,7 +36,8 @@
             "hidden": true,
             "inherits": "conf-clang-common",
             "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsystems/vcpkg.cmake"
+                "CMAKE_TOOLCHAIN_FILE": "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsystems/vcpkg.cmake",
+                "VCPKG_TARGET_TRIPLET": "x64-linux"
             },
             "vendor": {
                 "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
@@ -43,7 +52,8 @@
             "inherits": "conf-common",
             "cacheVariables": {
                 "CMAKE_TOOLCHAIN_FILE": "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake",
-                "CLANG_SANITIZER_PATH": "C:/Program Files/LLVM/lib/clang/17/lib/windows"
+                "CLANG_SANITIZER_PATH": "C:/Program Files/LLVM/lib/clang/17/lib/windows",
+                "VCPKG_TARGET_TRIPLET": "x64-windows-static"
             },
             "architecture": {
                 "value": "x64",
@@ -61,7 +71,8 @@
             "inherits": "conf-clang-common",
             "cacheVariables": {
                 "CMAKE_TOOLCHAIN_FILE": "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake",
-                "CLANG_SANITIZER_PATH": "C:/Program Files/LLVM/lib/clang/17/lib/windows"
+                "CLANG_SANITIZER_PATH": "C:/Program Files/LLVM/lib/clang/17/lib/windows",
+                "VCPKG_TARGET_TRIPLET": "x64-windows-static"
             },
             "architecture": {
                 "value": "x64",

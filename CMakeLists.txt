@@ -3,11 +3,10 @@ message("--------------------------------------------- General info:")
 include(${CMAKE_SOURCE_DIR}/cmake/config.cmake)
 set(CMAKE_CXX_COMPILER ${CPPCOMPILER})
 if(${CPPCOMPILER} STREQUAL "g++")
-set(CMAKE_C_COMPILER gcc)
-else() 
-set(CMAKE_C_COMPILER clang)
+  set(CMAKE_C_COMPILER gcc)
+else()
+  set(CMAKE_C_COMPILER clang)
 endif()
-
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -60,9 +59,15 @@ else()
   message("--------------------------------------------- Arch: ${BUILD_ARCH} ")
 endif()
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/out/${CMAKE_BUILD_TYPE}_${BUILD_ARCH}${PRESET_NAME}/bin") # .exe and .dll
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/out/${CMAKE_BUILD_TYPE}_${BUILD_ARCH}${PRESET_NAME}/lib") # .so and .dylib
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "$<0:>${CMAKE_BINARY_DIR}/out/${CMAKE_BUILD_TYPE}_${BUILD_ARCH}${PRESET_NAME}/lib") # .lib and .a
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
+    "$<0:>${CMAKE_BINARY_DIR}/out/${CMAKE_BUILD_TYPE}_${BUILD_ARCH}${PRESET_NAME}/bin"
+) # .exe and .dll
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY
+    "$<0:>${CMAKE_BINARY_DIR}/out/${CMAKE_BUILD_TYPE}_${BUILD_ARCH}${PRESET_NAME}/lib"
+) # .so and .dylib
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY
+    "$<0:>${CMAKE_BINARY_DIR}/out/${CMAKE_BUILD_TYPE}_${BUILD_ARCH}${PRESET_NAME}/lib"
+) # .lib and .a
 #TODO:N1 ADD new build type for "RelWithDebInfo" and "MinSizeRel" maybe need change blew condition for appending these
 
 message("--------------------------------------------- C++ COMPILER ID: ${CMAKE_CXX_COMPILER_ID} ")

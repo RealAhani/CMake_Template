@@ -19,10 +19,10 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
     // raylib window init
     InitWindow(0, 0, "Test");
-#if (OS == 1)
-    ToggleBorderlessWindowed();
+    // #if (OS == 1)
+    // ToggleBorderlessWindowed();
     ToggleFullscreen();
-#endif
+    // #endif
 
     [[maybe_unused]]
     int const width  = {GetScreenWidth()};
