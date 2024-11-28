@@ -36,7 +36,7 @@
             "hidden": true,
             "inherits": "conf-clang-common",
             "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "/home/alireza/Apps/vcpkg-2024.09.30/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_TOOLCHAIN_FILE": "/home/nullref/my-Apps/vcpkg/scripts/buildsystems/vcpkg.cmake",
                 "VCPKG_TARGET_TRIPLET": "x64-linux"
             },
             "vendor": {

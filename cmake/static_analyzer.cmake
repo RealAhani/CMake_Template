@@ -49,13 +49,13 @@ macro(setting_enable_staticanalyzer target_link)
     endif(CMAKE_CXX_CPPLINT)
 
     # INCLUDE_WHAT_YOU_USE Setup
-    # find_program(CMAKE_CXX_INCLUDE_WHAT_YOU_USE NAMES include-what-you-use REQUIRED)
-    # if(CMAKE_CXX_INCLUDE_WHAT_YOU_USE)
-    #     message("--------------------------------------------- IWYU ${target_link}:  ON ")
-    #     set_target_properties(${target_link} PROPERTIES CXX_INCLUDE_WHAT_YOU_USE "${CMAKE_CXX_INCLUDE_WHAT_YOU_USE}")
-    # else()
-    #     message("--------------------------------------------- IWYU is not found on this ${target_link} ")
-    # endif()
+    find_program(CMAKE_CXX_INCLUDE_WHAT_YOU_USE NAMES include-what-you-use REQUIRED)
+    if(CMAKE_CXX_INCLUDE_WHAT_YOU_USE)
+        message("--------------------------------------------- IWYU ${target_link}:  ON ")
+        set_target_properties(${target_link} PROPERTIES CXX_INCLUDE_WHAT_YOU_USE "${CMAKE_CXX_INCLUDE_WHAT_YOU_USE}")
+    else()
+        message("--------------------------------------------- IWYU is not found on this ${target_link} ")
+    endif()
 
     # static_analyzer is OFF
   else()
