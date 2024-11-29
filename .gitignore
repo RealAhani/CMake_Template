@@ -44,6 +44,9 @@ vcpkg_installed/
 .vs/
 .idea/
 
+#Clangd cache folder
+.cache/
+
 *.bak
 *.swp
 *~
