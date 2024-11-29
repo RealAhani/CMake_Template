@@ -51,9 +51,9 @@
             "hidden": true,
             "inherits": "conf-common",
             "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake",
-                "CLANG_SANITIZER_PATH": "C:/Program Files/LLVM/lib/clang/17/lib/windows",
-                "VCPKG_TARGET_TRIPLET": "x64-windows-static"
+                "CMAKE_TOOLCHAIN_FILE": "C:/_dev/vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "CLANG_SANITIZER_PATH": "C:/Program Files/LLVM/lib/clang/19/lib/windows",
+                "VCPKG_TARGET_TRIPLET": "x64-windows"
             },
             "architecture": {
                 "value": "x64",
@@ -70,9 +70,9 @@
             "hidden": true,
             "inherits": "conf-clang-common",
             "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "F:/VcPakage/vcpkg/scripts/buildsystems/vcpkg.cmake",
-                "CLANG_SANITIZER_PATH": "C:/Program Files/LLVM/lib/clang/17/lib/windows",
-                "VCPKG_TARGET_TRIPLET": "x64-windows-static"
+                "CMAKE_TOOLCHAIN_FILE": "C:/_dev/vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "CLANG_SANITIZER_PATH": "C:/Program Files/LLVM/lib/clang/19/lib/windows",
+                "VCPKG_TARGET_TRIPLET": "x64-windows"
             },
             "architecture": {
                 "value": "x64",
