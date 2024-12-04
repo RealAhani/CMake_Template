@@ -1,6 +1,6 @@
 # A Template to start a Cmake/C++ project with using libraries
 
-# Windows and linux are now supported
+# Windows and linux/unix-likes are now supported
 # pre requresit app , pakages , Dependencies
 ### cmake ,Ninja ,ccache ,clang-tidy ,cppcheck ,cpplint ,iwyu ,clang-format ,cmake-format ,vcpkg ,and a compiler like clang++ or cl are should be installed and added to your system path enviroment
 
@@ -26,7 +26,7 @@ msvc generation project is work but for build the codes you should build within 
 ### 3.if you dont want to use cmake presets you can use build.bat (but cmake prests are preferred)
 
       (in Safe build (Safe-Debug) all warings,sanitizer,static analyzes( cppcheck, clang-tidy , cpplint ) are enabled for each compiler defienitions)
-      (for Release build warning are turn off and optimizations for compile and lto(not supported on linux) are enabled)
+      (for Release build warning are turn off and optimizations for compile and lto(not supported on unix/linux) are enabled)
       (Static Analyzers and sanitizer are do increase the build time (not work smoothly on msvc) ... and have some runtime overhead )
 ### 4.if you want to use test with catch2 set the preset to warning mode
         (for some reason safe mode and test does not work at the same time)

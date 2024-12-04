@@ -36,8 +36,8 @@
             "hidden": true,
             "inherits": "conf-clang-common",
             "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "/home/nullref/my-Apps/vcpkg/scripts/buildsystems/vcpkg.cmake",
-                "VCPKG_TARGET_TRIPLET": "x64-linux"
+                "CMAKE_TOOLCHAIN_FILE": "/Applications/Utilities/Vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "VCPKG_TARGET_TRIPLET": "x64-osx"
             },
             "vendor": {
                 "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
@@ -207,8 +207,8 @@
             }
         },
         {
-            "name": "linux-clang-safe",
-            "displayName": "Linux Clang Safe",
+            "name": "unix-clang-safe",
+            "displayName": "Unix Clang Safe",
             "description": "Target Unix-like OS with the clang compiler, debug build type",
             "inherits": "conf-unixlike-common",
             "cacheVariables": {
@@ -225,8 +225,8 @@
             }
         },
         {
-            "name": "linux-clang-test",
-            "displayName": "Linux Clang Test",
+            "name": "unix-clang-test",
+            "displayName": "Unix Clang Test",
             "description": "Target Unix-like OS with the clang compiler, debug build type",
             "inherits": "conf-unixlike-common",
             "cacheVariables": {
@@ -243,8 +243,8 @@
             }
         },
         {
-            "name": "linux-clang-release",
-            "displayName": "Linux Clang Release",
+            "name": "unix-clang-release",
+            "displayName": "Unix Clang Release",
             "description": "Target Unix-like OS with the clang compiler, debug build type",
             "inherits": "conf-unixlike-common",
             "cacheVariables": {
@@ -299,21 +299,21 @@
             "configuration": "Release"
         },
         {
-            "name": "linux-clang-safe",
-            "displayName": "Linux Clang Safe",
-            "configurePreset": "linux-clang-safe",
+            "name": "unix-clang-safe",
+            "displayName": "Unix Clang Safe",
+            "configurePreset": "unix-clang-safe",
             "configuration": "Debug"
         },
         {
-            "name": "linux-clang-test",
-            "displayName": "Linux Clang Test",
-            "configurePreset": "linux-clang-test",
+            "name": "unix-clang-test",
+            "displayName": "Unix Clang Test",
+            "configurePreset": "unix-clang-test",
             "configuration": "Debug"
         },
         {
-            "name": "linux-clang-release",
-            "displayName": "Linux Clang Release",
-            "configurePreset": "linux-clang-release",
+            "name": "unix-clang-release",
+            "displayName": "Unix Clang Release",
+            "configurePreset": "unix-clang-release",
             "configuration": "Release"
         }
     ],
@@ -349,7 +349,7 @@
             "displayName": "Strict",
             "description": "Enable output and stop on failure",
             "inherits": "test-common",
-            "configurePreset": "linux-clang-test"
+            "configurePreset": "unix-clang-test"
         }
     ]
 }

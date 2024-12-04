@@ -1,9 +1,9 @@
 macro(setting_enable_sanitizer target_link)
   if(ENABLE_SANITIZER)
-    if(LINUX) # this is linux
+    if(UNIX OR LINUX) # this is for unix/linux
       if(${CPPCOMPILER} STREQUAL "clang++" OR ${CPPCOMPILER} STREQUAL "g++")
         message(
-          "--------------------------------------------- SANITIZER IS ON IN (GNU) ${target_link} WITH: ${SANITIZERS}"
+          "--------------------------------------------- SANITIZER IS ON IN (UNIX-LIKE) ${target_link} WITH: ${SANITIZERS}"
         )
         set(CMAKE_CXX_FLAGS_DEBUG
             "${CMAKE_CXX_FLAGS_DEBUG} -fno-omit-frame-pointer -fsanitize=address,undefined,leak"
@@ -21,7 +21,7 @@ macro(setting_enable_sanitizer target_link)
                                                                                "clang-cl"
       )
         message(
-          "--------------------------------------------- SANITIZER IS ON IN (GNU) ${target_link} WITH: ${SANITIZERS}"
+          "--------------------------------------------- SANITIZER IS ON IN (WIN) ${target_link} WITH: ${SANITIZERS}"
         )
         target_compile_options(${target_link} PUBLIC -fsanitize=${SANITIZERS} -fno-omit-frame-pointer)
         target_link_libraries(
