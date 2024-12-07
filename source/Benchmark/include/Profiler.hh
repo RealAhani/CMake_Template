@@ -1,6 +1,5 @@
 // "Copyright 2024 RealAhani"
 
-#pragma once
 // Benchmark is ON
 #if (PROFILER == 1)
 #define PROFILE()           BENCHMARK(__FUNCTION__)

@@ -1,6 +1,12 @@
 // "Copyright 2024 RealAhani"
 
 #pragma once
-#define OS @CURRENTOS@ //OS should be defined like this @CURRENTOS@ without any space
+
+#define OS @CURRENTOS@              //OS should be defined like this @CURRENTOS@ without any space
 #define PROFILER @ENABLE_BENCHMARK@ //PROFILER should set through ENABLE_BENCHMARK in cmake_preset btw 0 and 1
+
+#define PROJECT_VERSION std::string{"@PRVERSION@"}  //project version
+#define PROJECT_NAME std::string{"@PRNAME@"}        //project name 
+#define CPP_VERSION std::string{"@CPPVERSION@"}     //cpp version 
+
 #include "Profiler.hh"

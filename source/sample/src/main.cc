@@ -1,5 +1,6 @@
 // "Copyright 2024 Realahani"
 
+#include "config.hh"
 #include "pch.hh"
 #include "Log.hh"
 
@@ -9,13 +10,19 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     // benchmark
     // PROFILE();
     // if u use internal lib
-#if (OS == 1)
+
+    // project information
+#if (OS == 1)                       // current OS is Windwos
     mloge::print("WIN");
-#elif (OS == 2)
+#elif (OS == 2)                     // current OS is Linux
     mloge::print("LINUX");
-#elif (OS == 3)
+#elif (OS == 3)                     // current OS is MacOS
     mloge::print("MAC");
 #endif
+    mloge::print(PROJECT_NAME);     // project name
+    mloge::print(CPP_VERSION);      // cpp version
+    mloge::print(PROJECT_VERSION);  // projecet version
+    // project information
 
     // raylib window init
     InitWindow(0, 0, "Test");
@@ -159,7 +166,10 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
 // if it is a window app and need WinMain
 // #include <windows.h>
-// int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+// int WINAPI WinMain(HINSTANCE hInstance,
+//                    HINSTANCE hPrevInstance,
+//                    LPSTR     lpCmdLine,
+//                    int       nCmdShow)
 // {
 //     MessageBox(nullptr, "Hello, World!", "My First WinMain", MB_OK);
 

@@ -21,22 +21,22 @@ public:
     ~Timer()        = default;
 
     [[nodiscard]]
-    long long Get_DeltaTime_MicroSec() noexcept
+    long long getDeltaTieMicroSec() noexcept
     {
         using namespace std::chrono;
         return duration_cast<micro>(m_endTime - m_startTime).count();
     }
 
     [[maybe_unused]]
-    long long Start_Timer() noexcept
+    long long startTimer() noexcept
     {
-        Reset_Timer();
+        resetTimer();
         m_startTime = steadyclock::now();
         return m_startTime.time_since_epoch().count();
     }
 
     [[maybe_unused]]
-    long long End_Timer() noexcept
+    long long endTimer() noexcept
     {
         m_endTime = steadyclock::now();
         return m_endTime.time_since_epoch().count();
@@ -44,31 +44,31 @@ public:
 
 private:
 
-    timepoint m_startTime = {};
-    timepoint m_endTime   = {};
+    timepoint m_startTime;
+    timepoint m_endTime;
 
-    void Reset_Timer() noexcept
+    void resetTimer() noexcept
     {
         m_startTime = {};
         m_endTime   = {};
     }
 };
 
-struct Benchmark_Data
+struct BenchmarkData
 {
-    std::string m_name      = {};
-    long long   m_duration  = {};
-    long long   m_startTime = {};
-    std::size_t threadID    = {};
+    std::string name;
+    long long   duration;
+    long long   startTime;
+    std::size_t threadID = {};
 };
 
 class FileHandle
 {
 public:
 
-    static void Write_BenchMark(Benchmark_Data const & data) noexcept
+    static void writeBenchmark(BenchmarkData const & data) noexcept
     {
-        FileHandle::Make_Instance().Write_Info(data);
+        FileHandle::makeInstance().writeInfo(data);
     }
 
 private:
@@ -79,22 +79,22 @@ private:
     FileHandle & operator=(FileHandle const &) = delete;
     FileHandle() noexcept
     {
-        m_fileStream = std::ofstream(s_outFileName);
-        Write_Header();
+        m_fileStream = std::ofstream(outFileName);
+        writeHeader();
     }
     ~FileHandle() noexcept
     {
-        Write_Footer();
+        writeFooter();
     }
-    void Write_Header() noexcept
+    void writeHeader() noexcept
     {
         m_fileStream << "{\"otherData\": {},\"traceEvents\":[";
     }
-    void Write_Footer() noexcept
+    void writeFooter() noexcept
     {
         m_fileStream << "]}";
     }
-    void Write_Info(Benchmark_Data const & data) noexcept
+    void writeInfo(BenchmarkData const & data) noexcept
     {
         std::lock_guard<std::mutex> lock(m_lock);
 
@@ -104,27 +104,26 @@ private:
         }
         m_fileStream << "\n{";
         m_fileStream << "\"cat\":\"function\",";
-        m_fileStream << "\"dur\":" << data.m_duration << ',';
-        m_fileStream << "\"name\":\"" << data.m_name << "\",";
+        m_fileStream << "\"dur\":" << data.duration << ',';
+        m_fileStream << "\"name\":\"" << data.name << "\",";
         m_fileStream << "\"ph\":\"X\",";
         m_fileStream << "\"pid\":0,";
         m_fileStream << "\"tid\":" << data.threadID << ',';
-        m_fileStream << "\"ts\":" << data.m_startTime;
+        m_fileStream << "\"ts\":" << data.startTime;
         m_fileStream << "}";
     }
-    static FileHandle & Make_Instance() noexcept
+    static FileHandle & makeInstance() noexcept
     {
         static FileHandle instance {};
         return instance;
     }
 
-private:
-
-    inline static std::string const s_outFileName = {
+    // This Section is for member variables
+    inline static std::string const outFileName = {
         std::string_literals::operator""s("BenchMark.json", 14)};
-    std::ofstream m_fileStream = {};
-    std::mutex    m_lock       = {};
-    size_t        m_counter    = {};
+    std::ofstream m_fileStream;
+    std::mutex    m_lock;
+    size_t        m_counter = {};
 };
 
 
@@ -134,17 +133,17 @@ public:
 
     explicit BenchMark(std::string const & name) noexcept
     {
-        m_data.m_name      = name;
-        m_data.m_duration  = 0;
-        m_data.m_startTime = m_timer.Start_Timer();
-        m_data.threadID    = std::hash<std::thread::id> {}(
+        m_data.name      = name;
+        m_data.duration  = 0;
+        m_data.startTime = m_timer.startTimer();
+        m_data.threadID  = std::hash<std::thread::id> {}(
             std::this_thread::get_id());
     }
     ~BenchMark() noexcept
     {
-        m_timer.End_Timer();
-        m_data.m_duration = m_timer.Get_DeltaTime_MicroSec();
-        FileHandle::Write_BenchMark(m_data);
+        m_timer.endTimer();
+        m_data.duration = m_timer.getDeltaTieMicroSec();
+        FileHandle::writeBenchmark(m_data);
     }
 
 private:
@@ -155,7 +154,7 @@ private:
     BenchMark & operator=(BenchMark &&)      = delete;
     BenchMark & operator=(BenchMark const &) = delete;
 
-    Timer          m_timer = {};
-    Benchmark_Data m_data  = {};
+    Timer         m_timer;
+    BenchmarkData m_data = {};
 };
 }  // namespace Profiler
