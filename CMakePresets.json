@@ -37,7 +37,7 @@
             "inherits": "conf-clang-common",
             "cacheVariables": {
                 "CMAKE_TOOLCHAIN_FILE": "/Applications/Utilities/Vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake",
-                "VCPKG_TARGET_TRIPLET": "x64-osx"
+                "VCPKG_TARGET_TRIPLET": "x64-osx-dynamic"
             },
             "vendor": {
                 "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {

@@ -1,6 +1,9 @@
 {
   "dependencies": [
     "catch2",
-    "raylib"
+    {
+      "name": "raylib",
+      "version>=": "5.5"
+    }
   ]
 }
