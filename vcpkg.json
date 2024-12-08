@@ -5,5 +5,11 @@
       "name": "raylib",
       "version>=": "5.5"
     }
+  ],
+  "overrides": [
+    {
+      "name": "raylib",
+      "version": "5.5"
+    }
   ]
 }

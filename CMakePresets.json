@@ -11,8 +11,8 @@
             "description": "General settings that apply to all configurations",
             "hidden": true,
             "generator": "Visual Studio 17 2022",
-            "binaryDir": "${sourceDir}/build/",
-            "installDir": "${sourceDir}/build/install/",
+            "binaryDir": "${sourceDir}/build/Desktop/${hostSystemName}",
+            "installDir": "${sourceDir}/build/install/Desktop/${hostSystemName}",
             "cacheVariables": {
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
                 "CMAKE_COLOR_DIAGNOSTICS": "ON"
@@ -23,8 +23,8 @@
             "description": "General settings that apply to all configurations",
             "hidden": true,
             "generator": "Ninja Multi-Config",
-            "binaryDir": "${sourceDir}/build/",
-            "installDir": "${sourceDir}/build/install/",
+            "binaryDir": "${sourceDir}/build/Desktop/${hostSystemName}",
+            "installDir": "${sourceDir}/build/install/Desktop/${hostSystemName}",
             "cacheVariables": {
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
                 "CMAKE_COLOR_DIAGNOSTICS": "ON"
@@ -36,7 +36,7 @@
             "hidden": true,
             "inherits": "conf-clang-common",
             "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "/Applications/Utilities/Vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
                 "VCPKG_TARGET_TRIPLET": "x64-osx-dynamic"
             },
             "vendor": {
@@ -51,7 +51,7 @@
             "hidden": true,
             "inherits": "conf-common",
             "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "C:/_dev/vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
                 "CLANG_SANITIZER_PATH": "C:/Program Files/LLVM/lib/clang/19/lib/windows",
                 "VCPKG_TARGET_TRIPLET": "x64-windows"
             },
@@ -70,7 +70,7 @@
             "hidden": true,
             "inherits": "conf-clang-common",
             "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "C:/_dev/vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
                 "CLANG_SANITIZER_PATH": "C:/Program Files/LLVM/lib/clang/19/lib/windows",
                 "VCPKG_TARGET_TRIPLET": "x64-windows"
             },

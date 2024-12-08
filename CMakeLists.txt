@@ -60,13 +60,13 @@ else()
 endif()
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
-    "$<0:>${CMAKE_BINARY_DIR}/out/${CMAKE_BUILD_TYPE}_${BUILD_ARCH}${PRESET_NAME}/bin"
+    "$<0:>${CMAKE_BINARY_DIR}/out/${BUILD_ARCH}_${CMAKE_BUILD_TYPE}/${PRESET_NAME}/bin"
 ) # .exe and .dll
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY
-    "$<0:>${CMAKE_BINARY_DIR}/out/${CMAKE_BUILD_TYPE}_${BUILD_ARCH}${PRESET_NAME}/lib"
+    "$<0:>${CMAKE_BINARY_DIR}/out/${BUILD_ARCH}_${CMAKE_BUILD_TYPE}/${PRESET_NAME}/lib"
 ) # .so and .dylib
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY
-    "$<0:>${CMAKE_BINARY_DIR}/out/${CMAKE_BUILD_TYPE}_${BUILD_ARCH}${PRESET_NAME}/lib"
+    "$<0:>${CMAKE_BINARY_DIR}/out/${BUILD_ARCH}_${CMAKE_BUILD_TYPE}/${PRESET_NAME}/lib"
 ) # .lib and .a
 #TODO:N1 ADD new build type for "RelWithDebInfo" and "MinSizeRel" maybe need change blew condition for appending these
 
