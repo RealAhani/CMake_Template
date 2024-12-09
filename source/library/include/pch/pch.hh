@@ -15,6 +15,7 @@
 
 // project generated
 #include "Benchmark.hh"
+#include "Log.hh"
 #include "config.hh"
 
 // box2d

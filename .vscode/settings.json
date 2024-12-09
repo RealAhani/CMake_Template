@@ -3,6 +3,7 @@
     "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
     "cmake.useCMakePresets": "always",
     "cmake.options.statusBarVisibility": "visible",
+    "debug.showInStatusBar": "always",
     "files.associations": {
         ".clang-tidy": "code-text-binary",
         "*.in": "code-text-binary",

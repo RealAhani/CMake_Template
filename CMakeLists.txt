@@ -11,6 +11,8 @@ endif()
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+  list(APPEND DEBUG_COMPILER_FLAGS_GCC_CLANG "-g")
+  list(APPEND DEBUG_COMPILER_FLAGS_GCC_CLANG "-fno-limit-debug-info")
   if(ENABLE_WARNING)
     message("============================================= Debuging is ON (all Warnings are enable) ")
     if(NOT ${CPPCOMPILER} STREQUAL "MSVC")
@@ -152,5 +154,18 @@ if(ENABLE_PACKAGING)
   include(CPack)
 endif()
 
-file(COPY ${CMAKE_SOURCE_DIR}/build/${CMAKE_HOST_SYSTEM_NAME}/Desktop/compile_commands.json
-     DESTINATION ${CMAKE_SOURCE_DIR}/build)
+# copying compile_commands.json to root of the build dir for clangd intellisence
+# Specify the source and destination paths
+set(SOURCE_FILE "${CMAKE_SOURCE_DIR}/build/${CMAKE_HOST_SYSTEM_NAME}/Desktop/compile_commands.json")
+set(DESTINATION_DIR "${CMAKE_SOURCE_DIR}/build")
+set(TARGET_FILE "${DESTINATION_DIR}/compile_commands.json")
+
+# Add a post-build custom target to copy the file
+add_custom_command(
+    OUTPUT "${TARGET_FILE}"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${SOURCE_FILE}" "${TARGET_FILE}"
+    DEPENDS "${SOURCE_FILE}"  # Ensure the command runs only after the file exists
+    COMMENT "Copying compile_commands.json to ${DESTINATION_DIR}"
+)
+
+add_custom_target(copy_compile_commands ALL DEPENDS "${TARGET_FILE}")

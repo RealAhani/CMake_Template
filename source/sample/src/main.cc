@@ -1,9 +1,5 @@
 // "Copyright 2024 Realahani"
 
-#include "config.hh"
-#include "pch.hh"
-#include "Log.hh"
-
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
