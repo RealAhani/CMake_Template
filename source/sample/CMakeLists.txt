@@ -5,13 +5,21 @@ include(${CMAKE_SOURCE_DIR}/cmake/static_analyzer.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/sanitizer.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/LibsConfig.cmake)
 
-if(SHOW_CONSOLE)
+# Add headers directory for android_native_app_glue.c
+include_directories($ENV{ANDROID_NDK_HOME}/sources/android/native_app_glue/)
+if(NOT VCPKG_TARGET_ANDROID)
+if(SHOW_CONSOLE)#its a Desktop
   add_executable(${PREXENAME} ${mysrc_exe})
-else()
+else() # its Desktop without console
   add_executable(${PREXENAME} WIN32 ${mysrc_exe})
-endif()
+endif(SHOW_CONSOLE)
+else()#its not Desktop maybe Android
+add_library(${PREXENAME} ${MYLIB_TYPE} ${mysrc_exe})
+endif(NOT VCPKG_TARGET_ANDROID)
+
 
 # find_package(SFML COMPONENTS system window graphics CONFIG REQUIRED)
+# find_package(box2d CONFIG REQUIRED) # if this is came from vcpkg
 find_package(raylib CONFIG REQUIRED)
 
 if(INTERNAL_MYLIB_USAGE)

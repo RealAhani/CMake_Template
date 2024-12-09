@@ -42,6 +42,10 @@ if(CCACHE_FOUND)
   set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
 endif()
 
+if (VCPKG_TARGET_ANDROID)
+    include(${CMAKE_SOURCE_DIR}/cmake/vcpkg_android.cmake)
+endif()
+
 cmake_minimum_required(VERSION 3.20...3.31)
 
 project(${SULOTIONNAME} VERSION ${PRVERSION} LANGUAGES ${PRLANG})
@@ -147,3 +151,6 @@ if(ENABLE_PACKAGING)
   endif()
   include(CPack)
 endif()
+
+file(COPY ${CMAKE_SOURCE_DIR}/build/${CMAKE_HOST_SYSTEM_NAME}/Desktop/compile_commands.json
+     DESTINATION ${CMAKE_SOURCE_DIR}/build)

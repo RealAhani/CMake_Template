@@ -5,6 +5,10 @@ include(${CMAKE_SOURCE_DIR}/cmake/static_analyzer.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/sanitizer.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/LibsConfig.cmake)
 #if You want u can change it to SHARED
+
+# Add headers directory for android_native_app_glue.c
+include_directories($ENV{ANDROID_NDK_HOME}/sources/android/native_app_glue/)
+
 add_library(${MYLIBNAME} ${MYLIB_TYPE} ${mysrc_lib})
 configure_file("./include/config.hh.in" "${CMAKE_CURRENT_BINARY_DIR}/generate/config.hh")
 target_include_directories(
@@ -15,7 +19,10 @@ target_include_directories(
 )
 
 # find_package(SFML COMPONENTS system window graphics CONFIG REQUIRED)
+# find_package(box2d CONFIG REQUIRED)
 find_package(raylib CONFIG REQUIRED)
+
+
 fetch_repositories(${MYLIBNAME})
 
 target_precompile_headers(${MYLIBNAME} PUBLIC "./include/pch/pch.hh")

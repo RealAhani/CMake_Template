@@ -11,11 +11,12 @@
             "description": "General settings that apply to all configurations",
             "hidden": true,
             "generator": "Visual Studio 17 2022",
-            "binaryDir": "${sourceDir}/build/Desktop/${hostSystemName}",
-            "installDir": "${sourceDir}/build/install/Desktop/${hostSystemName}",
+            "binaryDir": "${sourceDir}/build/${hostSystemName}/Desktop",
+            "installDir": "${sourceDir}/build/install/${hostSystemName}/Desktop",
             "cacheVariables": {
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-                "CMAKE_COLOR_DIAGNOSTICS": "ON"
+                "CMAKE_COLOR_DIAGNOSTICS": "ON",
+                "VCPKG_TARGET_ANDROID": "OFF"
             }
         },
         {
@@ -23,11 +24,12 @@
             "description": "General settings that apply to all configurations",
             "hidden": true,
             "generator": "Ninja Multi-Config",
-            "binaryDir": "${sourceDir}/build/Desktop/${hostSystemName}",
-            "installDir": "${sourceDir}/build/install/Desktop/${hostSystemName}",
+            "binaryDir": "${sourceDir}/build/${hostSystemName}/Desktop",
+            "installDir": "${sourceDir}/build/install/${hostSystemName}/Desktop",
             "cacheVariables": {
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-                "CMAKE_COLOR_DIAGNOSTICS": "ON"
+                "CMAKE_COLOR_DIAGNOSTICS": "ON",
+                "VCPKG_TARGET_ANDROID": "OFF"
             }
         },
         {
@@ -38,6 +40,25 @@
             "cacheVariables": {
                 "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
                 "VCPKG_TARGET_TRIPLET": "x64-osx-dynamic"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
+                    "sourceDir": "$env{HOME}/.vs/$ms{projectDirName}"
+                }
+            }
+        },
+        {
+            "name": "conf-unixlike-4Android-common",
+            "description": "Unix-like OS settings for ndk clang toolchains with vcpkg",
+            "hidden": true,
+            "inherits": "conf-clang-common",
+            "binaryDir": "${sourceDir}/build/${hostSystemName}/Other/${presetName}",
+            "installDir": "${sourceDir}/build/install/${hostSystemName}/Other/${presetName}",
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "$env{ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake",
+                "VCPKG_TARGET_ANDROID": "ON",
+                "CMAKE_SYSTEM_NAME": "Android"
             },
             "vendor": {
                 "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
@@ -258,6 +279,98 @@
                 "ENABLE_WARNING": "OFF",
                 "ENABLE_TESTING": "OFF",
                 "ENABLE_BENCHMARK": "1"
+            }
+        },
+        {
+            "name": "arm64-v8a-android",
+            "displayName": "arm64-Android-Release",
+            "description": "Target Unix-like OS with the clang compiler, debug build type",
+            "inherits": "conf-unixlike-4Android-common",
+            "cacheVariables": {
+                "CMAKE_ANDROID_NDK": "$env{ANDROID_NDK_HOME}",
+                "ANDROID_ABI": "arm64-v8a",
+                "PRESET_NAME": "",
+                "CPPCOMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Release",
+                "INTERNAL_MYLIB_USAGE": "ON",
+                "MYLIB_TYPE": "STATIC",
+                "STATIC_ANALYZER": "OFF",
+                "ENABLE_SANITIZER": "OFF",
+                "ENABLE_WARNING": "OFF",
+                "ENABLE_TESTING": "OFF",
+                "ENABLE_BENCHMARK": "1",
+                "CMAKE_SYSTEM_VERSION": "34",
+                "CMAKE_ANDROID_ARCH_ABI": "arm64-v8a",
+                "CMAKE_ANDROID_STL_TYPE": "c++_static"
+            }
+        },
+        {
+            "name": "armeabi-v7a-android",
+            "displayName": "armeabi-v7a-Android-Release",
+            "description": "Target Unix-like OS with the clang compiler, debug build type",
+            "inherits": "conf-unixlike-4Android-common",
+            "cacheVariables": {
+                "CMAKE_ANDROID_NDK": "$env{ANDROID_NDK_HOME}",
+                "ANDROID_ABI": "armeabi-v7a",
+                "PRESET_NAME": "",
+                "CPPCOMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Release",
+                "INTERNAL_MYLIB_USAGE": "ON",
+                "MYLIB_TYPE": "STATIC",
+                "STATIC_ANALYZER": "OFF",
+                "ENABLE_SANITIZER": "OFF",
+                "ENABLE_WARNING": "OFF",
+                "ENABLE_TESTING": "OFF",
+                "ENABLE_BENCHMARK": "1",
+                "CMAKE_SYSTEM_VERSION": "34",
+                "CMAKE_ANDROID_ARCH_ABI": "armeabi-v7a",
+                "CMAKE_ANDROID_STL_TYPE": "c++_static"
+            }
+        },
+        {
+            "name": "x86-android",
+            "displayName": "x86-Android-Release",
+            "description": "Target Unix-like OS with the clang compiler, debug build type",
+            "inherits": "conf-unixlike-4Android-common",
+            "cacheVariables": {
+                "CMAKE_ANDROID_NDK": "$env{ANDROID_NDK_HOME}",
+                "ANDROID_ABI": "x86",
+                "PRESET_NAME": "",
+                "CPPCOMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Release",
+                "INTERNAL_MYLIB_USAGE": "ON",
+                "MYLIB_TYPE": "STATIC",
+                "STATIC_ANALYZER": "OFF",
+                "ENABLE_SANITIZER": "OFF",
+                "ENABLE_WARNING": "OFF",
+                "ENABLE_TESTING": "OFF",
+                "ENABLE_BENCHMARK": "1",
+                "CMAKE_SYSTEM_VERSION": "34",
+                "CMAKE_ANDROID_ARCH_ABI": "x86",
+                "CMAKE_ANDROID_STL_TYPE": "c++_static"
+            }
+        },
+        {
+            "name": "x64-android",
+            "displayName": "x64-Android-Release",
+            "description": "Target Unix-like OS with the clang compiler, debug build type",
+            "inherits": "conf-unixlike-4Android-common",
+            "cacheVariables": {
+                "CMAKE_ANDROID_NDK": "$env{ANDROID_NDK_HOME}",
+                "ANDROID_ABI": "x86_64",
+                "PRESET_NAME": "",
+                "CPPCOMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Release",
+                "INTERNAL_MYLIB_USAGE": "ON",
+                "MYLIB_TYPE": "STATIC",
+                "STATIC_ANALYZER": "OFF",
+                "ENABLE_SANITIZER": "OFF",
+                "ENABLE_WARNING": "OFF",
+                "ENABLE_TESTING": "OFF",
+                "ENABLE_BENCHMARK": "1",
+                "CMAKE_SYSTEM_VERSION": "34",
+                "CMAKE_ANDROID_ARCH_ABI": "x86_64",
+                "CMAKE_ANDROID_STL_TYPE": "c++_static"
             }
         }
     ],

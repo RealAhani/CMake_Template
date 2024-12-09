@@ -58,10 +58,26 @@ set(DEBUG_COMPILER_EXTRA_FLAGS_GCC "-Wmisleading-indentation;-Wduplicated-cond;-
 #             # -Wuseless-cast # warn if you perform a cast to the same type (disabled because it is not portable as some type aliases might vary between platforms)
 #             $<$<VERSION_GREATER_EQUAL:${CMAKE_CXX_COMPILER_VERSION},8.1>:-Wduplicated-branches> # warn if if / else branches have duplicated code
 
+############################################################
 #flto is not working on linux
-set(RELEASE_COMPILER_FLAGS_GCC_CLANG "-O3;-DNDEBUG;-march=native;-ftree-vectorize" CACHE STRING ""
+# march native is not work on android on mac -march=native
+#-fPIE is just occurs on android so when there is a mismatch in the Position Independent Executable (PIE) settings between the precompiled header (PCH) file and the source files being compiled.
+set(RELEASE_COMPILER_FLAGS_GCC_CLANG "-O3;-DNDEBUG;-ftree-vectorize" CACHE STRING ""
                                                                                                 FORCE
 )
+# this is the error fixing on compiling the release with clang for diffrent target systems like windows mac/linux and android.
+if(UNIX AND NOT VCPKG_TARGET_ANDROID)
+   list(APPEND RELEASE_COMPILER_FLAGS_GCC_CLANG "-march=native") 
+endif(UNIX AND NOT VCPKG_TARGET_ANDROID)
+if(WIN32 AND NOT VCPKG_TARGET_ANDROID)
+   list(APPEND RELEASE_COMPILER_FLAGS_GCC_CLANG "-march=native;-flto") 
+endif(WIN32 AND NOT VCPKG_TARGET_ANDROID)
+if(VCPKG_TARGET_ANDROID)
+   list(APPEND RELEASE_COMPILER_FLAGS_GCC_CLANG "-fPIE") 
+endif(VCPKG_TARGET_ANDROID)
+# this is the error fixing on compiling the release with clang for diffrent target systems like windows mac/linux and android.
+
+############################################################
 
 set(DEBUG_COMPILER_FLAGS_MSVC
     "/Z7;/Zi;/Zf;/W4;/w14242;/w14254;/w14263;/w14265;/w14287;/we4289;/w14296;/w14311;/w14545;/w14546;/w14547;/w14549;/w14555;/w14619;/w14640;/w14826;/w14905;/w14906;/w14928;/permissive-;/wd4068;/wd4505;/wd4800;/wd4275"
@@ -110,6 +126,11 @@ set(LIB_LINKAGE_VAR "box2d" CACHE STRING "" FORCE)
 set(PAKAGE_LINK_VAR_LIST # "box2d::box2d;raylib"
     "raylib" CACHE STRING "" FORCE
 )
+# for Android linkage on raylib 
+if(VCPKG_TARGET_ANDROID)
+   list(APPEND PAKAGE_LINK_VAR_LIST "log;android;EGL;GLESv2;OpenSLES;atomic;c;m;dl") 
+endif(VCPKG_TARGET_ANDROID)
+
 ##############################################
 #chose between g++/clang++ or MSVC
 set(CPPCOMPILER "clang++" CACHE STRING "")
