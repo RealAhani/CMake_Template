@@ -1,38 +1,42 @@
-// "Copyright 2024 Realahani"
-
+/*
+ * Copyright (C) 2024 RealAhani - All Rights Reserved
+ * You may use, distribute and modify this code under the
+ * terms of the MIT license, which unfortunately won't be
+ * written for another century.
+ * You should have received a copy of the MIT license with
+ * this file.
+ */
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
-    // benchmark
-    // PROFILE();
-    // if u use internal lib
+    // benchmark is activate from presets and with PROFILE or
+    // PROFILE_SCOP macro`s .
+    PROFILE();
 
-    // project information
-#if (OS == 1)                       // current OS is Windwos
+    // __________ Project Informations __________
+#if (OS == 1)                       // OS is Windows
     mloge::print("WIN");
-#elif (OS == 2)                     // current OS is Linux
+#elif (OS == 2)                     // OS is GNU/Linux
     mloge::print("LINUX");
-#elif (OS == 3)                     // current OS is MacOS
+#elif (OS == 3)                     // OS is OSX
     mloge::print("MAC");
 #endif
-    mloge::print(PROJECT_NAME);     // project name
-    mloge::print(CPP_VERSION);      // cpp version
-    mloge::print(PROJECT_VERSION);  // projecet version
-    // project information
+    mloge::print(PROJECT_NAME);     // Project-name!
+    mloge::print(CPP_VERSION);      // Cpp-version!
+    mloge::print(PROJECT_VERSION);  // Projecet-version!
+    // __________ Project Informations __________
 
-    // raylib window init
+    // Raylib window init
     InitWindow(0, 0, "Test");
-    // #if (OS == 1)
-    // ToggleBorderlessWindowed();
     ToggleFullscreen();
-    // #endif
 
+    // Window properties
     [[maybe_unused]]
     int const width  = {GetScreenWidth()};
     int const height = {GetScreenHeight()};
     bool      isQuit = {false};
 
-    // physics values for box2d
+    // Physics related values for box2d (box2d-related)
     float const squerWidth  = {50.f};
     float const squerHeight = {50.f};
     float const squerX      = {800.f};
@@ -43,14 +47,14 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     float const rectY       = {(height / 2.f)};
     float const rectDec     = {10.f};
 
-    // creating the box2d init for the world of the game
+    // box2d init of the world of the game (box2d-related)
     b2WorldDef   worldDef = {b2DefaultWorldDef()};
     b2Vec2 const gravity  = {-5.f, -10.f};
     worldDef.gravity      = gravity;
     b2WorldId worldID     = {b2CreateWorld(&worldDef)};
     worldDef.enableSleep  = false;
 
-    // creatig a ground
+    // Creatig a ground (box2d-related)
     b2BodyDef groundDef = {b2DefaultBodyDef()};
     groundDef.position  = b2Vec2 {-rectX, -rectY};
     groundDef.type      = b2_staticBody;
@@ -60,12 +64,12 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     b2Polygon const groundShape = {
         b2MakeBox(rectWidth / 2.f, rectHeight / 2.f)};
     b2ShapeDef groundShapeDef = {b2DefaultShapeDef()};
-    // mass is not need for static object
+    // Mass is not need for static object
     groundShapeDef.friction    = 0.3f;
     groundShapeDef.restitution = 0.7f;
     b2CreatePolygonShape(groundBodyId, &groundShapeDef, &groundShape);
 
-    // ground 2
+    // Ground 2 (box2d-related)
     b2BodyDef groundDef2 = {b2DefaultBodyDef()};
     groundDef2.position  = b2Vec2 {-(rectX + 1400), -(rectY - 300)};
     groundDef2.type      = b2_staticBody;
@@ -75,12 +79,12 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     b2Polygon const groundShape2 = {
         b2MakeBox(rectWidth / 2.f, rectHeight / 2.f)};
     b2ShapeDef groundShapeDef2 = {b2DefaultShapeDef()};
-    // mass is not need for static object
+    // Mass is not need for static object
     groundShapeDef2.friction    = 0.3f;
     groundShapeDef2.restitution = 0.7f;
     b2CreatePolygonShape(groundBodyId2, &groundShapeDef2, &groundShape2);
 
-    // create a dynamic box
+    // Create a dynamic box (box2d-related)
     b2BodyDef boxDef = {b2DefaultBodyDef()};
     boxDef.position  = b2Vec2 {-squerX, -squerY};
     boxDef.type      = b2_dynamicBody;
@@ -94,23 +98,25 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     boxShapeDef.friction   = 0.7f;
     b2CreatePolygonShape(boxBodyId, &boxShapeDef, &boxShape);
 
-    // simulating setting
+    // Simulating setting (box2d-related)
     SetTargetFPS(GetMonitorRefreshRate(0));
     float const  timeStep     = {1.f / 15.f};  // 60HZ
     int8_t const subStepCount = {3};
 
-    // game loop
+
+    // Main loop
     while (!WindowShouldClose() && !isQuit)
     {
-        // input managment
+        PROFILE_SCOPE("LOOP");
+        // Input managment with raylib
         if (IsKeyPressed(KEY_ESCAPE)) [[unlikely]]
         {
             isQuit = true;
         }
-        // update world state
+        // Update world state (box2d-related)
         b2World_Step(worldID, timeStep, subStepCount);
 
-        // rendering
+        // Rendering
         ClearBackground(BLACK);
         BeginDrawing();
         DrawFPS(0, 10);
@@ -118,7 +124,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         b2Vec2 const groundPos {b2Body_GetPosition(groundBodyId)};
         b2Vec2 const groundPos2 {b2Body_GetPosition(groundBodyId2)};
 
-        // draw box
+        // Draw a dynamic box
         DrawRectanglePro(Rectangle {.x      = -boxPos.x,
                                     .y      = -boxPos.y,
                                     .width  = squerWidth,
@@ -129,7 +135,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
                              RAD2DEG,
                          RED);
 
-        // draw straight ground
+        // Draw the ground as a box
         DrawRectanglePro(Rectangle {.x      = -groundPos.x,
                                     .y      = -groundPos.y,
                                     .width  = rectWidth,
@@ -140,7 +146,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
                              RAD2DEG,
                          GREEN);
 
-        // draw rotated ground
+        // Draw the second ground
         DrawRectanglePro(Rectangle {.x      = -groundPos2.x,
                                     .y      = -groundPos2.y,
                                     .width  = rectWidth,
@@ -153,14 +159,14 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
         EndDrawing();
     }
-    // clear out all
+    // Cleaning up and bye
     b2DestroyWorld(worldID);
     worldID = b2_nullWorldId;
     CloseWindow();
     return 0;
 }
 
-// if it is a window app and need WinMain
+// If this is a window app and WinMain is needed
 // #include <windows.h>
 // int WINAPI WinMain(HINSTANCE hInstance,
 //                    HINSTANCE hPrevInstance,
