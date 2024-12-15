@@ -53,7 +53,7 @@ if (VCPKG_TARGET_ANDROID)
     # |VCPKG_TARGET_TRIPLET       | ANDROID_ABI          |
     # |---------------------------|----------------------|
     # |arm64-android              | arm64-v8a            |
-    # |arm-android                | armeabi-v7a          |
+    # |arm-android                | armeabi-v7a          | --allow-unsupported
     # |x64-android                | x86_64               |
     # |x86-android                | x86                  |
     #

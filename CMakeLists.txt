@@ -50,8 +50,10 @@ endif()
 
 cmake_minimum_required(VERSION 3.20...3.31)
 
+
 project(${SULOTIONNAME} VERSION ${PRVERSION} LANGUAGES ${PRLANG})
 set(CMAKE_CXX_STANDARD ${CPPVERSION})
+set(CMAKE_C_STANDARD ${CVERSION})
 set(CMAKE_CXX_STANDARD_REQUIRED ${CPPSTANDARDREQ})
 set(CMAKE_CXX_EXTENSIONS ${CPPEXTENTION})
 
@@ -97,7 +99,7 @@ elseif(LINUX)
   message("============================================ OPERATING SYS :Linux ")
   set(CURRENTOS 2 CACHE STRING "OS TYPE ")
 elseif(UNIX)
-  message("============================================ OPERATING SYS :MacOSX ")
+  message("============================================ OPERATING SYS :UNIX ")
   set(CURRENTOS 3 CACHE STRING "OS TYPE ")
 endif()
 
@@ -105,7 +107,11 @@ if(INTERNAL_MYLIB_USAGE)
   add_subdirectory("./source/library")
 endif()
 add_subdirectory("./source/sample")
+
+if(NOT VCPKG_TARGET_ANDROID)
 add_subdirectory("./source/Benchmark")
+endif(NOT VCPKG_TARGET_ANDROID)
+
 message("--------------------------------------------- Benchmarking : ${ENABLE_BENCHMARK}")
 # Don't even look at tests if we're not top level
 if(NOT PROJECT_IS_TOP_LEVEL)

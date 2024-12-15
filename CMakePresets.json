@@ -51,13 +51,14 @@
             "name": "conf-unixlike-4Android-common",
             "description": "Unix-like OS settings for ndk clang toolchains with vcpkg",
             "hidden": true,
-            "inherits": "conf-clang-common",
+            "generator": "Ninja Multi-Config",
             "binaryDir": "${sourceDir}/build/${hostSystemName}/Other/${presetName}",
             "installDir": "${sourceDir}/build/install/${hostSystemName}/Other/${presetName}",
             "cacheVariables": {
                 "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
                 "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "$env{ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake",
                 "VCPKG_TARGET_ANDROID": "ON",
+                "VCPKG_INSTALL_OPTIONS": "--allow-unsupported",
                 "CMAKE_SYSTEM_NAME": "Android"
             },
             "vendor": {
@@ -74,7 +75,7 @@
             "cacheVariables": {
                 "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
                 "CLANG_SANITIZER_PATH": "C:/Program Files/LLVM/lib/clang/19/lib/windows",
-                "VCPKG_TARGET_TRIPLET": "x64-windows"
+                "VCPKG_TARGET_TRIPLET": "x64-windows-release"
             },
             "architecture": {
                 "value": "x64",
@@ -212,6 +213,7 @@
             "cacheVariables": {
                 "PRESET_NAME": "",
                 "CPPCOMPILER": "clang++",
+                "VCPKG_INSTALL_OPTIONS": "--no-print-usage",
                 "CMAKE_BUILD_TYPE": "Release",
                 "INTERNAL_MYLIB_USAGE": "ON",
                 "MYLIB_TYPE": "STATIC",
@@ -278,7 +280,7 @@
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "OFF",
                 "ENABLE_TESTING": "OFF",
-                "ENABLE_BENCHMARK": "1"
+                "ENABLE_BENCHMARK": "0"
             }
         },
         {
@@ -298,10 +300,10 @@
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "OFF",
                 "ENABLE_TESTING": "OFF",
-                "ENABLE_BENCHMARK": "1",
-                "CMAKE_SYSTEM_VERSION": "34",
+                "ENABLE_BENCHMARK": "0",
+                "CMAKE_SYSTEM_VERSION": "33",
                 "CMAKE_ANDROID_ARCH_ABI": "arm64-v8a",
-                "CMAKE_ANDROID_STL_TYPE": "c++_static"
+                "CMAKE_ANDROID_STL_TYPE": "c++_shared"
             }
         },
         {
@@ -321,10 +323,10 @@
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "OFF",
                 "ENABLE_TESTING": "OFF",
-                "ENABLE_BENCHMARK": "1",
-                "CMAKE_SYSTEM_VERSION": "34",
+                "ENABLE_BENCHMARK": "0",
+                "CMAKE_SYSTEM_VERSION": "33",
                 "CMAKE_ANDROID_ARCH_ABI": "armeabi-v7a",
-                "CMAKE_ANDROID_STL_TYPE": "c++_static"
+                "CMAKE_ANDROID_STL_TYPE": "c++_shared"
             }
         },
         {
@@ -344,10 +346,10 @@
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "OFF",
                 "ENABLE_TESTING": "OFF",
-                "ENABLE_BENCHMARK": "1",
-                "CMAKE_SYSTEM_VERSION": "34",
+                "ENABLE_BENCHMARK": "0",
+                "CMAKE_SYSTEM_VERSION": "33",
                 "CMAKE_ANDROID_ARCH_ABI": "x86",
-                "CMAKE_ANDROID_STL_TYPE": "c++_static"
+                "CMAKE_ANDROID_STL_TYPE": "c++_shared"
             }
         },
         {
@@ -367,10 +369,10 @@
                 "ENABLE_SANITIZER": "OFF",
                 "ENABLE_WARNING": "OFF",
                 "ENABLE_TESTING": "OFF",
-                "ENABLE_BENCHMARK": "1",
-                "CMAKE_SYSTEM_VERSION": "34",
+                "ENABLE_BENCHMARK": "0",
+                "CMAKE_SYSTEM_VERSION": "33",
                 "CMAKE_ANDROID_ARCH_ABI": "x86_64",
-                "CMAKE_ANDROID_STL_TYPE": "c++_static"
+                "CMAKE_ANDROID_STL_TYPE": "c++_shared"
             }
         }
     ],

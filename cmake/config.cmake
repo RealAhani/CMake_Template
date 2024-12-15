@@ -20,9 +20,10 @@ set(TESTNAME "${SULOTIONNAME}_TEST" CACHE STRING "" FORCE)
 
 ##############################################
 #your cpp standard version you want to use in this project
-set(CPPVERSION 23 CACHE STRING "" FORCE)
-set(CPPEXTENTION ON CACHE BOOL "" FORCE)
-set(CPPSTANDARDREQ ON CACHE BOOL "" FORCE)
+set(CPPVERSION 11 CACHE STRING "" FORCE)
+set(CVERSION 99 CACHE STRING "" FORCE)
+set(CPPEXTENTION OFF CACHE BOOL "" FORCE)
+set(CPPSTANDARDREQ OFF CACHE BOOL "" FORCE)
 ##############################################
 # you can set your specific compiler flag on the choosen compiler you select on perivious variable
 # add or remove wanted flags but not comment the line you dont want all 3 variable is needed
@@ -167,3 +168,6 @@ set(SUPPORTMAIL "support@mycompany.com" CACHE STRING "")
 ##############################################
 set(ENABLE_BENCHMARK "1" CACHE STRING "")
 ##############################################
+set(CMAKE_ANDROID_API "30" CACHE STRING "")
+set(CMAKE_ANDROID_API_MIN "24" CACHE STRING "")
+set(ANDROID_PLATFORM "30")

@@ -7,13 +7,34 @@
  * this file.
  */
 
+// #include <string>
+// #include <fstream>
+// #include <chrono>
+// #include <mutex>
+// #include <algorithm>
+// #include <map>
+
+
+// // box2d headers
+// #include <box2d/box2d.h>
+// #include <box2d/types.h>
+// #include <box2d/base.h>
+// #include <box2d/math_functions.h>
+// #include <box2d/id.h>
+// #include <box2d/collision.h>
+
+
+// // raylib headers
+// #include <raylib.h>
+// #include <raymath.h>
+
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
     // benchmark is activate from presets and with PROFILE or
     // PROFILE_SCOP macro`s .
     PROFILE();
 
-    // __________ Project Informations __________
+//     // __________ Project Informations __________
 #if (OS == 1)                       // OS is Windows
     mloge::print("WIN");
 #elif (OS == 2)                     // OS is GNU/Linux
@@ -107,7 +128,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     // Main loop
     while (!WindowShouldClose() && !isQuit)
     {
-        PROFILE_SCOPE("LOOP");
+        // PROFILE_SCOPE("LOOP");
         // Input managment with raylib
         if (IsKeyPressed(KEY_ESCAPE)) [[unlikely]]
         {
@@ -174,6 +195,65 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 //                    int       nCmdShow)
 // {
 //     MessageBox(nullptr, "Hello, World!", "My First WinMain", MB_OK);
+
+//     return 0;
+// }
+
+
+// #include "raylib.h"
+
+// //------------------------------------------------------------------------------------
+// // Program main entry point
+// //------------------------------------------------------------------------------------
+// int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
+// {
+//     // Initialization
+//     //--------------------------------------------------------------------------------------
+//     int const screenWidth  = 800;
+//     int const screenHeight = 450;
+
+//     InitWindow(screenWidth,
+//                screenHeight,
+//                "raylib [core] example - keyboard input");
+
+//     Vector2 ballPosition = {screenWidth / 2.f, screenHeight / 2.f};
+
+//     SetTargetFPS(60);  // Set our game to run at 60 frames-per-second
+//     //--------------------------------------------------------------------------------------
+
+//     // Main game loop
+//     while (!WindowShouldClose())  // Detect window close button or ESC key
+//     {
+//         // Update
+//         //----------------------------------------------------------------------------------
+//         if (IsKeyDown(KEY_RIGHT))
+//             ballPosition.x += 2.0f;
+//         if (IsKeyDown(KEY_LEFT))
+//             ballPosition.x -= 2.0f;
+//         if (IsKeyDown(KEY_UP))
+//             ballPosition.y -= 2.0f;
+//         if (IsKeyDown(KEY_DOWN))
+//             ballPosition.y += 2.0f;
+//         //----------------------------------------------------------------------------------
+
+//         // Draw
+//         //----------------------------------------------------------------------------------
+//         BeginDrawing();
+
+//         ClearBackground(RAYWHITE);
+
+//         DrawText("move the ball with arrow keys", 10, 10, 20, DARKGRAY);
+
+//         DrawCircleV(ballPosition, 50, MAROON);
+
+//         EndDrawing();
+//         //----------------------------------------------------------------------------------
+//     }
+
+//     // De-Initialization
+//     //--------------------------------------------------------------------------------------
+//     CloseWindow();  // Close window and OpenGL context
+//     //--------------------------------------------------------------------------------------
 
 //     return 0;
 // }
